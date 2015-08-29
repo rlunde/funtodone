@@ -13,3 +13,13 @@ we can do -- if you can save someone an hour by handling a thirty second interru
 always a good idea. The trouble is, 99.9% of your interruptions don't actually save anyone
 any time, they just make it hard for us to get anything accomplished.
 
+If you look up procrastination in Amazon, you'll currently find 7129 results among books.
+A search for distraction returns another 1775. There are already lots of software tools out
+there that are specifically intended to fight those.
+
+So you can look at this tool either as (a) oh boy, not *another* one, or (b) hmm, if they
+talk about how many books and apps there are right up front, maybe there's something different
+with theirs?
+
+(Hint: it's the second.)
+
