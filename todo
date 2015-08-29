@@ -1,0 +1,18 @@
+I've decided to try doing the first version of the server side
+of this in go (golang), using Gorilla. In my wildest dreams, there will
+be a javascript/html front-end that does most of the work, a localstore
+option for people who don't want to sync their stuff with a server,
+and a simple service/database for people who want to sync.
+
+We'll see. 
+
+So to start my todo list, that I'll delete as soon as funtodone (which is
+basically a todo list with more options and attitude than usual) is:
+
+[ ] sketch out a starting UI 
+[ ] implement a beginner UI, maybe using flux, react, backbone, marionette
+[ ] implement a basic server side web api and web server for the assets
+[ ] think about how to make a mobile web app out of it
+[ ] expand and fix this list and move it into funtodone
+
+
