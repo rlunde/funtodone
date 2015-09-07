@@ -10,7 +10,9 @@ So to start my todo list, that I'll delete as soon as funtodone (which is
 basically a todo list with more options and attitude than usual) is:
 
 [ ] sketch out a starting UI 
-[ ] implement a beginner UI, maybe using flux, react, backbone, marionette
+[ ] start with a beginner UI, maybe using flux, react, backbone, marionette
+  [ ] copied in todomvc's backbone+marionette example
+  [ ] look into require.js, flux, and react -- worth it?
 [ ] implement a basic server side web api and web server for the assets
 [ ] think about how to make a mobile web app out of it
 [ ] expand and fix this list and move it into funtodone
