@@ -2,7 +2,8 @@ I've decided to try doing the first version of the server side
 of this in go (golang), using Gorilla. In my wildest dreams, there will
 be a javascript/html front-end that does most of the work, a localstore
 option for people who don't want to sync their stuff with a server,
-and a simple service/database for people who want to sync.
+and a simple service/database for people who want to sync, using dropbox
+or icloud or whatever.
 
 We'll see. 
 

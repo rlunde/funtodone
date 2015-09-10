@@ -1,0 +1,49 @@
+
+1) Help people define their main process goals -- what to improve or what is important, usuall including
+  a) health
+  b) happiness
+  c) career
+  d) relationships
+  e) finances
+  f) learning
+  g) accomplishments
+
+2) Tasks are inherently both hierarchical and interdependent
+  a) one operation is to split up a task into smaller pieces
+  b) tags can associate related tasks
+  c) dependencies should be flexible and casual
+    i) task can't be started before another is done
+    ii) task can't be finished before another is done
+    iii) task has to be done by a certain time
+
+3) Every task should be tied to one or more goals
+
+4) Every task should have both importance and urgency
+  a) use defaults unless set separately
+  b) if split a task, use parent's importance/urgency unless specified
+
+5) Every task should be tied to one or more things that make it fun
+  a) not the pleasure of finishing it, but the pleasure of doing it
+  b) have a lot of preset sources of fun for people to copy and customize
+  c) give people some motivation for constantly brainstorming new sources of fun
+  d) collect "chicken soup for the soul" type stories about people finding the fun
+
+6) Have a task timer (like pomodoro) with time that can be specified per task
+
+7) Keep score and show history
+
+8) Game operations are:
+  a) list tasks (order by age, urgency, importance, ...)
+  b) start a task
+  c) split a task
+  d) mark a task done
+  e) add/edit/delete a task
+  f) pick a task
+    i) do now
+    ii) do next
+    iii) deal a random task (accept it, or try again)
+
+9) UX should be fun and simple
+  a) hide more complicated options with a standard icon to open up options
+  b) task completion should be a celebration (even a simple animation)
+
