@@ -122,4 +122,8 @@ Choosing a random task isn't quite all random, since funtodone tries to weight t
   * try to work on the more important things early in the day
 
 
+# License
+
+This is open source software, licensed under the MIT license. That seemed like that most permissive
+version available. Please see the LICENSE file for details.
 
