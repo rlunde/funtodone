@@ -31,6 +31,9 @@
 6) Have a task timer (like pomodoro) with time that can be specified per task
 
 7) Keep score and show history
+  a) score should be based on operations done, which type of operation, and which operation
+  b) important tasks should count more than unimportant tasks
+  c) getting things done should count more than adding new tasks
 
 8) Game operations are:
   a) list tasks (order by age, urgency, importance, ...)
