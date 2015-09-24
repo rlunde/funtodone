@@ -50,3 +50,8 @@
   a) hide more complicated options with a standard icon to open up options
   b) task completion should be a celebration (even a simple animation)
 
+10) Don't make people enter data they don't (currently) care about
+  a) don't insist on using a timer
+  b) don't show things globally that people want hidden (e.g. importance and urgency)
+  c) let people show / hide things on an item or item hierarchy
+
