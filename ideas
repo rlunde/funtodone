@@ -55,3 +55,12 @@
   b) don't show things globally that people want hidden (e.g. importance and urgency)
   c) let people show / hide things on an item or item hierarchy
 
+11) Make repeated tasks smarter than usual
+  a) optionally remove task after deadline, whether or not completed
+  b) optionally re-add task on a schedule
+  c) optionally block off days when not to re-add task (e.g. no taking out trash when on vacation)
+
+12) Make deadlines smarter than usual
+  a) if critical, optionally send email reminder
+  b) increase chance of randomly getting a task as deadline approaches
+
