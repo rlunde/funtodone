@@ -121,6 +121,23 @@ Choosing a random task isn't quite all random, since funtodone tries to weight t
   * try to alternate between more fun and less fun tasks
   * try to work on the more important things early in the day
 
+## Too Many Tasks?
+
+You might think that continuously splitting tasks into smaller and smaller pieces will make it
+seem overwhelming. 
+
+The trick is that (normally) you're not looking at the whole list, but just a single sub-task or
+a parent task and a list of its subtasks.
+
+You want to get the level of difficulty for a task down to an almost rediculously low level,
+in order to bypass the resistance that automatically shows up for larger tasks. It's like
+cleaning up after a big party -- it can feel overwhelming at first, but if you tell yourself
+"OK, I'm just going to spend five minutes washing dishes" then, after that, you look around
+and it's not so bad any more.
+
+The Japanese principal of Kaizen works a lot like that. You make small changes rather than 
+trying for big heroic ones, and before you know it, really big things get done -- without
+all the wailing and teeth gnashing that a large change would entail.
 
 # License
 
