@@ -63,4 +63,13 @@
 12) Make deadlines smarter than usual
   a) if critical, optionally send email reminder
   b) increase chance of randomly getting a task as deadline approaches
+  c) add a way to describe consequences of missing a deadline
+
+13) Have a way to easily review tasks
+  a) present them one at a time, with ability to:
+    i) delete them
+    ii) increase or decrease priority
+    iii) edit them
+    iv) hide them until sometime in future (tomorrow, next week, next month, choose a date)
+  b) keep track of when each task was last reviewed, and show oldest first
 
