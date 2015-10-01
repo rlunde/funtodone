@@ -8,7 +8,8 @@ or icloud or whatever.
 We'll see. 
 
 So to start my todo list, that I'll delete as soon as funtodone (which is
-basically a todo list with more options and attitude than usual) is:
+basically a todo list with more options and attitude than usual) is working
+enough to put this todo list in, is:
 
 [ ] sketch out a starting UI 
   [ ] make a paper prototype or two
@@ -19,5 +20,8 @@ basically a todo list with more options and attitude than usual) is:
 [ ] implement a basic server side web api and web server for the assets
 [ ] think about how to make a mobile web app out of it
 [ ] expand and fix this list and move it into funtodone
-
+[ ] do a vertical spike with a single feature
+  [ ] do basic layout of top level features
+  [ ] implement enough of a schema to show a list of tasks
+  [ ] display list of tasks
 
