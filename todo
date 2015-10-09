@@ -1,5 +1,5 @@
 I've decided to try doing the first version of the server side
-of this in go (golang), using Gorilla. In my wildest dreams, there will
+of this in go (golang), using Gorilla. If all goes well, there will
 be a javascript/html front-end that does most of the work, a localstore
 option for people who don't want to sync their stuff with a server,
 and a simple service/database for people who want to sync, using dropbox
@@ -24,4 +24,4 @@ enough to put this todo list in, is:
   [ ] do basic layout of top level features
   [ ] implement enough of a schema to show a list of tasks
   [ ] display list of tasks
-
+[ ] start with bootstrap, since we definitely want a simple responsive design
