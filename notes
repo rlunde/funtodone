@@ -1,0 +1,14 @@
+The node_modules under client originally came along with the sample I installed from todomvc,
+but others (e.g. requirejs) came from the usual:
+
+cd client
+npm install requirjs
+npm install flux
+
+React comes from the facebook CDN:
+
+<!-- The core React library -->
+<script src="https://fb.me/react-0.14.0.js"></script>
+<!-- The ReactDOM Library -->
+<script src="https://fb.me/react-dom-0.14.0.js"></script>
+
