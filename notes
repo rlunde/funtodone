@@ -1,8 +1,7 @@
 The node_modules under client originally came along with the sample I installed from todomvc,
-but others (e.g. requirejs) came from the usual:
+but others (e.g. flux) came from the usual:
 
 cd client
-npm install requirjs
 npm install flux
 
 React comes from the facebook CDN:
