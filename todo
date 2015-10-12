@@ -25,3 +25,4 @@ enough to put this todo list in, is:
   [ ] implement enough of a schema to show a list of tasks
   [ ] display list of tasks
 [ ] start with bootstrap, since we definitely want a simple responsive design
+[ ] go through starting example from TodoMVC and annotate with things to change
