@@ -15,7 +15,6 @@ enough to put this todo list in, is:
   [ ] make a paper prototype or two
   [ ] turn it into a layout
 [ ] start with a beginner UI, maybe using flux, react, backbone, marionette
-  [x] copied in todomvc's backbone+marionette example
   [ ] look into require.js, flux, and react -- worth it?
 [ ] implement a basic server side web api and web server for the assets
 [ ] think about how to make a mobile web app out of it
