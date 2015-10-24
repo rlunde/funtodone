@@ -23,5 +23,7 @@ _testmain.go
 *.test
 *.prof
 
-**/client/node_modules/*
+# todo: document install of other node modules, and remove modules from this repo
+**/client/node_modules/flux
+**/client/node_modules/requirejs
 **/github.com/gorilla
