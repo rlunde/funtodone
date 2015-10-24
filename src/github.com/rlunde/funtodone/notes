@@ -11,3 +11,11 @@ React comes from the facebook CDN:
 <!-- The ReactDOM Library -->
 <script src="https://fb.me/react-dom-0.14.0.js"></script>
 
+For now at least, I'll make the directory containing this file be the
+standard golang location for go source files, so the workspace directory
+($GOPATH) will be four levels up. I use the source-me.sh file to set
+up $GOPATH accordingly:
+
+$source source-me.sh
+
+
