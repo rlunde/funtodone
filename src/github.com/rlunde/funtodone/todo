@@ -17,6 +17,7 @@ enough to put this todo list in, is:
 [ ] start with a beginner UI, maybe using flux, react, backbone, marionette
   [ ] look into require.js, flux, and react -- worth it?
 [ ] implement a basic server side web api and web server for the assets
+  [x] route static resources under the client dir
 [ ] think about how to make a mobile web app out of it
 [ ] expand and fix this list and move it into funtodone
 [ ] do a vertical spike with a single feature
