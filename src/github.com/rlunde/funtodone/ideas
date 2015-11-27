@@ -108,3 +108,6 @@
   d) Inspirational quote
   e) Score
 
+20) Should look at mobile web frameworks to see if anything looks promising
+  a) start with a reactive framework that scales down to mobile format
+  b) look into react native / jquery mobile / etc. ?
