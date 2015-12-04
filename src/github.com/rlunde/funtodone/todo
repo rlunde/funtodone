@@ -13,7 +13,10 @@ enough to put this todo list in, is:
 
 [ ] as in other projects, I need to get the basics working
   [ ] figure out how to deploy this--starting with heroku
+    [ ] write up a step by step guide
   [ ] figure out how to do login/password and oauth authentication
+    [ ] first do regular login/password
+    [ ] next add oauth
   [ ] implement all the usual password features (change pw, lost pw)
 [ ] sketch out a starting UI 
   [ ] make a paper prototype or two
