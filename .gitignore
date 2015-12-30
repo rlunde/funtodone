@@ -27,6 +27,8 @@ _testmain.go
 **/client/node_modules/flux
 **/client/node_modules/requirejs
 **/github.com/gorilla
+**/golang.org
+**/gopkg.in
 
 heroku
 src/github.com/rlunde/funtodone/funtodone

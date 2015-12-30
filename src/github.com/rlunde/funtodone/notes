@@ -27,3 +27,11 @@ To test it, open this in the browser:
 
 http://localhost:8100/
 
+I found a module named AuthBoss that looks like it might be exactly what I want, for
+doing user authentication / signup! It's here: https://github.com/go-authboss/authboss
+
+So far all I've done is try to load it -- need to configure it next. To do that, I
+need to decide where to store passwords, etc. I think for right now, I'll just try
+to save things locally in the browser localstore.
+
+

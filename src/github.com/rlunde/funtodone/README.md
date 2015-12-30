@@ -77,7 +77,7 @@ sources for the ideas behind funtodone:
 ## Where are all the testimonials?
 
 Shouldn't we have all kinds of glowing testimonials from celebrities and People With Credentials, saying how
-wonderful _funtodone_ is, and that it helped them immeasurably and make them who they are today?
+wonderful _funtodone_ is, and that it helped them immeasurably and made them who they are today?
 
 Yeah, I guess. We probably ought to wait until we have something working, though, and then see about getting somebody to try it out.
 
