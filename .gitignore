@@ -29,6 +29,7 @@ _testmain.go
 **/github.com/gorilla
 **/golang.org
 **/gopkg.in
+**/samples
 
 heroku
 src/github.com/rlunde/funtodone/funtodone
