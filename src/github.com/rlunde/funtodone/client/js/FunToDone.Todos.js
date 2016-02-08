@@ -1,7 +1,7 @@
-/*global TodoMVC */
+/*global FunToDone */
 'use strict';
 
-TodoMVC.module('Todos', function (Todos, App, Backbone) {
+FunToDone.module('Todos', function (Todos, App, Backbone) {
 	// Todo Model
 	// ----------
 	Todos.Todo = Backbone.Model.extend({

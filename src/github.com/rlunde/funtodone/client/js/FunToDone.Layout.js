@@ -1,7 +1,7 @@
-/*global TodoMVC */
+/*global FunToDone */
 'use strict';
 
-TodoMVC.module('Layout', function (Layout, App, Backbone) {
+FunToDone.module('Layout', function (Layout, App, Backbone) {
 
 	Layout.Root = Backbone.Marionette.LayoutView.extend({
 		el: '#todoapp',

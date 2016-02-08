@@ -1,7 +1,7 @@
-/*global TodoMVC */
+/*global FunToDone */
 'use strict';
 
-TodoMVC.module('TodoList.Views', function (Views, App, Backbone, Marionette) {
+FunToDone.module('TodoList.Views', function (Views, App, Backbone, Marionette) {
 	// Todo List Item View
 	// -------------------
 	//
