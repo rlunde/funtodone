@@ -112,3 +112,7 @@
   a) start with a reactive framework that scales down to mobile format
   b) look into react native / jquery mobile / etc. ?
 
+21) Should build in a brainstorm link from the very start
+  a) report a bug/problem
+  b) suggest an improvement
+  c) explain why it does/doesn't work
