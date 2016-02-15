@@ -34,4 +34,9 @@ So far all I've done is try to load it -- need to configure it next. To do that,
 need to decide where to store passwords, etc. I think for right now, I'll just try
 to save things locally in the browser localstore.
 
+OK, I'm switching over to a "standard" linux based install (not using Heroku or
+a shared hosting server) -- I signed up for Digital Ocean and mapped the funtodone.com
+domain to it.
 
+I want to take a big step back and set up this github project as a "standard" golong-based
+web project on github, which will require some investigation.
