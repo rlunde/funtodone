@@ -40,3 +40,8 @@ domain to it.
 
 I want to take a big step back and set up this github project as a "standard" golong-based
 web project on github, which will require some investigation.
+
+Here are some links for learning how to get set up on Digital Ocean:
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
+https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-web-server-and-reverse-proxy-for-apache-on-one-ubuntu-14-04-droplet
+
