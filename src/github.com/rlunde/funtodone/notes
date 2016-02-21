@@ -45,3 +45,9 @@ Here are some links for learning how to get set up on Digital Ocean:
 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
 https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-web-server-and-reverse-proxy-for-apache-on-one-ubuntu-14-04-droplet
 
+Here are some resources for a "standard" golang project:
+
+https://golang.org/doc/code.html
+https://talks.golang.org/2014/organizeio.slide#1
+https://github.com/golang/go/wiki/GithubCodeLayout
+
