@@ -20,7 +20,9 @@ Feb 5, 2016: All Stop!
 3) don't get all hung up trying to use cool javascript frameworks, since that
    takes a long time, and shouldn't even be necessary for a project this size
 
-[ ] first, strip out everything that doesn't provide a good example or a good starting point
+[x] first, strip out everything that doesn't provide a good example or a good starting point
+[ ] change the install.sh script up at the top of the github tree to copy the client directory
+[ ] finish getting a basic index page working without errors
 [ ] as in other projects, I need to get the basics working
   [ ] implement all the usual login/password features (new account, change pw, lost pw)
   [ ] write a step by step guide for setting things up with database and project

@@ -3,12 +3,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>FunToDone</title>
-		<link rel="stylesheet" href="css/index.css">
-		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="css/app.css">
-        <!--
-        TODO: make the css play well with bootstrap
-         -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
@@ -18,7 +12,6 @@
 		<section id="todoapp">
 			<header id="header"></header>
 			<section id="main"></section>
-			<footer id="footer"></footer>
 		</section>
 		<footer id="info">
 			<p>this is the footer</p>
@@ -26,40 +19,6 @@
 				Created by <a href="http://github.com/rlunde">Ron Lunde</a>
 			</p>
 		</footer>
-		<script type="text/html" id="template-footer">
-			<span id="todo-count">
-				<strong><%= activeCount %></strong> <%= activeCountLabel() %>
-			</span>
-			<ul id="filters">
-				<li class="all">
-					<a href="#/">All</a>
-				</li>
-				<li class="active">
-					<a href="#/active">Active</a>
-				</li>
-				<li class="completed">
-					<a href="#/completed">Completed</a>
-				</li>
-			</ul>
-			<button id="clear-completed" <% if (!completedCount) { %>class="hidden"<% } %>>Clear completed</button>
-		</script>
-		<script type="text/html" id="template-header">
-			<h1>todos</h1>
-			<input id="new-todo" placeholder="What needs to be done?" autofocus>
-		</script>
-		<script type="text/html" id="template-todoItemView">
-			<div class="view">
-				<input class="toggle" type="checkbox" <% if (completed) { %>checked<% } %>>
-				<label><%- title %></label>
-				<button class="destroy"></button>
-			</div>
-			<input class="edit" value="<%- title %>">
-		</script>
-		<script type="text/html" id="template-todoListCompositeView">
-			<input id="toggle-all" type="checkbox">
-			<label for="toggle-all">Mark all as complete</label>
-			<ul id="todo-list"></ul>
-		</script>
 		<!-- vendor libraries -->
         <!-- The core React library -->
         <script src="https://fb.me/react-0.14.0.js"></script>
@@ -71,10 +30,6 @@
 		<script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
 		<!-- application -->
 		<script src="js/FunToDone.js"></script>
-		<script src="js/FunToDone.Todos.js"></script>
-		<script src="js/FunToDone.Layout.js"></script>
-		<script src="js/FunToDone.TodoList.Views.js"></script>
-		<script src="js/FunToDone.TodoList.js"></script>
 		<script>
 			$(function () {
 				FunToDone.on('start', function () {

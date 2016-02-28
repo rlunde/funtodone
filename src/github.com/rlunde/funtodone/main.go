@@ -29,5 +29,6 @@ func main() {
 	// r.HandleFunc("/load/{dataId}", Load)
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./client/")))
 	http.Handle("/", r)
+	log.Println("starting http server on http://localhost:8100")
 	http.ListenAndServe(":8100", nil)
 }

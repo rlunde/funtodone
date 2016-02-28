@@ -1,12 +1,8 @@
 /*global Backbone */
 'use strict';
 
-// FunToDone is global for developing in the console
-// and functional testing.
+// FunToDone is global for developing in the console and functional testing.
 var App = Backbone.Marionette.Application.extend({
-	setRootLayout: function () {
-		this.root = new FunToDone.Layout.Root();
-	}
 });
 
 window.FunToDone = new App();
@@ -22,5 +18,5 @@ window.FunToDone = new App();
 })();
 
 FunToDone.on('before:start', function () {
-	FunToDone.setRootLayout();
+	// FunToDone.setRootLayout();
 });

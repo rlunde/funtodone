@@ -31,5 +31,5 @@ _testmain.go
 **/gopkg.in
 **/samples
 
-heroku
+bin/
 src/github.com/rlunde/funtodone/funtodone
