@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-framework="marionettejs">
+	<head>
+		<meta charset="utf-8">
+		<title>FunToDone</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<section id="todoapp">
+			<header id="header"></header>
+			<section id="main"></section>
+		</section>
+		<footer id="info">
+			<p>this is the footer</p>
+			<p>
+				Created by <a href="http://github.com/rlunde">Ron Lunde</a>
+			</p>
+		</footer>
+		<!-- vendor libraries -->
+        <!-- The core React library -->
+        <script src="https://fb.me/react-0.14.0.js"></script>
+        <!-- The ReactDOM Library -->
+        <script src="https://fb.me/react-dom-0.14.0.js"></script>
+		<script src="node_modules/underscore/underscore.js"></script>
+		<script src="node_modules/backbone/backbone.js"></script>
+		<script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
+		<script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
+		<!-- application -->
+		<script src="js/FunToDone.js"></script>
+		<script>
+			$(function () {
+				FunToDone.on('start', function () {
+					Backbone.history.start();
+				});
+				// start the FunToDone app (defined in js/FunToDone.js)
+				FunToDone.start();
+			});
+		</script>
+	</body>
+</html>

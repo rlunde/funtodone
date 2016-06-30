@@ -1,0 +1,51 @@
+
+Landing Page
+  * keep it as simple as possible
+  * show links to log in, create an account, about
+  * main page should have a one-sentence description of why it's cool, and links to more:
+    * getting started
+    * creating tasks
+    * organizing tasks
+    * doing tasks
+    * import / export
+  * try to get one or more quotes from people who like it (eventually)
+  * privacy policy
+
+Login Page (modal dialog)
+
+Create Account Page
+
+Check Your Email Page
+
+Lost Account/Password Page
+
+Main Page (after login or clicking on email confirm link after creating account)
+  * link to a settings and preferences page
+  * link to a reports page
+  * link to a FAQ page
+  * link to a support page
+  * links to same doc pages as on login page
+  * link to log out
+  * other than that, a SPA from now on
+    
+  * From the README.md:
+
+  1. Click a button to get a task or make a new one:
+    a. new task
+    b. hit me! (a task is selected for you, see gory details about how that works below)
+    c. choose task (you pick which task)
+  2. Once you've got a task, you do one of these:
+    a. back to main (to get or create a new task)
+    b. edit it
+    c. split it (make it into two or more separate tasks)
+    d. expand it (add one or more child tasks)
+    e. link it (edit what it depends on, or what depends on it)
+    f. do it
+  3. One you're doing a task, you can:
+    a. go back to the previous stage
+    b. start a timer
+    c. track your progress
+    d. edit it
+    e. finish it
+    f. stop working on it
+
