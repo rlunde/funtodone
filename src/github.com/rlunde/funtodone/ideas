@@ -116,3 +116,19 @@
   a) report a bug/problem
   b) suggest an improvement
   c) explain why it does/doesn't work
+
+22) Things to do should fall into 3 different types
+  a) stacks -- a large project that will take multiple days (at least) to do
+    i) each stack is done "depth first", by putting 1-5 subtasks that must be done, in some logical order
+    ii) the first top level item can be split into 1-5 of its own subtasks, but *only* the top/first-to-do item at any level is split up
+    iii) sometimes you find you can't finish a task without doing one below it on the stack, in which case (and only then) you swap them
+    iv) see the example stack for "create funtodone"
+  b) cycles -- things that have to be done periodically or that are never "done"
+    i) these are most likely to be tied to a schedule deadline
+    ii) calendars already have ways to handle repeated deadlines - depending on the size of the task, that may be all you need
+  c) lists -- things that are relatively small, and only need to be done once
+    i) some tasks will never escape your backlog -- they should be put in an archive and never seen again (barring unforseen circumstances)
+    ii) some lists may be things small enough to do immediately (10 minute tasks)
+    iii) some lists may be things you really want to do, but they're more dreams than goals
+    iv) some lists should hold tasks that are bigger than can be done in 10 minutes, but smaller than a "stack sized" project
+
