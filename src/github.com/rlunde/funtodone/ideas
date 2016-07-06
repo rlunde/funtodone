@@ -122,7 +122,7 @@
     i) each stack is done "depth first", by putting 1-5 subtasks that must be done, in some logical order
     ii) the first top level item can be split into 1-5 of its own subtasks, but *only* the top/first-to-do item at any level is split up
     iii) sometimes you find you can't finish a task without doing one below it on the stack, in which case (and only then) you swap them
-    iv) see the example stack for "create funtodone"
+    iv) see the example stack for "create funtodone" (./examples/stacks/funtodone.json)
   b) cycles -- things that have to be done periodically or that are never "done"
     i) these are most likely to be tied to a schedule deadline
     ii) calendars already have ways to handle repeated deadlines - depending on the size of the task, that may be all you need
