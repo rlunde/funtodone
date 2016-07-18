@@ -43,3 +43,7 @@ Feb 5, 2016: All Stop!
 [ ] try adding other frameworks (react, backbone, and flux) to see what breaks
 [ ] the font needs to be more "fun" than bootstrap -- see how to do that
 
+[ ] new plan: start off with a simple database and some command-line functionality
+[ ] add a web interface in front of an API that the command line also calls
+[ ] once a suitable subset of functionality is working, THEN implement accounts, auth, etc.
+
