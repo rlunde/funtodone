@@ -47,3 +47,5 @@ Feb 5, 2016: All Stop!
 [ ] add a web interface in front of an API that the command line also calls
 [ ] once a suitable subset of functionality is working, THEN implement accounts, auth, etc.
 
+[ ] first pick a random task from a list
+[ ] second, log that task, and make sure it doesn't come up again right away (usually)
