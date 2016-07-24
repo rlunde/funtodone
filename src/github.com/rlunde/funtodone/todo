@@ -49,3 +49,9 @@ Feb 5, 2016: All Stop!
 
 [ ] first pick a random task from a list
 [ ] second, log that task, and make sure it doesn't come up again right away (usually)
+
+[ ] I need to reorganize this codebase: github shouldn't have a subdirectory called github
+  [ ] move everything to top level src, bin, doc, dist directories
+  [ ] redo build script to find src in right places and put executables/etc. in right places
+[ ] reorganize the todo into stacks/lists/notes
+
