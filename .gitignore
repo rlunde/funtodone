@@ -32,4 +32,4 @@ _testmain.go
 **/samples
 
 bin/
-src/github.com/rlunde/funtodone/funtodone
+pkg/
