@@ -53,5 +53,12 @@ Feb 5, 2016: All Stop!
 [ ] I need to reorganize this codebase: github shouldn't have a subdirectory called github
   [ ] move everything to top level src, bin, doc, dist directories
   [ ] redo build script to find src in right places and put executables/etc. in right places
-[ ] reorganize the todo into stacks/lists/notes
+[ ] reorganize the todo into stacks/lists/cycles
+
+[ ] design operations to be done by command line and API
+  [ ] create a top level stack, cycle, or list
+  [ ] add a subtask to a stack, cycle, or list
+    [ ] or, add it as a subtask of the top or of a subtask
+    [ ] generate a task ID
+  [ ] edit, move, delete tasks/subtasks
 

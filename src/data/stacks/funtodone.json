@@ -8,7 +8,7 @@
         {"step":"0","description":"decide on schema for cycles, lists, and stacks"}
       ]
     },
-    {"step":"1","description":"write command line tool to to operations on database / tasks"},
+    {"step":"1","description":"write command line tool to do operations on database / tasks"},
     {"step":"2","description":"split command line tool into parser + REST apis"},
     {"step":"3","description":"design initial responsive web UI"},
     {"step":"4","description":"tie UI to REST APIs"}
