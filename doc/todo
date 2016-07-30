@@ -58,7 +58,12 @@ Feb 5, 2016: All Stop!
 [ ] design operations to be done by command line and API
   [ ] create a top level stack, cycle, or list
   [ ] add a subtask to a stack, cycle, or list
-    [ ] or, add it as a subtask of the top or of a subtask
+    [ ] or, add it as a subtask of the top level or of a subtask
     [ ] generate a task ID
   [ ] edit, move, delete tasks/subtasks
-
+  [ ] look at the operations to support on tasks
+    [ ] mark it done
+    [ ] split it into N pieces
+    [ ] add/edit/delete notes about task
+    [ ] collapse into parent (if parent isn't next up)
+    (see "ideas" in this directory)
