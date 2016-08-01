@@ -1,0 +1,17 @@
+{
+"goodwin": {
+  "step":"0",
+  "description": "make a first version of conversational interface that calls a D3 code generator",
+  "tasks": [
+    {"step":"0","description":"design initial database schema",
+      "tasks": [
+        {"step":"0","description":"decide on schema for web page projects"}
+      ]
+    },
+    {"step":"1","description":"write command line tool to generate a web site with D3 from JSON description"},
+    {"step":"2","description":"generate JSON description from conversation"},
+    {"step":"3","description":"design an initial responsive web UI that also reads/writes the JSON"},
+    {"step":"4","description":"update the conversation interface to read as well as write the JSON description"}
+    ]
+  }
+}
