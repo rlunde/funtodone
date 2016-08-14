@@ -1,0 +1,39 @@
+
+A stack is a hierarchical list of things. You put a vaguely defined
+really big thing at the bottom, and break it down into a handful (5 to 7
+at most) smaller things, then choose one of those and break it down,
+creating a stack with smaller things above bigger things. The rules
+of the game are:
+
+1) you don't subdivide more than a single thing at each level. For
+   example, if you've got 5 level 2 things, you pick only one of those
+   and divide it into level 3 things.
+
+2) the goal is to divide things into smaller and smaller pieces until
+   you can actually just do the pieces. I try to get them into pieces
+   small enough for Flashtasks, which are things that you can do in 
+   (hopefully) 7 minutes or less. You set a timer and work on it like
+   crazy for that time. If you don't finish, you have a few options --
+   see the Flashtasks writeup for details.
+
+3) If you can't finish a thing until you do something else, and the
+   something else is at a lower level (or part of a lower level), you
+   move the thing into a separate location (backlog/notes).
+
+4) Keep status/notes of everything in a separate file/location, so that
+   the top of the stack is just the next thing to do.
+
+5) It's OK to re-order the top items of the same depth, but not anything
+   else. The order of the lower levels isn't really important -- that is,
+   if you're working on level 5 stuff, when you finish it all, you can
+   choose whatever level 4 item you want to split up for the next batch
+   of level 5 items.
+
+6) The objective is simple: don't think more about things than you have
+   to, and don't worry about anything except the top of the stack.
+
+7) You can edit / revise / delete the top level of the stack whenever you
+   want. If you want to change something lower down, just add some notes
+   to your notes file. Try to keep your "active" notes separate from your
+   log notes.
+

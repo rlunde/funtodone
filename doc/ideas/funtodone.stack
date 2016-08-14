@@ -1,0 +1,6 @@
+This is a doc rather than the JSON source for doing FunToDone,
+since it's a little cart-before-horse to put everything in the
+right format and have to manually edit JSON to talk about how
+to make the code to create and manage the JSON format.
+
+Larger numbers are higher up the stack.
