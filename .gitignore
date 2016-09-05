@@ -24,8 +24,6 @@ _testmain.go
 *.prof
 
 # todo: document install of other node modules, and remove modules from this repo
-**/client/node_modules/flux
-**/client/node_modules/requirejs
 **/github.com/gorilla
 **/golang.org
 **/gopkg.in
@@ -33,3 +31,14 @@ _testmain.go
 
 bin/
 pkg/
+
+# client dependencies
+**/client/node_modules
+
+# production
+**/client/build
+
+# misc
+**/client/.DS_Store
+**/client/npm-debug.log
+

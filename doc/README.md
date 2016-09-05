@@ -10,11 +10,12 @@ Adding a little random fun (and a little extra intelligence) to your todo list
 
 # The Enemy
 
-Distraction, procrastination, and constant interruptions are killing our productivity, our self-esteem, our ability
-to concentrate, and (possibly due to increased stress as a result) even our health. 
+Distraction, procrastination, and constant interruptions are killing our productivity, our 
+self-esteem, our ability to concentrate, and (possibly due to increased stress as a 
+result) even our health. 
 
-But lets face it -- we're knowledge workers. We can't go hide in the forest and cut ourselves off from the Internet
-and still get our work done. 
+But lets face it -- we're knowledge workers. We can't go hide in the forest and cut ourselves 
+off from the Internet and still get our work done. 
 
 If you look up procrastination in Amazon, you'll currently find 7129 results among books.
 A search for distraction returns another 1775. There are LOTS of software tools already available
@@ -50,24 +51,32 @@ Wouldn't it be great to have a reputation as somebody who gets things done?
 
 ## Isn't this just some cheesy "gamification" of a ToDo app?
 
-Heck no. You don't need no steenking badges. 
+Heck no. You don't need no steenking badges.
 
-On the other hand, one of the critical steps in improving anything is to measure it, which is basically a way of keeping score.
+On the other hand, one of the critical steps in improving anything
+is to measure it, which is basically a way of keeping score.
 
-And on the third hand, the reason gamification got such a bad name so quickly is that legions of wild-eyed hyper-ventilating consultants
-oversold it to such a degree that it became a joke before anyone even had a chance to see if there was anything to it.
+And on the third hand, the reason gamification got such a bad name
+so quickly is that legions of wild-eyed hyper-ventilating consultants
+oversold it to such a degree that it became a joke before anyone
+even had a chance to see if there was anything to it.
 
-It *is* possible to make the process of planning and keeping track of your actions more fun than you might expect, even if it's
-unlikely to make you laugh out loud with glee.
+It *is* possible to make the process of planning and keeping track
+of your actions more fun than you might expect, even if it's unlikely
+to make you laugh out loud with glee.
 
 ## I don't want to spend hours (or days) entering all my personal data into somebody else's database
 
-Yeah, neither do we. That's why we don't store your data ourselves. Fortunately, there are lots of little companies like
-Google (Drive), Microsoft (OneDrive), and Apple (iCloud) -- not to mention Dropbox, Box, and others -- that let you save
-your data in cloud storage that is shared across all your devices. That's what we're going to try to use.
+Yeah, neither do we. That's why we don't store your data ourselves.
+Fortunately, there are lots of little companies like Google (Drive),
+Microsoft (OneDrive), and Apple (iCloud) -- not to mention Dropbox,
+Box, and others -- that let you save your data in cloud storage
+that is shared across all your devices. That's what we're going to
+try to use.
 
-We store all your raw data in JSON format (which means it's easy to import and export, and you can even read it yourself if
-you tilt your head and squinch your eyes a bit).
+We store all your raw data in JSON format (which means it's easy
+to import and export, and you can even read it yourself if you tilt
+your head and squinch your eyes a bit).
 
 ## Where did the ideas for this come from?
 
@@ -83,10 +92,13 @@ sources for the ideas behind funtodone:
 
 ## Where are all the testimonials?
 
-Shouldn't we have all kinds of glowing testimonials from celebrities and People With Credentials, saying how
-wonderful _funtodone_ is, and that it helped them immeasurably and made them who they are today?
+Shouldn't we have all kinds of glowing testimonials from celebrities
+and People With Credentials, saying how wonderful _funtodone_ is,
+and that it helped them immeasurably and made them who they are
+today?
 
-Yeah, I guess. We probably ought to wait until we have something working, though, and then see about getting somebody to try it out.
+Yeah, I guess. We probably ought to wait until we have something
+working, though, and then see about getting somebody to try it out.
 
 ## This is going to be too complicated to use, isn't it?
 
