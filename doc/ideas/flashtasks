@@ -65,3 +65,23 @@ never get into a state of "flow". In practice, I find that it's not
 very distracting to just restart the timer and add 1 to the count
 for a task, so I don't let it force me out of flow if I'm in it.
 
+Update:
+
+Now that I've been trying this for a few weeks, I have a few things
+that I've noticed about trying this myself:
+
+1) It's still hard to remember to start the timer, and hard to 
+   remember to add things to my list
+2) Doing a whole big list up front is almost no different than
+   doing a todo list. I think I need to get back to some gamification/
+   funtodone aspects, and don't look too far ahead.
+3) All the timers for desktop are awful, that I've found, for
+   something like this. The regular android clock app is different
+   (a LOT different) across my nexus tablet, LG tablet, and Samsung
+   phone, but it works OK. It seems to me that a timer really can't
+   be THAT hard to do. I wonder if building funtodone in to a fun
+   timer app rather than the other way around might be worth exploring?
+4) I think I need some large physical reminder of having accomplished
+   flashtasks. Or some very obvious screen thing, like a graph, or
+   an animated D3 tree structure, or something.
+
