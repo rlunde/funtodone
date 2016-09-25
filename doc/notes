@@ -1,40 +1,5 @@
-The node_modules under client originally came along with the sample I installed from todomvc,
-but others (e.g. flux) came from the usual:
 
-cd client
-npm install flux
-
-React comes from the facebook CDN:
-
-<!-- The core React library -->
-<script src="https://fb.me/react-0.14.0.js"></script>
-<!-- The ReactDOM Library -->
-<script src="https://fb.me/react-dom-0.14.0.js"></script>
-
-For now at least, I'll make the directory containing this file be the
-standard golang location for go source files, so the workspace directory
-($GOPATH) will be four levels up. I use the source-me.sh file to set
-up $GOPATH accordingly:
-
-$source source-me.sh
-
-To build and run the server:
-
-$ go build
-$ ./funtodone
-
-To test it, open this in the browser:
-
-http://localhost:8100/
-
-I found a module named AuthBoss that looks like it might be exactly what I want, for
-doing user authentication / signup! It's here: https://github.com/go-authboss/authboss
-
-So far all I've done is try to load it -- need to configure it next. To do that, I
-need to decide where to store passwords, etc. I think for right now, I'll just try
-to save things locally in the browser localstore.
-
-OK, I'm switching over to a "standard" linux based install (not using Heroku or
+I'm switching over to a "standard" linux based install (not using Heroku or
 a shared hosting server) -- I signed up for Digital Ocean and mapped the funtodone.com
 domain to it.
 
@@ -50,4 +15,16 @@ Here are some resources for a "standard" golang project:
 https://golang.org/doc/code.html
 https://talks.golang.org/2014/organizeio.slide#1
 https://github.com/golang/go/wiki/GithubCodeLayout
+
+I found out (finally) that the way most people develop go projects in github is that they make
+a symlink from github.com/<theirname>/<project> to their real source directory, or vice versa,
+since otherwise you're kind of stuck.
+
+The other thing I'm struggling with is the choice of whether to use the standard "everything
+including 6,234 different kitchen sinks" basic template for a react/redux template, with megabytes
+of node_modules for a "hello world" type app, or be ornery and insist on doing writing things
+that will actually be deployed to the browser, with the exception of things pulled in from a
+CDN (e.g. react, redux, and babel).
+
+I'm leaning towards the latter, since I think simplicity is worth fighting for.
 
