@@ -67,3 +67,9 @@ Feb 5, 2016: All Stop!
     [ ] add/edit/delete notes about task
     [ ] collapse into parent (if parent isn't next up)
     (see "ideas" in this directory)
+
+[ ] First steps
+ [ ] edit the stack for funtodone
+ [ ] make code that can produce/re-create the JSON for the stack (../src/data/stacks/funtodone.json)
+ [ ] add the rest of the operations above to the stack
+

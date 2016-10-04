@@ -28,3 +28,18 @@ CDN (e.g. react, redux, and babel).
 
 I'm leaning towards the latter, since I think simplicity is worth fighting for.
 
+I don't want to turn this into a project management thing, but I do want to (eventually) keep
+track of all the things that people actually want to keep track of. So for example, if you
+want to say that one task can't be started before another is done (or partly done), it
+should let you do that.
+
+Also, a "stack" should be as close to an actual stack as you can make it, so you're only
+thinking about one thing at a time (one level at a time), but there are situations where
+things are interrelated to the point where that's impractical. So for a data model for
+the stack, I want to have each task have a parent and children and a "height". It should
+make it hard to see and expand tasks that aren't on the top of the stack, but if you've
+already done that it should keep all the data (perhaps you expanded one task and then
+realized that you had to do another first).
+
+All this needs example to make it understandable!
+
