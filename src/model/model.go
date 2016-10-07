@@ -3,8 +3,8 @@ package funtodone
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/satori/go.uuid"
-	"os"
 )
 
 /* this can be stand-alone, or a list, or a linear stack
@@ -22,14 +22,21 @@ type Task struct {
 	Next        UUID   `json:"next"`
 	Description string `json:"description"`
 	Summary     string `json:"summary"`
+	Level       int    `json:"level"`
 }
 
-func sample() {
-	task1 := &Task{
-		ID:          uuid.NewV4(),
-		Description: "an example description\nthis one has two lines",
-		Summary:     "a task",
+func String(task *Task) string {
+	// test and debug, for now, by returning a dummy value if nothing is passed in
+	if !task {
+		task := Task{
+			ID:          uuid.NewV4(),
+			Description: "an example description\nthis one has two lines",
+			Summary:     "a task",
+		}
 	}
-	taskstr, _ := json.Marshal(task1)
-	fmt.Println(string(taskstr))
+	taskstr, _ := json.Marshal(task)
+	if GetEnv("DEBUG") != "" {
+		fmt.Println(string(taskstr))
+	}
+	return string(taskstr)
 }
