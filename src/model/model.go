@@ -23,6 +23,16 @@ type Task struct {
 	Description string `json:"description"`
 	Summary     string `json:"summary"`
 	Level       int    `json:"level"`
+	Status      Status `json:"status"`
+}
+
+type Status struct {
+	Done      bool `json:"done"`
+	Started   Time `json:"started"`
+	Due       Time `json:"due"`
+	Created   Time `json:"created"`
+	Modified  Time `json:"modified"`
+	Completed Time `json:"completed"`
 }
 
 func String(task *Task) string {
@@ -32,6 +42,9 @@ func String(task *Task) string {
 			ID:          uuid.NewV4(),
 			Description: "an example description\nthis one has two lines",
 			Summary:     "a task",
+			Status{
+				Done: false,
+			},
 		}
 	}
 	taskstr, _ := json.Marshal(task)
