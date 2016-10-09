@@ -7,7 +7,7 @@ import (
 	"github.com/satori/go.uuid"
 )
 
-/* this can be stand-alone, or a list, or a linear stack
+/* Task can be stand-alone, or a list, or a linear stack
  * or a tree. Or it can be some strange combination of lists
  * (using prev and next) and trees (using parent and children).
  *
@@ -26,6 +26,7 @@ type Task struct {
 	Status      Status `json:"status"`
 }
 
+// Status keeps track of what state a task is in
 type Status struct {
 	Done      bool `json:"done"`
 	Started   Time `json:"started"`
@@ -35,10 +36,22 @@ type Status struct {
 	Completed Time `json:"completed"`
 }
 
+/* User is a placeholder for when we build in auth */
+type User struct {
+	FirstName string `json:"firstname"`
+	LastName  string `json:"lastname"`
+	Email     string `json:"email"`
+}
+
+type Stack struct {
+	User  User   `json:"user"` // TODO: consider team or group
+	Tasks []Task `json:"tasks"`
+}
+
 func String(task *Task) string {
 	// test and debug, for now, by returning a dummy value if nothing is passed in
 	if !task {
-		task := Task{
+		task = Task{
 			ID:          uuid.NewV4(),
 			Description: "an example description\nthis one has two lines",
 			Summary:     "a task",
