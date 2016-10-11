@@ -1,5 +1,5 @@
 Next steps:
- [ ] make model its own package
+ [x] make model its own package
  [ ] add file I/O
  [ ] add a placeholder (at least) for users/teams
  [ ] add named arrays of Tasks for people (that can be Lists, Cycles, or Stacks)

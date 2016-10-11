@@ -1,12 +1,13 @@
 package main
 
 import (
-	//"fmt"
+	"fmt"
 	//"html"
 	"github.com/gorilla/mux"
 	"gopkg.in/authboss.v0"
 	"log"
 	//"gopkg.in/authboss.v0/auth"
+	"./model"
 	"net/http"
 	"os"
 )
@@ -15,6 +16,9 @@ func main() {
 	ab := authboss.New() // Usually store this globally
 	ab.MountPath = "/authboss"
 	ab.LogWriter = os.Stdout
+
+	xyz := model.String(nil)
+	fmt.Println(xyz)
 
 	if err := ab.Init(); err != nil {
 		// Handle error, don't let program continue to run
