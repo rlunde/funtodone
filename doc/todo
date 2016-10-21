@@ -69,6 +69,10 @@ Feb 5, 2016: All Stop!
     (see "ideas" in this directory)
 
 [ ] First steps
+ [ ] finish the model for tasks
+   [ ] add tests
+     [x] add a String test 
+     [ ] todo: make String a method of Task
  [ ] edit the stack for funtodone
  [ ] make code that can produce/re-create the JSON for the stack (../src/data/stacks/funtodone.json)
  [ ] add the rest of the operations above to the stack
