@@ -3,9 +3,10 @@ package model
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/satori/go.uuid"
 	"os"
 	"time"
+
+	"github.com/satori/go.uuid"
 )
 
 /* Task can be stand-alone, or a list, or a linear stack
@@ -17,15 +18,31 @@ import (
  */
 
 type Task struct {
-	ID          uuid.UUID   `json:"id"`
-	Parent      uuid.UUID   `json:"parent"`
-	Children    []uuid.UUID `json:"children"`
-	Previous    uuid.UUID   `json:"prev"`
-	Next        uuid.UUID   `json:"next"`
-	Description string      `json:"description"`
-	Summary     string      `json:"summary"`
-	Level       int         `json:"level"`
-	Status      Status      `json:"status"`
+	ID          uuid.UUID `json:"id"`
+	Parent      *Task     `json:"parent"`
+	Children    []*Task   `json:"children"`
+	Previous    *Task     `json:"prev"`
+	Next        *Task     `json:"next"`
+	Description string    `json:"description"`
+	Summary     string    `json:"summary"`
+	Level       int       `json:"level"`
+	Status      Status    `json:"status"`
+}
+
+//return a new top-level task with no parent, children, or siblings
+func NewTask(desc string, summary string, status Status) *Task {
+	task := Task{
+		ID:          uuid.NewV4(),
+		Parent:      nil,
+		Children:    nil,
+		Previous:    nil,
+		Next:        nil,
+		Description: desc,
+		Summary:     summary,
+		Level:       0,
+		Status:      status,
+	}
+	return &task
 }
 
 // Status keeps track of what state a task is in
