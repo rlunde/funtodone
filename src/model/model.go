@@ -30,9 +30,16 @@ type Task struct {
 }
 
 //return a new top-level task with no parent, children, or siblings
-func NewTask(desc string, summary string, status Status) *Task {
+//generate a new UUID if one isn't passed in
+func NewTask(desc string, summary string, status Status, uuidstr string) *Task {
+	var uu uuid.UUID
+	if uuidstr == "" {
+		uu = uuid.NewV4()
+	} else {
+		uu, _ = uuid.FromString(uuidstr)
+	}
 	task := Task{
-		ID:          uuid.NewV4(),
+		ID:          uu,
 		Parent:      nil,
 		Children:    nil,
 		Previous:    nil,
