@@ -62,6 +62,21 @@ type Status struct {
 	Completed time.Time `json:"completed"`
 }
 
+func NewStatus(done bool, due, started time.Time) {
+	now := time.Now()
+	status := Status{
+		Done: done,
+		Created: now,
+		Modified: now,
+	}
+	if due != time.Time{} {
+		status.Due = due
+	}
+	if started != time.Time{} {
+		status.Started = started
+	}
+}
+
 /* User is a placeholder for when we build in auth */
 type User struct {
 	FirstName string `json:"firstname"`
