@@ -55,26 +55,26 @@ func NewTask(desc string, summary string, status Status, uuidstr string) *Task {
 // Status keeps track of what state a task is in
 type Status struct {
 	Done      bool      `json:"done"`
-	Started   time.Time `json:"started"`
+	Started   bool      `json:"started"`
 	Due       time.Time `json:"due"`
 	Created   time.Time `json:"created"`
 	Modified  time.Time `json:"modified"`
 	Completed time.Time `json:"completed"`
 }
 
-func NewStatus(done bool, due, started time.Time) {
+func NewStatus(done, started bool, due *time.Time) Status {
 	now := time.Now()
 	status := Status{
-		Done: done,
-		Created: now,
+		Done:     done,
+		Started:  started,
+		Created:  now,
 		Modified: now,
 	}
-	if due != time.Time{} {
-		status.Due = due
+	if due != nil {
+		status.Due = *due
 	}
-	if started != time.Time{} {
-		status.Started = started
-	}
+
+	return status
 }
 
 /* User is a placeholder for when we build in auth */
