@@ -52,6 +52,17 @@ func NewTask(desc string, summary string, status Status, uuidstr string) *Task {
 	return &task
 }
 
+func StartTask(t *Task) {
+	t.Status.Started = true
+	t.Status.Modified = time.Now()
+}
+
+func FinishTask(t *Task) {
+	t.Status.Done = true
+	t.Status.Modified = time.Now()
+	t.Status.Completed = t.Status.Modified
+}
+
 // Status keeps track of what state a task is in
 type Status struct {
 	Done      bool      `json:"done"`
