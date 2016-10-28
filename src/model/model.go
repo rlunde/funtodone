@@ -21,8 +21,6 @@ type Task struct {
 	ID          uuid.UUID `json:"id"`
 	Parent      *Task     `json:"parent"`
 	Children    []*Task   `json:"children"`
-	Previous    *Task     `json:"prev"`
-	Next        *Task     `json:"next"`
 	Description string    `json:"description"`
 	Summary     string    `json:"summary"`
 	Level       int       `json:"level"`
@@ -42,8 +40,6 @@ func NewTask(desc string, summary string, status Status, uuidstr string) *Task {
 		ID:          uu,
 		Parent:      nil,
 		Children:    nil,
-		Previous:    nil,
-		Next:        nil,
 		Description: desc,
 		Summary:     summary,
 		Level:       0,
@@ -98,6 +94,17 @@ type User struct {
 type Stack struct {
 	User  User   `json:"user"` // TODO: consider team or group
 	Tasks []Task `json:"tasks"`
+}
+
+/* Add a child of a task. If there are other children already, add this
+ * to the end of the siblings.
+ */
+func AddChildTask(parent, child *Task) {
+	if parent == nil || child == nil {
+		return
+	}
+	child.Parent = parent
+	parent.Children = append(parent.Children, child)
 }
 
 func String(task *Task) string {
