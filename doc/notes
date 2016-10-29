@@ -43,3 +43,9 @@ realized that you had to do another first).
 
 All this needs example to make it understandable!
 
+I plan to start off with a library, then wrap that in a CLI, then once the CLI is
+working, add a very simple web UI that just does basic stuff, and then finally try to
+make a nice responsive web SPA and/or mobile-web app. Just like separation of concerns,
+if I focus on one kind of capability at a time, starting with what makes this interesting,
+by the time I get to implementing OAuth (or whatever), it will actually be worth it.
+
