@@ -91,7 +91,17 @@ type User struct {
 	Email     string `json:"email"`
 }
 
-type Stack struct {
+type TaskStack struct {
+	User  User   `json:"user"` // TODO: consider team or group
+	Tasks []Task `json:"tasks"`
+}
+
+type TaskList struct {
+	User  User   `json:"user"` // TODO: consider team or group
+	Tasks []Task `json:"tasks"`
+}
+
+type TaskCycle struct {
 	User  User   `json:"user"` // TODO: consider team or group
 	Tasks []Task `json:"tasks"`
 }
@@ -107,7 +117,8 @@ func AddChildTask(parent, child *Task) {
 	parent.Children = append(parent.Children, child)
 }
 
-func String(task *Task) string {
+// TODO: make this a method
+func TaskToString(task *Task) string {
 	// test and debug, for now, by returning a dummy value if nothing is passed in
 	if task == nil {
 		task = &Task{
