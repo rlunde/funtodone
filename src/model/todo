@@ -1,8 +1,8 @@
 Next steps:
  [x] make model its own package
  [ ] add file I/O
- [ ] add a placeholder (at least) for users/teams
- [ ] add named arrays of Tasks for people (that can be Lists, Cycles, or Stacks)
+ [x] add a placeholder (at least) for users/teams
+ [x] add named arrays of Tasks for people (that can be Lists, Cycles, or Stacks)
  [ ] add priority and date constraints, size, etc. to Tasks
  [ ] add generic metadata to tasks
  [ ] add tests
