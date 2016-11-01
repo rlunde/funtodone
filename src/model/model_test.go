@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func TestTaskString(t *testing.T) {
+func TestTaskToString(t *testing.T) {
 	status := Status{}
 	task := NewTask("simple task", "do something", status, "d89275a6-4783-4091-863a-6ed5e361035f")
 	s := TaskToString(task)
@@ -33,3 +33,13 @@ func TestNewStatus(t *testing.T) {
 		t.Errorf("pattern match expected was:\n%s\nbut got:\n%s", pattern, s)
 	}
 }
+
+/*
+ * TODO: Tests to add
+ *  [ ] error tests for NewStatus
+ *  [ ] error tests for NewTask
+ *  [ ] tests for StartTask
+ *  [ ] tests for FinishTask
+ *  [ ] error tests for TaskToString
+ *  [ ] tests for AddTask
+ */

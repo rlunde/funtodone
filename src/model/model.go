@@ -9,6 +9,13 @@ import (
 	"github.com/satori/go.uuid"
 )
 
+const ( // iota is reset to 0
+	NODE_NONE    = iota // == 0
+	NODE_PARENT  = iota // == 1
+	NODE_CHILD   = iota // == 2
+	NODE_SIBLING = iota // == 3
+)
+
 /* Task can be stand-alone, or a list, or a linear stack
  * or a tree. Or it can be some strange combination of lists
  * (using prev and next) and trees (using parent and children).
@@ -106,15 +113,24 @@ type TaskCycle struct {
 	Tasks []Task `json:"tasks"`
 }
 
-/* Add a child of a task. If there are other children already, add this
- * to the end of the siblings.
+/* Add a parent, child, or sibling of a task. If child, and there are other
+ * children already, add this to the end of the siblings.
  */
-func AddChildTask(parent, child *Task) {
-	if parent == nil || child == nil {
+func AddTask(node, newNode *Task, newNodeType int) {
+	if node == nil || newNode == nil {
+		// TODO: log an error
 		return
 	}
-	child.Parent = parent
-	parent.Children = append(parent.Children, child)
+	if newNodeType == NODE_CHILD { // newNode is a child of node
+		newNode.Parent = node
+		node.Children = append(node.Children, newNode)
+	} else if newNodeType == NODE_PARENT { // newNode is the parent of node
+		// TODO: finish this -- error if it already has a parent
+	} else if newNodeType == NODE_SIBLING { // newNode is a sibling of node
+		// TODO: finish this
+	} else { // newNodeType is a NONE or bogus
+		// TODO: log an error
+	}
 }
 
 // TODO: make this a method
