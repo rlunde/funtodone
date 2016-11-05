@@ -133,6 +133,11 @@ func AddTask(node, newNode *Task, newNodeType int) {
 	}
 }
 
+// TODO: remove this node and change parent (if any) and siblings (if any)
+// and children (if any -- or should this take a recursive flag?)
+func RemoveTask(node *Task) {
+}
+
 // TODO: make this a method
 func TaskToString(task *Task) string {
 	// test and debug, for now, by returning a dummy value if nothing is passed in
