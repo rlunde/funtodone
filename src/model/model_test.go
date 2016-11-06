@@ -42,4 +42,13 @@ func TestNewStatus(t *testing.T) {
  *  [ ] tests for FinishTask
  *  [ ] error tests for TaskToString
  *  [ ] tests for AddTask
- */
+       [ ] nil node
+			 [ ] nil newNode
+			 [ ] add a valid child node
+			 [ ] add a parent node to a node without a parent
+			 [ ] error if add a parent node to a node with a parent
+			 [ ] error if add a sibling to a node without a parent
+			 [ ] add a sibling to a node
+	     [ ] error if add a node with an invalid newNodeType
+
+*/
