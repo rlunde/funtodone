@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"time"
@@ -116,21 +117,27 @@ type TaskCycle struct {
 /* Add a parent, child, or sibling of a task. If child, and there are other
  * children already, add this to the end of the siblings.
  */
-func AddTask(node, newNode *Task, newNodeType int) {
+func AddTask(node, newNode *Task, newNodeType int) error {
 	if node == nil || newNode == nil {
-		// TODO: log an error
-		return
+		return errors.New("AddTask called with nil Task")
 	}
 	if newNodeType == NODE_CHILD { // newNode is a child of node
 		newNode.Parent = node
 		node.Children = append(node.Children, newNode)
 	} else if newNodeType == NODE_PARENT { // newNode is the parent of node
-		// TODO: finish this -- error if it already has a parent
+		if node.Parent != nil {
+			return errors.New("AddTask can't add parent node: node already has parent")
+		}
+		node.Parent = newNode
 	} else if newNodeType == NODE_SIBLING { // newNode is a sibling of node
-		// TODO: finish this
+		if node.Parent == nil {
+			return errors.New("AddTask can't add sibling node: node has no parent")
+		}
+		node.Parent.Children = append(node.Parent.Children, newNode)
 	} else { // newNodeType is a NONE or bogus
-		// TODO: log an error
+		return fmt.Errorf("AddTask called with unknown newNodeType: %d", newNodeType)
 	}
+	return nil
 }
 
 // TODO: remove this node and change parent (if any) and siblings (if any)
