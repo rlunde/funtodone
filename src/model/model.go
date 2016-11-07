@@ -114,8 +114,7 @@ type TaskCycle struct {
 	Tasks []Task `json:"tasks"`
 }
 
-/* Add a parent, child, or sibling of a task. If child, and there are other
- * children already, add this to the end of the siblings.
+/* Add a parent, child, or sibling of a task.
  */
 func AddTask(node, newNode *Task, newNodeType int) error {
 	if node == nil || newNode == nil {
@@ -142,7 +141,35 @@ func AddTask(node, newNode *Task, newNodeType int) error {
 
 // TODO: remove this node and change parent (if any) and siblings (if any)
 // and children (if any -- or should this take a recursive flag?)
-func RemoveTask(node *Task) {
+func RemoveTask(node *Task, recursive bool) error {
+	if node == nil {
+		return errors.New("RemoveTask called with nil Task")
+	}
+	if node.Children != nil && len(node.Children) > 0 && !recursive {
+		return errors.New("RemoveTask called on Task with children, but recursive is not specified")
+	}
+	// remove children recursively, if any
+	if len(node.Children) > 0 {
+		for _, child := range node.Children {
+			RemoveTask(child, recursive)
+		}
+	}
+	parent := node.Parent
+	if parent == nil {
+		return nil
+	}
+	if len(parent.Children) == 1 {
+		parent.Children = nil
+	}
+	// cut the node out of parent's children
+	newKids := make([]*Task, len(parent.Children)-1)
+	for _, child := range parent.Children {
+		if child != node {
+			newKids = append(newKids, child)
+		}
+	}
+	parent.Children = newKids
+	return nil
 }
 
 // TODO: make this a method
