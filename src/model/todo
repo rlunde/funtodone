@@ -1,9 +1,9 @@
 Next steps:
- [x] make model its own package
+ [ ] add JSON output and parsing (check for go's conventions for func names?)
  [ ] add file I/O
- [x] add a placeholder (at least) for users/teams
- [x] add named arrays of Tasks for people (that can be Lists, Cycles, or Stacks)
  [ ] add priority and date constraints, size, etc. to Tasks
  [ ] add generic metadata to tasks
  [ ] add tests
  [ ] look for test frameworks beyond the basics
+ [ ] add a database representation converting pointers to IDs and back
+ [ ] add a command line wrapper around all the functions
