@@ -1,4 +1,5 @@
 Next steps:
+ [ ] update model_test -- see TODO list in that file
  [ ] add JSON output and parsing (check for go's conventions for func names?)
  [ ] add file I/O
  [ ] add priority and date constraints, size, etc. to Tasks
