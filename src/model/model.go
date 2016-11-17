@@ -77,8 +77,13 @@ type Status struct {
 	Completed time.Time `json:"completed"`
 }
 
-func NewStatus(done, started bool, due *time.Time) Status {
+func NewStatus(done, started bool, due *time.Time) (*Status, error) {
 	now := time.Now()
+	// error if it's done but not started
+	if done && !started {
+		err := errors.New("Status can't be done if it wasn't started")
+		return nil, err
+	}
 	status := Status{
 		Done:     done,
 		Started:  started,
@@ -89,7 +94,7 @@ func NewStatus(done, started bool, due *time.Time) Status {
 		status.Due = *due
 	}
 
-	return status
+	return &status, nil
 }
 
 /* User is a placeholder for when we build in auth */

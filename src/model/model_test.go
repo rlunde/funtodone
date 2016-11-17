@@ -19,7 +19,7 @@ func TestTaskToString(t *testing.T) {
 	}
 }
 func TestNewStatus(t *testing.T) {
-	status := NewStatus(false, false, nil)
+	status, _ := NewStatus(false, false, nil)
 	diff := time.Since(status.Created)
 	if diff > time.Millisecond*10 {
 		t.Errorf("Took > 10ms to create Status struct: %d", diff)
@@ -33,10 +33,29 @@ func TestNewStatus(t *testing.T) {
 		t.Errorf("pattern match expected was:\n%s\nbut got:\n%s", pattern, s)
 	}
 }
+func TestNewStatusError(t *testing.T) {
+	// should be an error if done is true but started is false
+	status, err := NewStatus(true, false, nil)
+	if status != nil {
+		t.Errorf("returned a status when expected only an error")
+	}
+	if err == nil {
+		t.Errorf("expected an error but didn't get one")
+	}
+	// decided not to call it an error if due date is in the past
+}
+
+// make sure that new task is created and has a valid status
+func TestNewTask(t *testing.T) {
+	status, _ := NewStatus(false, false, nil)
+	task := NewTask("test task", "a test task", *status, "")
+	if task.ID.String() == "" {
+		t.Errorf("expected a new UUID but didn't get one")
+	}
+}
 
 /*
  * TODO: Tests to add
- *  [ ] error tests for NewStatus
  *  [ ] error tests for NewTask
  *  [ ] tests for StartTask
  *  [ ] tests for FinishTask
