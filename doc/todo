@@ -1,59 +1,38 @@
 I've decided to try doing the first version of the server side
-of this in go (golang), using Gorilla. If all goes well, there will
+of this in go (golang), using Gin. If all goes well, there will
 be a javascript/html front-end that does most of the work, a localstore
-option for people who don't want to sync their stuff with a server,
-and a simple service/database for people who want to sync, using dropbox
-or icloud or whatever.
+option for working offline (or for people with no desire to sync)
+and a simple service/database for people who want to sync.
 
-We'll see. 
-
-So to start my todo list, that I'll delete as soon as funtodone (which is
-basically a todo list with more options and attitude than usual) is working
-enough to put this todo list in, is:
-
-Feb 5, 2016: All Stop!
-1) heroku is nice, but I need as "vanilla" a place as I can find, so people aren't
-   faced with a ton of work if they want to deploy it elsewhere. I'm considering
-   either linode or digital ocean for starters, since that's close to a bare OS
-   like you'd have with AWS or something.
-2) forget about oauth entirely until after everything else is done
-3) don't get all hung up trying to use cool javascript frameworks, since that
-   takes a long time, and shouldn't even be necessary for a project this size
-
-[x] first, strip out everything that doesn't provide a good example or a good starting point
-[ ] change the install.sh script up at the top of the github tree to copy the client directory
-[ ] finish getting a basic index page working without errors
-[ ] as in other projects, I need to get the basics working
-  [ ] implement all the usual login/password features (new account, change pw, lost pw)
-  [ ] write a step by step guide for setting things up with database and project
-[ ] sketch out a starting UI 
+To Do:
+[ ] as soon as FunToDone is working at all, move this ToDo into it
+[ ] define what MVP looks like
+[ ] get an install script working (even with a hello world version in it)
+[ ] get a test suite working (even with a single test)
+[ ] get a CLI version working with a simple database
+[ ] start with a very basic beginner UI, maybe using require.js, react, backbone, bootstrap
+  [ ] ignore webpack, browserify, etc. for now -- don't want or need the infrastructure
   [ ] make a paper prototype or two
   [ ] turn it into a layout
-[ ] start with a beginner UI, maybe using require.js, react-redux, backbone, marionette
-  [ ] ignore webpack, browserify, etc. for now -- don't want or need the infrastructure
+  [ ] start with bootstrap, since we definitely want a simple responsive design
+  [ ] do a vertical spike with a single feature
+    [ ] do basic layout of top level features
+    [ ] implement enough of a schema to show a list of tasks
+    [ ] display list of tasks
 [ ] implement a basic server side web api and web server for the assets
-[ ] think about how to make a mobile web app out of it
-[ ] expand and fix this list and move it into funtodone
-[ ] do a vertical spike with a single feature
-  [ ] do basic layout of top level features
-  [ ] implement enough of a schema to show a list of tasks
-  [ ] display list of tasks
-[ ] start with bootstrap, since we definitely want a simple responsive design
-[ ] go through starting example from TodoMVC and annotate with things to change
-[ ] try adding other frameworks (react, backbone, and flux) to see what breaks
+[ ] get a minimal set of auth features working
+  [ ] implement all the usual login/password features (new account, change pw, lost pw)
+  [ ] write a step by step guide for setting things up with database and project
 [ ] the font needs to be more "fun" than bootstrap -- see how to do that
+[ ] think about how to make a mobile web app out of it
 
-[ ] new plan: start off with a simple database and some command-line functionality
-[ ] add a web interface in front of an API that the command line also calls
-[ ] once a suitable subset of functionality is working, THEN implement accounts, auth, etc.
-
-[ ] first pick a random task from a list
-[ ] second, log that task, and make sure it doesn't come up again right away (usually)
+[ ] gamify lists (as opposed to stacks or cycles)
+  [ ] first pick a random task from a list
+  [ ] second, log that task, and if it's not done, make sure it doesn't come up again right away (usually)
 
 [ ] I need to reorganize this codebase: github shouldn't have a subdirectory called github
   [ ] move everything to top level src, bin, doc, dist directories
   [ ] redo build script to find src in right places and put executables/etc. in right places
-[ ] reorganize the todo into stacks/lists/cycles
 
 [ ] design operations to be done by command line and API
   [ ] create a top level stack, cycle, or list
@@ -69,8 +48,8 @@ Feb 5, 2016: All Stop!
     (see "ideas" in this directory)
 
 [ ] First steps
- [ ] finish the model for tasks
-   [ ] add tests (see todo in model directory)
+ [x] finish the model for tasks
+ [ ] add tests (see todo in model directory)
  [ ] edit the stack for funtodone
  [ ] make code that can produce/re-create the JSON for the stack (../src/data/stacks/funtodone.json)
  [ ] add the rest of the operations above to the stack
