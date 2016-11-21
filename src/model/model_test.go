@@ -56,7 +56,6 @@ func TestNewTask(t *testing.T) {
 
 /*
  * TODO: Tests to add
- *  [ ] error tests for NewTask
  *  [ ] tests for StartTask
  *  [ ] tests for FinishTask
  *  [ ] error tests for TaskToString
