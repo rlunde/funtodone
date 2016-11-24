@@ -49,3 +49,12 @@ make a nice responsive web SPA and/or mobile-web app. Just like separation of co
 if I focus on one kind of capability at a time, starting with what makes this interesting,
 by the time I get to implementing OAuth (or whatever), it will actually be worth it.
 
+I've got a first cut at a data structure for the tasks as least (I'm sure it will evolve)
+but now I need to figure out persistence. Ideally the in-memory representation can continue
+to use pointers, but the persistence layer needs to convert that to IDs and database records,
+and I need to figure out a data store. Since it's really just a pile of tasks, hooked together
+in various ways, a JSON data store is fine. I guess I should look into the current state of
+such things -- could be that there's a free (or cheap) data store already out there hosting
+such things. If not, I can always run Mongo or any of the others on my own VM, but that's
+not going to scale if people start to use it.
+
