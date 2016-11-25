@@ -58,3 +58,30 @@ such things -- could be that there's a free (or cheap) data store already out th
 such things. If not, I can always run Mongo or any of the others on my own VM, but that's
 not going to scale if people start to use it.
 
+I think I'll try using Firebase, although I'm confused about it so far. The web app puts
+what appears to be credentials right in the index.html page, so what's to stop someone
+from grabbing that and using it themselves? I think I may need to do a bunch of reading
+about it:
+
+https://console.firebase.google.com/project/funtodone/overview
+https://firebase.google.com/docs/admin/setup
+https://firebase.google.com/docs/database/rest/start
+https://firebase.google.com/docs/web/setup
+https://github.com/firebase/quickstart-js/tree/master/database
+https://firebase.google.com/docs/reference/js/
+https://firebase.google.com/docs/samples/#web
+https://github.com/zabawaba99/firego
+
+I think what might work is to just use the REST API from the Go side, and not directly
+expose any of the firebase web stuff on the client. It might be possible to do client auth
+via firebase on the client side, and pass that to the Go server? At this point I feel
+like I don't even have the right language to ask the right questions.
+
+Alternatively, I could move all the Task data from Go to javascript, and do everything
+on the client side, which might be the most direct way to support synchronized web, iOS,
+and Android apps. I think I'll avoid that for now, if I can, since I may never get around
+to doing native apps.
+
+Also, it just makes me nervous to have the client talk directly to the database.
+
+
