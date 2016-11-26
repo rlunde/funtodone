@@ -84,4 +84,28 @@ to doing native apps.
 
 Also, it just makes me nervous to have the client talk directly to the database.
 
+There's a tutorial here that looks like a good starting point:
+https://www.tutorialspoint.com/firebase/firebase_data.htm
+
+After reading about it for an hour or so, I'm nervous that I'm going down another rabbit
+hole. The built-in auth looks great, so maybe I could use that by itself, and just use
+the UserID returned to the web page as the key (initially) in my own data store. I guess
+I could use the combination of an account name and the UserID, to minimize the chance that
+somebody was faking a UserID (there may be a REST API to validate things as well).
+
+I think maybe CouchDB or MongoDB would be a good choice for a simple, light-weight JSON
+database.
+
+I installed MongoDB. When brew finished installing it, it said to use:
+  brew services start mongodb
+Or, if you don't want/need a background service you can just run:
+  mongod --config /usr/local/etc/mongod.conf
+
+It's putting the data in /usr/local/var/mongodb by default.
+
+The getting started guides are here: https://docs.mongodb.com/master/#getting-started
+The closest thing to go of those guides is probably the python version:
+https://docs.mongodb.com/getting-started/python/
+
+There is a go library for mongo here: https://labix.org/mgo
 

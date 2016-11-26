@@ -50,7 +50,14 @@ To Do:
 [ ] First steps
  [x] finish the model for tasks
  [ ] add tests (see todo in model directory)
- [ ] edit the stack for funtodone
+ [ ] get a CLI working that calls the same packages as the web will call
+ [ ] get persistence to/from mongodb working
+ [ ] edit the stack for funtodone (replace this file)
  [ ] make code that can produce/re-create the JSON for the stack (../src/data/stacks/funtodone.json)
  [ ] add the rest of the operations above to the stack
+ [ ] get a bare-bones web view working
+ [ ] add auth to web view
+ [ ] make it look nice enough for MVP
+ [ ] focus on the fun, and get feedback about next steps
+
 
