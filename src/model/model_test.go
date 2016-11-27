@@ -54,10 +54,42 @@ func TestNewTask(t *testing.T) {
 	}
 }
 
+func TestStartTask(t *testing.T) {
+	status, _ := NewStatus(false, false, nil)
+	task := NewTask("test task", "a test task", *status, "")
+	curtime := time.Now()
+	StartTask(task)
+	s := task.Status
+	elapsed := s.Modified.Sub(curtime)
+	if elapsed.Nanoseconds() < 0 {
+		t.Errorf("expected task.Status.Modified time to be >= current time")
+	}
+	if !s.Started {
+		t.Errorf("expected task.Status.Started to be true")
+	}
+}
+func TestFinishTask(t *testing.T) {
+	status, _ := NewStatus(false, false, nil)
+	task := NewTask("test task", "a test task", *status, "")
+	curtime := time.Now()
+	StartTask(task)
+	FinishTask(task)
+	s := task.Status
+	elapsed := s.Modified.Sub(curtime)
+	if elapsed.Nanoseconds() < 0 {
+		t.Errorf("expected task.Status.Modified time to be >= current time")
+	}
+	if !s.Done {
+		t.Errorf("expected task.Status.Done to be true")
+	}
+	elapsed = s.Completed.Sub(s.Modified)
+	if elapsed.Nanoseconds() != 0 {
+		t.Errorf("expected task.Status.Modified time to be == task.Status.Completed time")
+	}
+}
+
 /*
  * TODO: Tests to add
- *  [ ] tests for StartTask
- *  [ ] tests for FinishTask
  *  [ ] error tests for TaskToString
  *  [ ] tests for AddTask
        [ ] nil node

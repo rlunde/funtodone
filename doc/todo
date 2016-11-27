@@ -51,7 +51,7 @@ To Do:
  [x] finish the model for tasks
  [ ] add tests (see todo in model directory)
  [ ] get a CLI working that calls the same packages as the web will call
- [ ] get persistence to/from mongodb working
+ [ ] get persistence to/from mongodb working (use https://labix.org/mgo)
  [ ] edit the stack for funtodone (replace this file)
  [ ] make code that can produce/re-create the JSON for the stack (../src/data/stacks/funtodone.json)
  [ ] add the rest of the operations above to the stack
