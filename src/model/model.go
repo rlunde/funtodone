@@ -56,11 +56,13 @@ func NewTask(desc string, summary string, status Status, uuidstr string) *Task {
 	return &task
 }
 
+// should this return an error if the task was already started? For now, it doesn't
 func StartTask(t *Task) {
 	t.Status.Started = true
 	t.Status.Modified = time.Now()
 }
 
+// should this return an error if the task was already done? For now, it doesn't
 func FinishTask(t *Task) {
 	t.Status.Done = true
 	t.Status.Modified = time.Now()
