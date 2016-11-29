@@ -109,3 +109,9 @@ https://docs.mongodb.com/getting-started/python/
 
 There is a go library for mongo here: https://labix.org/mgo
 
+I think the main thing to do is change the data model to include a mongo ID, in
+addition to the pointers. Maybe make a struct that is a "lazy pointer" that contains
+either the pointer to a task (children, siblings, or a parent) or a mongo ID, or
+both. When writing, fill in the IDs. When reading from the database, fill in the
+pointers. When creating tasks in memory, only use pointers.
+
