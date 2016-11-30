@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 	"time"
-
+	//"gopkg.in/mgo.v2"
 	"github.com/satori/go.uuid"
 )
 
@@ -16,6 +16,15 @@ const ( // iota is reset to 0
 	NODE_CHILD   = iota // == 2
 	NODE_SIBLING = iota // == 3
 )
+
+/*
+* We're using UUIDs that we generate ourselves for Task IDs, so we don't
+* rely on Mongo's _id field at all.
+ */
+type TaskID struct {
+	ID  uuid.UUID `json:"id"`
+	Ptr *Task     `json:"-"` // don't serialize the pointer
+}
 
 /* Task can be stand-alone, or a list, or a linear stack
  * or a tree. Or it can be some strange combination of lists
