@@ -6,8 +6,9 @@ import (
 	"fmt"
 	"os"
 	"time"
+
+	"gopkg.in/mgo.v2/bson"
 	//"gopkg.in/mgo.v2"
-	"github.com/satori/go.uuid"
 )
 
 const ( // iota is reset to 0
@@ -19,11 +20,11 @@ const ( // iota is reset to 0
 
 /*
 * We're using UUIDs that we generate ourselves for Task IDs, so we don't
-* rely on Mongo's _id field at all.
+* rely on Mongo's _id field to be automatically set at all.
  */
 type TaskID struct {
-	ID  uuid.UUID `json:"id"`
-	Ptr *Task     `json:"-"` // don't serialize the pointer
+	Id  bson.ObjectId `json:"id"`
+	Ptr *Task         `json:"-"` // don't serialize the pointer
 }
 
 /* Task can be stand-alone, or a list, or a linear stack
@@ -35,26 +36,27 @@ type TaskID struct {
  */
 
 type Task struct {
-	ID          uuid.UUID `json:"id"`
-	Parent      *Task     `json:"parent"`
-	Children    []*Task   `json:"children"`
-	Description string    `json:"description"`
-	Summary     string    `json:"summary"`
-	Level       int       `json:"level"`
-	Status      Status    `json:"status"`
+	ID          TaskID  `json:"id"`
+	Parent      *Task   `json:"parent"`
+	Children    []*Task `json:"children"`
+	Description string  `json:"description"`
+	Summary     string  `json:"summary"`
+	Level       int     `json:"level"`
+	Status      Status  `json:"status"`
 }
 
 //return a new top-level task with no parent, children, or siblings
 //generate a new UUID if one isn't passed in
-func NewTask(desc string, summary string, status Status, uuidstr string) *Task {
-	var uu uuid.UUID
-	if uuidstr == "" {
-		uu = uuid.NewV4()
+func NewTask(desc string, summary string, status Status, idstr string) *Task {
+	var id bson.ObjectId
+	if idstr == "" {
+		id = bson.NewObjectId()
 	} else {
-		uu, _ = uuid.FromString(uuidstr)
+		id = bson.ObjectIdHex(idstr)
 	}
+	taskId := TaskID{Id: id, Ptr: nil}
 	task := Task{
-		ID:          uu,
+		ID:          taskId,
 		Parent:      nil,
 		Children:    nil,
 		Description: desc,
@@ -62,6 +64,7 @@ func NewTask(desc string, summary string, status Status, uuidstr string) *Task {
 		Level:       0,
 		Status:      status,
 	}
+	task.ID.Ptr = &task
 	return &task
 }
 
@@ -190,16 +193,8 @@ func RemoveTask(node *Task, recursive bool) error {
 
 // TODO: make this a method
 func TaskToString(task *Task) string {
-	// test and debug, for now, by returning a dummy value if nothing is passed in
 	if task == nil {
-		task = &Task{
-			ID:          uuid.NewV4(),
-			Description: "an example description\nthis one has two lines",
-			Summary:     "a task",
-			Status: Status{
-				Done: false,
-			},
-		}
+		return ""
 	}
 	taskstr, _ := json.Marshal(task)
 	if os.Getenv("DEBUG") != "" {
