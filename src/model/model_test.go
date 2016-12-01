@@ -5,15 +5,19 @@ import (
 	"regexp"
 	"testing"
 	"time"
+
+	"gopkg.in/mgo.v2/bson"
 )
 
 func TestTaskToString(t *testing.T) {
 	status := Status{}
-	task := NewTask("simple task", "do something", status, "d89275a6-4783-4091-863a-6ed5e361035f")
+	id := bson.ObjectIdHex("583f9a189e743bea858113ca")
+	idstr := id.Hex()
+	task := NewTask("simple task", "do something", status, idstr)
 	s := TaskToString(task)
 	// fmt.Println(s)
 	expected :=
-		`{"id":"d89275a6-4783-4091-863a-6ed5e361035f","parent":null,"children":null,"description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
+		`{"id":{"id":"583f9a189e743bea858113ca"},"parent":null,"children":null,"description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
 	if expected != s {
 		t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
 	}
@@ -49,7 +53,7 @@ func TestNewStatusError(t *testing.T) {
 func TestNewTask(t *testing.T) {
 	status, _ := NewStatus(false, false, nil)
 	task := NewTask("test task", "a test task", *status, "")
-	if task.ID.String() == "" {
+	if string(task.ID.Id) == "" {
 		t.Errorf("expected a new UUID but didn't get one")
 	}
 }
