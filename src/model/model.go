@@ -7,6 +7,7 @@ import (
 	"os"
 	"time"
 
+	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	//"gopkg.in/mgo.v2"
 )
@@ -18,15 +19,6 @@ const ( // iota is reset to 0
 	NODE_SIBLING = iota // == 3
 )
 
-/*
-* We're using UUIDs that we generate ourselves for Task IDs, so we don't
-* rely on Mongo's _id field to be automatically set at all.
- */
-type TaskID struct {
-	Id  bson.ObjectId `json:"id"`
-	Ptr *Task         `json:"-"` // don't serialize the pointer
-}
-
 /* Task can be stand-alone, or a list, or a linear stack
  * or a tree. Or it can be some strange combination of lists
  * (using prev and next) and trees (using parent and children).
@@ -36,7 +28,8 @@ type TaskID struct {
  */
 
 type Task struct {
-	ID          TaskID  `json:"id"`
+	ID          bson.ObjectId `bson:"_id,omitempty"`
+	ptr         *Task
 	Parent      *Task   `json:"parent"`
 	Children    []*Task `json:"children"`
 	Description string  `json:"description"`
@@ -54,9 +47,9 @@ func NewTask(desc string, summary string, status Status, idstr string) *Task {
 	} else {
 		id = bson.ObjectIdHex(idstr)
 	}
-	taskId := TaskID{Id: id, Ptr: nil}
 	task := Task{
-		ID:          taskId,
+		ID:          id,
+		ptr:         nil,
 		Parent:      nil,
 		Children:    nil,
 		Description: desc,
@@ -64,7 +57,7 @@ func NewTask(desc string, summary string, status Status, idstr string) *Task {
 		Level:       0,
 		Status:      status,
 	}
-	task.ID.Ptr = &task
+	task.ptr = &task
 	return &task
 }
 
@@ -79,6 +72,11 @@ func FinishTask(t *Task) {
 	t.Status.Done = true
 	t.Status.Modified = time.Now()
 	t.Status.Completed = t.Status.Modified
+}
+
+func SaveTask(t *Task, c *mgo.Collection) error {
+	err := c.Insert(t)
+	return err
 }
 
 // Status keeps track of what state a task is in

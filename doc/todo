@@ -49,6 +49,7 @@ To Do:
 
 [ ] First steps
  [x] finish the model for tasks
+ [x] add a function to save a task with mgo
  [ ] add tests (see todo in model directory)
  [ ] get a CLI working that calls the same packages as the web will call
  [ ] get persistence to/from mongodb working (use https://labix.org/mgo)

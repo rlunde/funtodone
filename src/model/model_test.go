@@ -6,7 +6,12 @@ import (
 	"testing"
 	"time"
 
+	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
+)
+
+var (
+	DropDatabase = true
 )
 
 func TestTaskToString(t *testing.T) {
@@ -17,7 +22,7 @@ func TestTaskToString(t *testing.T) {
 	s := TaskToString(task)
 	// fmt.Println(s)
 	expected :=
-		`{"id":{"id":"583f9a189e743bea858113ca"},"parent":null,"children":null,"description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
+		`{"ID":"583f9a189e743bea858113ca","parent":null,"children":null,"description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
 	if expected != s {
 		t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
 	}
@@ -53,7 +58,7 @@ func TestNewStatusError(t *testing.T) {
 func TestNewTask(t *testing.T) {
 	status, _ := NewStatus(false, false, nil)
 	task := NewTask("test task", "a test task", *status, "")
-	if string(task.ID.Id) == "" {
+	if string(task.ID) == "" {
 		t.Errorf("expected a new UUID but didn't get one")
 	}
 }
@@ -89,6 +94,34 @@ func TestFinishTask(t *testing.T) {
 	elapsed = s.Completed.Sub(s.Modified)
 	if elapsed.Nanoseconds() != 0 {
 		t.Errorf("expected task.Status.Modified time to be == task.Status.Completed time")
+	}
+}
+func DropDatabaseIfNeeded(session *mgo.Session) error {
+	// Drop Database
+	if DropDatabase {
+		err := session.DB("test").DropDatabase()
+		return err
+	}
+	return nil
+}
+func TestSaveTask(t *testing.T) {
+	session, err := mgo.Dial("127.0.0.1")
+	if err != nil {
+		t.Fatalf(err.Error())
+	}
+	defer session.Close()
+	session.SetMode(mgo.Monotonic, true)
+	// We are only running this one test, so drop the test database firstname
+	err = DropDatabaseIfNeeded(session)
+	if err != nil {
+		t.Fatalf(err.Error())
+	}
+	c := session.DB("test").C("tasks")
+	status, _ := NewStatus(false, false, nil)
+	task := NewTask("save this task", "save task to mongo database test, collection tasks", *status, "")
+	err = SaveTask(task, c)
+	if err != nil {
+		t.Errorf(err.Error())
 	}
 }
 
