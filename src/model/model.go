@@ -7,9 +7,7 @@ import (
 	"os"
 	"time"
 
-	mgo "gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
-	//"gopkg.in/mgo.v2"
+	bson "gopkg.in/mgo.v2/bson"
 )
 
 const ( // iota is reset to 0
@@ -25,17 +23,23 @@ const ( // iota is reset to 0
  *
  * In the short term, there will only be lists, cycles (lists that loop), and stacks
  * trees with only the highest child expanded.
+ *
+ * We generate the ObjectId that mongo uses for _id ourselves, and also
+ * use a pointer to keep track of references to other Tasks for efficient
+ * implementation of in-memory stuff. Another approach might be to keep
+ * a map of ptr -> objectId and of objectId -> ptr, and then only keep the
+ * objectId in the object, but this current approach seems simpler, so far.
  */
 
 type Task struct {
 	ID          bson.ObjectId `bson:"_id,omitempty"`
-	ptr         *Task
-	Parent      *Task   `json:"parent"`
-	Children    []*Task `json:"children"`
-	Description string  `json:"description"`
-	Summary     string  `json:"summary"`
-	Level       int     `json:"level"`
-	Status      Status  `json:"status"`
+	ptr         *Task         // mongo didn't like Ptr at all, even when I told it not to save/serialize it
+	Parent      *Task         `json:"parent"`
+	Children    []*Task       `json:"children"`
+	Description string        `json:"description"`
+	Summary     string        `json:"summary"`
+	Level       int           `json:"level"`
+	Status      Status        `json:"status"`
 }
 
 //return a new top-level task with no parent, children, or siblings
@@ -72,11 +76,6 @@ func FinishTask(t *Task) {
 	t.Status.Done = true
 	t.Status.Modified = time.Now()
 	t.Status.Completed = t.Status.Modified
-}
-
-func SaveTask(t *Task, c *mgo.Collection) error {
-	err := c.Insert(t)
-	return err
 }
 
 // Status keeps track of what state a task is in
