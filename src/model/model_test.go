@@ -96,32 +96,62 @@ func TestFinishTask(t *testing.T) {
 		t.Errorf("expected task.Status.Modified time to be == task.Status.Completed time")
 	}
 }
-func DropDatabaseIfNeeded(session *mgo.Session) error {
-	// Drop Database
+func DropDatabaseOnce(session *mgo.Session) error {
+	// Drop Database the first time this is called
 	if DropDatabase {
 		err := session.DB("test").DropDatabase()
+		DropDatabase = false
 		return err
 	}
 	return nil
 }
-func TestSaveTask(t *testing.T) {
+func GetTestDatabaseConnection(t *testing.T) (*mgo.Session, *mgo.Collection, error) {
 	session, err := mgo.Dial("127.0.0.1")
 	if err != nil {
 		t.Fatalf(err.Error())
+		return nil, nil, err
 	}
-	defer session.Close()
+
 	session.SetMode(mgo.Monotonic, true)
 	// We are only running this one test, so drop the test database firstname
-	err = DropDatabaseIfNeeded(session)
+	err = DropDatabaseOnce(session)
 	if err != nil {
+		session.Close()
 		t.Fatalf(err.Error())
+		return nil, nil, err
 	}
 	c := session.DB("test").C("tasks")
+	return session, c, nil
+}
+func TestSaveTask(t *testing.T) {
+	session, c, err := GetTestDatabaseConnection(t)
+	defer session.Close()
 	status, _ := NewStatus(false, false, nil)
 	task := NewTask("save this task", "save task to mongo database test, collection tasks", *status, "")
 	err = SaveTask(task, c)
 	if err != nil {
 		t.Errorf(err.Error())
+	}
+}
+func TestFindTask(t *testing.T) {
+	// TODO: figure out if we can just call TestSaveTask to set up task -- problem is how to pass back task
+	session, c, err := GetTestDatabaseConnection(t)
+	defer session.Close()
+	status, _ := NewStatus(false, false, nil)
+	task := NewTask("find this task", "find task in mongo database test, collection tasks", *status, "")
+	err = SaveTask(task, c)
+	id := task.ID
+	if err != nil {
+		t.Errorf(err.Error())
+	} else {
+		newtask, err := FindTaskByID(c, id)
+		if err != nil {
+			t.Errorf(err.Error())
+		} else {
+			if newtask.Summary != task.Summary {
+				t.Errorf("expected:\n%s\nbut got:\n%s", newtask.Summary, task.Summary)
+			}
+		}
 	}
 }
 
