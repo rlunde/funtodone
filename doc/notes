@@ -115,3 +115,11 @@ either the pointer to a task (children, siblings, or a parent) or a mongo ID, or
 both. When writing, fill in the IDs. When reading from the database, fill in the
 pointers. When creating tasks in memory, only use pointers.
 
+It turns out that every struct that is written to Mongo needs to have an _id element,
+which Mongo will make if you don't make it yourself, so I couldn't have a "lazy pointer"
+struct on its own, I had to make it a part of the Task structure.
+
+I think I would like to make my own mgo tutorial as part of this, since the material
+that exists is very sketchy. Maybe I should start with Mongo rather than D3 (or in
+addition to D3) with Goodwin?
+
