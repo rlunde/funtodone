@@ -5,7 +5,7 @@ to make the code to create and manage the JSON format.
 
 Larger numbers are higher up the stack.
 
-4: Start a CLI by reading this: https://medium.freecodecamp.com/writing-command-line-applications-in-go-2bc8c0ace79d#.59yknbb07
+4: Start a CLI by using viper (seems to be standard): https://github.com/spf13/cobra
 3: Get a CLI working that just creates a single task
 3: Do simple user login with CLI, and keep a list of stack/cycle/list task IDs
 2: Get library and CLI (and appropriate tests) finished and working
