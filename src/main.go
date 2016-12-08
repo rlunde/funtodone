@@ -2,37 +2,22 @@ package main
 
 import (
 	"fmt"
-	//"html"
-	"github.com/gorilla/mux"
-	"gopkg.in/authboss.v0"
-	"log"
-	//"gopkg.in/authboss.v0/auth"
-	"./model"
-	"net/http"
+	//"log"
+	"./cli/cmd"
+	//"net/http"
 	"os"
 )
 
+/*
+For now, we'll just do a command line app. Later on, we'll
+add a comman line option that will start a web service using Gin.
+
+See https://github.com/spf13/cobra for how to generate code using
+cobra/viper and how to edit it.
+*/
 func main() {
-	ab := authboss.New() // Usually store this globally
-	ab.MountPath = "/authboss"
-	ab.LogWriter = os.Stdout
-
-	xyz := model.String(nil)
-	fmt.Println(xyz)
-
-	if err := ab.Init(); err != nil {
-		// Handle error, don't let program continue to run
-		log.Fatalln(err)
+	if err := cmd.RootCmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
 	}
-
-	// Make sure to put authboss's router somewhere
-	http.Handle("/authboss", ab.NewRouter())
-
-	r := mux.NewRouter()
-	// r.HandleFunc("/search/{searchTerm}", Search)
-	// r.HandleFunc("/load/{dataId}", Load)
-	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./client/")))
-	http.Handle("/", r)
-	log.Println("starting http server on http://localhost:8100")
-	http.ListenAndServe(":8100", nil)
 }
