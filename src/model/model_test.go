@@ -164,8 +164,6 @@ func TestFindTask(t *testing.T) {
 			 [ ] add a valid child node
 			 [ ] add a parent node to a node without a parent
 			 [ ] error if add a parent node to a node with a parent
-			 [ ] error if add a sibling to a node without a parent
-			 [ ] add a sibling to a node
 	     [ ] error if add a node with an invalid newNodeType
 
 */

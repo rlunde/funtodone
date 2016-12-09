@@ -1,0 +1,25 @@
+
+[ ] write down a list of operations to be done via CLI
+[ ] for each operation, write down the options needed
+[ ] stub out things that aren't needed yet (e.g. user management / password stuff)
+
+
+Operations:
+[ ] add a user
+[ ] login as a user
+[ ] import a single task from a file
+[ ] export a single task to a file
+[ ] load a single task from the database
+[ ] save a single task to the database
+[ ] add a child to a task
+[ ] add a parent to a task
+[ ] export a compound task (stack, cycle, or list)
+[ ] import a compound task (stack, cycle, or list)
+[ ] save a compound task (stack, cycle, or list)
+[ ] load a compound task (stack, cycle, or list)
+[ ] find a subtask via regex
+[ ] find a task via regex
+[ ] remove a child task
+[ ] remove a parent task
+[ ] modify a task (start it, finish it, update fields)
+
