@@ -123,3 +123,17 @@ I think I would like to make my own mgo tutorial as part of this, since the mate
 that exists is very sketchy. Maybe I should start with Mongo rather than D3 (or in
 addition to D3) with Goodwin?
 
+A note on my "flashtasks" idea under "ideas":
+
+I spent several weeks working with that, and just couldn't get myself to stick to it.
+I'd find myself continuing to work on something rather than stopping after 7 minutes, or
+not starting anything and working on something not even on my list, etc. Not just a few
+times, but over and over. I came to believe that if all the mechanisms for choosing tasks,
+tracking time, etc. were built into this tool, it still wouldn't make enough of a difference.
+
+It's just unnatural to divide things up into chunks of 7 minutes (or similar). Things aren't
+"discrete" like that -- they don't break down into nice bits. I still think the FunToDone
+apects are going to work great, just that things have more natural sizes -- sometimes too
+large to be done all in one sitting, and sometimes so small that it's hard to see the value
+in calling it out separately.
+

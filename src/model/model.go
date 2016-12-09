@@ -11,10 +11,9 @@ import (
 )
 
 const ( // iota is reset to 0
-	NODE_NONE    = iota // == 0
-	NODE_PARENT  = iota // == 1
-	NODE_CHILD   = iota // == 2
-	NODE_SIBLING = iota // == 3
+	NODE_NONE   = iota // == 0
+	NODE_PARENT = iota // == 1
+	NODE_CHILD  = iota // == 2
 )
 
 /* Task can be stand-alone, or a list, or a linear stack
@@ -42,7 +41,7 @@ type Task struct {
 	Status      Status        `json:"status"`
 }
 
-//return a new top-level task with no parent, children, or siblings
+//return a new top-level task with no parent or children
 //generate a new UUID if one isn't passed in
 func NewTask(desc string, summary string, status Status, idstr string) *Task {
 	var id bson.ObjectId
@@ -130,7 +129,7 @@ type TaskCycle struct {
 	Tasks []Task `json:"tasks"`
 }
 
-/* Add a parent, child, or sibling of a task.
+/* Add a parent or child of a task.
  */
 func AddTask(node, newNode *Task, newNodeType int) error {
 	if node == nil || newNode == nil {
@@ -144,18 +143,13 @@ func AddTask(node, newNode *Task, newNodeType int) error {
 			return errors.New("AddTask can't add parent node: node already has parent")
 		}
 		node.Parent = newNode
-	} else if newNodeType == NODE_SIBLING { // newNode is a sibling of node
-		if node.Parent == nil {
-			return errors.New("AddTask can't add sibling node: node has no parent")
-		}
-		node.Parent.Children = append(node.Parent.Children, newNode)
 	} else { // newNodeType is a NONE or bogus
 		return fmt.Errorf("AddTask called with unknown newNodeType: %d", newNodeType)
 	}
 	return nil
 }
 
-// TODO: remove this node and change parent (if any) and siblings (if any)
+// TODO: remove this node and change parent (if any)
 // and children (if any -- or should this take a recursive flag?)
 func RemoveTask(node *Task, recursive bool) error {
 	if node == nil {

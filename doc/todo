@@ -48,9 +48,8 @@ To Do:
     (see "ideas" in this directory)
 
 [ ] First steps
- [x] finish the model for tasks
- [x] add a function to save a task with mgo
- [ ] add tests (see todo in model directory)
+ [ ] do the stuff in the current funtodone stack (funtodone/doc/ideas/funtodone.stack)
+ [ ] add more tests (see list at end of model_test.go)
  [ ] get a CLI working that calls the same packages as the web will call
  [ ] get persistence to/from mongodb working (use https://labix.org/mgo)
  [ ] edit the stack for funtodone (replace this file)
