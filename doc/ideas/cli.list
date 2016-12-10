@@ -1,25 +1,44 @@
 
-[ ] write down a list of operations to be done via CLI
-[ ] for each operation, write down the options needed
+[x] write down an initial list of operations to be done via CLI
+[x] for each operation, write down the options needed
 [ ] stub out things that aren't needed yet (e.g. user management / password stuff)
+[ ] read the docs on how to do command line processing: https://github.com/spf13/cobra, beginning with adding a user
+[ ] implement user add, user login, session verification (don't do other commands unless logged in)
 
 
 Operations:
 [ ] add a user
-[ ] login as a user
+  [ ] options: name, password, email
+[ ] login as a user, create a session
+  [ ] options: name, password
+[ ] create a task from command line args
+  [ ] options: description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
 [ ] import a single task from a file
+  [ ] options: name, password
 [ ] export a single task to a file
+  [ ] options: filename or none for stdout
 [ ] load a single task from the database
+  [ ] options: filename
 [ ] save a single task to the database
+  [ ] options: taskId
 [ ] add a child to a task
-[ ] add a parent to a task
+  [ ] options: parentId, childId
 [ ] export a compound task (stack, cycle, or list)
+  [ ] options: taskId, filename (optional)
 [ ] import a compound task (stack, cycle, or list)
+  [ ] options: filename
 [ ] save a compound task (stack, cycle, or list)
+  [ ] options: taskId
 [ ] load a compound task (stack, cycle, or list)
+  [ ] options: taskId
 [ ] find a subtask via regex
+  [ ] options: taskId, regex
 [ ] find a task via regex
+  [ ] options: regex
 [ ] remove a child task
+  [ ] options: taskId
 [ ] remove a parent task
-[ ] modify a task (start it, finish it, update fields)
+  [ ] options: taskId
+[ ] modify a task (description, summary, level, status fields)
+  [ ] options: taskId, description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
 
