@@ -8,14 +8,15 @@ Landing Page
     * organizing tasks
     * doing tasks
     * import / export
+    * learn from momentum app -- focus on beauty, simplicity, wisdom (e.g. quote)
   * try to get one or more quotes from people who like it (eventually)
   * privacy policy
 
-Login Page (modal dialog)
+Login Page (a modal dialog)
 
 Create Account Page
 
-Check Your Email Page
+Check Your Email Page (validate account)
 
 Lost Account/Password Page
 
@@ -26,21 +27,25 @@ Main Page (after login or clicking on email confirm link after creating account)
   * link to a support page
   * links to same doc pages as on login page
   * link to log out
+  * current score, rank, stats
+  * link to friends
   * other than that, a SPA from now on
-    
-  * From the README.md:
 
+  0. Choose a Stack, List, Cycle, or Bag of FlashTasks
+    
   1. Click a button to get a task or make a new one:
     a. new task
     b. hit me! (a task is selected for you, see gory details about how that works below)
     c. choose task (you pick which task)
   2. Once you've got a task, you do one of these:
-    a. back to main (to get or create a new task)
+    a. discard it - back to main (to get or create a new task)
     b. edit it
     c. split it (make it into two or more separate tasks)
     d. expand it (add one or more child tasks)
     e. link it (edit what it depends on, or what depends on it)
     f. do it
+    g. promote it to a whole separate Stack, List, or Cycle
+    h. demote it to a FlashTask
   3. One you're doing a task, you can:
     a. go back to the previous stage
     b. start a timer
@@ -48,4 +53,27 @@ Main Page (after login or clicking on email confirm link after creating account)
     d. edit it
     e. finish it
     f. stop working on it
+
+For a Stack, you can:
+  1. Reorder tasks at the top level (e.g. those with the same depth)
+  2. Add or edit notes attached to any task
+  3. Add or edit notes attached to the whole stack
+  4. Do the above 3 steps for a task
+
+For a List, you can:
+  1. Do the above 3 steps
+  2. Add or edit notes attached to any task
+  3. Set a deadline, priority, or importance for a task
+  4. Make a task into a subtask of another
+
+For a Cycle, you can:
+  1. Set frequency
+  2. Set reminders
+  3. Set a deadline, priority, or importance for a task
+  4. Make a task into a subtask of another
+  5. Do the above 3 steps
+
+For FlashTasks, you can:
+  1. Do the above 3 steps
+  2. Move it to a List
 

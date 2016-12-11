@@ -89,6 +89,7 @@ sources for the ideas behind funtodone:
  * [Carol Dweck's "Mindset: The New Psychology of Success"](http://www.amazon.com/Mindset-Psychology-Success-Carol-Dweck/dp/0345472322)
  * [Kelly McGonigal's "The Willpower Instinct: How Self-Control Works, Why It Matters, and What You Can Do to Get More of It"](http://www.amazon.com/Willpower-Instinct-Self-Control-Works-Matters-ebook/dp/B005ERIRZE)
  * [Jane McGonigal's "Reality Is Broken: Why Games Make Us Better and How They Can Change the World"](http://www.amazon.com/Reality-Broken-Games-Better-Change-ebook/dp/B004G8Q1Q4)
+ * [How Long Should You Work At A Time?](https://www.fastcompany.com/3035605/how-to-be-a-success-at-everything/the-exact-amount-of-time-you-should-work-every-day)
 
 ## Where are all the testimonials?
 
@@ -111,12 +112,14 @@ But here's how you play, in a nutshell -- in general, three clicks and you're do
     b. hit me! (a task is selected for you, see gory details about how that works below)
     c. choose task (you pick which task)
   2. Once you've got a task, you do one of these:
-    a. back to main (to get or create a new task)
+    a. discard it - back to main (to get or create a new task)
     b. edit it
     c. split it (make it into two or more separate tasks)
     d. expand it (add one or more child tasks)
     e. link it (edit what it depends on, or what depends on it)
     f. do it
+    g. promote it to a whole separate Stack, List, or Cycle
+    h. demote it to a FlashTask
   3. One you're doing a task, you can:
     a. go back to the previous stage
     b. start a timer
@@ -127,12 +130,69 @@ But here's how you play, in a nutshell -- in general, three clicks and you're do
 
 There's also some configuration options you can play with.
 
+## Four Processes To Rule The World
+
+(and in the Darkness Bind Them...just kidding)
+
+Life is full of Big Projects, Odds & Ends, and Chores, and trying to smash every round peg into
+a square hole is a recipe for failure.
+
+### Big Projects: Stacks
+
+If you want to write a novel, create an iPhone app, make a movie, or anything else Big and Significant,
+it's likely going to take you months or years, and involve hundreds or maybe thousands of individual tasks.
+
+Trying to juggle all those, or even look at them, is not going to make your spirits soar. It's going to make them *sore*.
+
+A "stack" (borrowing from the Computer Science data structure, which borrowed from an old-timey In Box on a desk) is
+a process where you never see more than a handful of items at a time. Psychologically, it's much less scary -- and
+it's the way people have done big things since forever -- using the old Divide and Conquer approach.
+
+  1. Write down the ultimate goal (e.g. write a novel)
+  2. Split that up into 2-5 steps (e.g. "write a synopsis", "write an outline", "write first draft", ...)
+  3. Move one of those that makes sense to start with to the top of the stack, and focus just on it
+  4. Repeat 2 and 3 until you've got tasks so tiny it doesn't make sense to divide them further
+  5. Do the top level (tiny) tasks until those are done, then pop the parent task off the stack, and tackle the next one
+
+TODO: put some pictures in here
+
+### Odds & Ends: Lists
+
+This is what you might see in a standard To Do list. Things like "Write the report on paranormal activity in the library" or
+"Clean up the back yard, and figure out where all the velociraptor poop is coming from." 
+
+Tasks in a list don't (usually) have to be done in a particular order, although sometimes it makes sense to group them
+based on where or when you need to do them.
+
+List items will often have some sort of importance or urgency, or deadlines. FunToDone can help make sure there aren't things
+that never get done, because they're never the most important or the most urgent.
+
 Part of the fun is to let funtodone pick a next task for you to work on. That way if you've got 
 some tasks that are urgent but less fun than others, you can either avoid them if you're lucky,
 or get them out of the way if you're not. Since we recommend you not work on the same task for
-more than 20 minutes at a time, even the least fun tasks aren't too bad.
+more than 52 minutes at a time, even the least fun tasks aren't too bad.
 
-Gory Details:
+### Chores: Cycles
+
+Some things have to be done regularly. You have to take out the trash, get your hair cut, and banish the velociraptors
+back through the Time Portal. These tasks are often tied more to the calendar than other tasks (aside from deadlines).
+
+If a task has to be done regularly, and you just don't want to forget about it, it goes in a Cycle Process.
+
+### Ten Minute Tasks: FlashTasks
+
+Sometimes tiny little things nag at you for years, just because they can. If it will take you less than 10 minutes to do,
+and it's not part of something larger, it goes in the most fun batch of tasks.
+
+A "flashtask" is something that you can do when you only have a few minutes (and "only having a few minutes" happens to
+most of us a LOT). Also, it's something we can use to make ourselves feel good.
+
+"Yay! I finally peeled that Cheez Whiz off the ceiling!"
+
+We'll have a whole section on FlashTasks, but for now just remember that collecting those is a great way to Feel Good
+about Getting Shit Done.
+
+## Doing Odds & Ends: The Gory Details
 
 Choosing a random task isn't quite all random, since funtodone tries to weight the choices a little:
   * prefer tasks with an imminent due date
@@ -140,7 +200,7 @@ Choosing a random task isn't quite all random, since funtodone tries to weight t
   * try to alternate between more fun and less fun tasks
   * try to work on the more important things early in the day
 
-## Too Many Tasks?
+## Doing Big Things: Too Many Tasks?
 
 You might think that continuously splitting tasks into smaller and smaller pieces will make it
 seem overwhelming. 
