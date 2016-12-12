@@ -28,12 +28,8 @@ var cfgFile string
 var RootCmd = &cobra.Command{
 	Use:   "funtodone-cli",
 	Short: "A CLI wrapper around core funtodone functionality",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Long: `A command line tool wrapping functionality to create
+	and manage tasks organized in stacks, cycles, lists, or flashtasks.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
