@@ -67,12 +67,13 @@ to make you laugh out loud with glee.
 
 ## I don't want to spend hours (or days) entering all my personal data into somebody else's database
 
-Yeah, neither do we. That's why we don't store your data ourselves.
-Fortunately, there are lots of little companies like Google (Drive),
-Microsoft (OneDrive), and Apple (iCloud) -- not to mention Dropbox,
-Box, and others -- that let you save your data in cloud storage
-that is shared across all your devices. That's what we're going to
-try to use.
+Yeah, neither do we. At first, we want to make sure import/export is super easy
+to use, so you can save/restore all your stuff in Dropbox, or Google Drive, or iCloud,
+or on your own drive. Later on, we hope to try using APIs from those main storage
+providers to let you read/write from your own files under there directly, but we'll
+see. In the mean time, we're putting it into a MongoDB database in the hosted version
+of FunToDone, and you're (obviously) welcome to put it in your own database if you
+clone it and run it yourself.
 
 We store all your raw data in JSON format (which means it's easy
 to import and export, and you can even read it yourself if you tilt
