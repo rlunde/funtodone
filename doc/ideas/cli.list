@@ -42,3 +42,5 @@ Operations:
 [ ] modify a task (description, summary, level, status fields)
   [ ] options: taskId, description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
 
+Note that we'll probably just add a "serve" command once we're done testing the CLI which will
+cause it to process the options and then start an HTTP service.
