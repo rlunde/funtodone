@@ -5,6 +5,24 @@
 [ ] read the docs on how to do command line processing: https://github.com/spf13/cobra, beginning with adding a user
 [ ] implement user add, user login, session verification (don't do other commands unless logged in)
 
+Commands:
+
+I could either go by:
+  funtodone-cli add user --name foo --password bar
+or
+  funtodone-cli user add --name foo --password bar
+
+I think I'm going to try the former, since it's more like English
+
+I think the order to do things for testing is:
+ 1. add a user
+ 2. login as user
+ 3. create a task from command line args
+ 4. export a single task
+ 5. import a single task
+ 6. load/save a single task
+ 7. export a collection
+ 8. import a collection
 
 Operations:
 [ ] add a user
@@ -13,6 +31,8 @@ Operations:
   [ ] options: name, password
 [ ] create a task from command line args
   [ ] options: description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
+[ ] update a task from command line args
+  [ ] options: taskId, description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
 [ ] import a single task from a file
   [ ] options: name, password
 [ ] export a single task to a file
@@ -23,13 +43,13 @@ Operations:
   [ ] options: taskId
 [ ] add a child to a task
   [ ] options: parentId, childId
-[ ] export a compound task (stack, cycle, or list)
+[ ] export a collection of tasks (stack, cycle, or list)
   [ ] options: taskId, filename (optional)
-[ ] import a compound task (stack, cycle, or list)
+[ ] import a collection of tasks (stack, cycle, or list)
   [ ] options: filename
-[ ] save a compound task (stack, cycle, or list)
+[ ] save a collection of tasks (stack, cycle, or list)
   [ ] options: taskId
-[ ] load a compound task (stack, cycle, or list)
+[ ] load a collection of tasks (stack, cycle, or list)
   [ ] options: taskId
 [ ] find a subtask via regex
   [ ] options: taskId, regex

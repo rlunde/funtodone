@@ -6,29 +6,29 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// collectionCmd represents the collection command
-var collectionCmd = &cobra.Command{
-	Use:   "collection",
-	Short: "Use to add, delete, import, export, save, or load a Stack, List, Cycle, or FlashTasks",
+// loadCmd represents the load command
+var loadCmd = &cobra.Command{
+	Use:   "load",
+	Short: "Use to load a user, task, or collection from the database",
 	Long: `funtodone-cli is primarily intended to allow simple testing of features, by wrapping the library functions
 	with a command line interface. The web app interface will be the way most real users use funtodone.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
-		fmt.Println("collection called")
+		fmt.Println("load called")
 	},
 }
 
 func init() {
-	RootCmd.AddCommand(collectionCmd)
+	RootCmd.AddCommand(loadCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// collectionCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// loadCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// collectionCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// loadCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
 }
