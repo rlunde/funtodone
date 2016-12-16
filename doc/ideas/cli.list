@@ -12,12 +12,12 @@ I could either go by:
 or
   funtodone-cli user add --name foo --password bar
 
-I think I'm going to try the former, since it's more like English
+I think I'm going to try the former ("add user"), since it's more like English
 
 I think the order to do things for testing is:
  1. add a user
  2. login as user
- 3. create a task from command line args
+ 3. add a task from command line args
  4. export a single task
  5. import a single task
  6. load/save a single task
@@ -27,9 +27,9 @@ I think the order to do things for testing is:
 Operations:
 [ ] add a user
   [ ] options: name, password, email
-[ ] login as a user, create a session
+[ ] login as a user, add a session
   [ ] options: name, password
-[ ] create a task from command line args
+[ ] add a task from command line args
   [ ] options: description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
 [ ] update a task from command line args
   [ ] options: taskId, description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
