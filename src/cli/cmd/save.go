@@ -9,17 +9,56 @@ import (
 // saveCmd represents the save command
 var saveCmd = &cobra.Command{
 	Use:   "save",
-	Short: "Use to save a user, task, or collection to the database",
-	Long: `funtodone-cli is primarily intended to allow simple testing of features, by wrapping the library functions
-	with a command line interface. The web app interface will be the way most real users use funtodone.`,
+	Short: "save tasks, users, or collections of tasks",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+	real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
 		fmt.Println("save called")
 	},
 }
 
+// saveUserCmd represents the save user command
+var saveUserCmd = &cobra.Command{
+	Use:   "user",
+	Short: "save a user",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("save user called")
+	},
+}
+
+// saveTaskCmd represents the save task command
+var saveTaskCmd = &cobra.Command{
+	Use:   "task",
+	Short: "save a task",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("save task called")
+	},
+}
+
+// saveCollectionCmd represents the save collection command
+var saveCollectionCmd = &cobra.Command{
+	Use:   "collection",
+	Short: "save a collection",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("save collection called")
+	},
+}
+
 func init() {
 	RootCmd.AddCommand(saveCmd)
+	saveCmd.AddCommand(saveUserCmd)
+	saveCmd.AddCommand(saveTaskCmd)
+	saveCmd.AddCommand(saveCollectionCmd)
 
 	// Here you will define your flags and configuration settings.
 
