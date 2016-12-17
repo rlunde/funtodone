@@ -9,17 +9,56 @@ import (
 // exportCmd represents the export command
 var exportCmd = &cobra.Command{
 	Use:   "export",
-	Short: "Use to export a user, task, or collection to a file",
-	Long: `funtodone-cli is primarily intended to allow simple testing of features, by wrapping the library functions
-	with a command line interface. The web app interface will be the way most real users use funtodone.`,
+	Short: "export tasks, users, or collections of tasks",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+	real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
 		fmt.Println("export called")
 	},
 }
 
+// exportUserCmd represents the export user command
+var exportUserCmd = &cobra.Command{
+	Use:   "user",
+	Short: "export a user",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("export user called")
+	},
+}
+
+// exportTaskCmd represents the export task command
+var exportTaskCmd = &cobra.Command{
+	Use:   "task",
+	Short: "export a task",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("export task called")
+	},
+}
+
+// exportCollectionCmd represents the export collection command
+var exportCollectionCmd = &cobra.Command{
+	Use:   "collection",
+	Short: "export a collection",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("export collection called")
+	},
+}
+
 func init() {
 	RootCmd.AddCommand(exportCmd)
+	exportCmd.AddCommand(exportUserCmd)
+	exportCmd.AddCommand(exportTaskCmd)
+	exportCmd.AddCommand(exportCollectionCmd)
 
 	// Here you will define your flags and configuration settings.
 

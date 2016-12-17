@@ -18,8 +18,47 @@ var updateCmd = &cobra.Command{
 	},
 }
 
+// updateUserCmd represents the update user command
+var updateUserCmd = &cobra.Command{
+	Use:   "user",
+	Short: "update a user",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("update user called")
+	},
+}
+
+// updateTaskCmd represents the update task command
+var updateTaskCmd = &cobra.Command{
+	Use:   "task",
+	Short: "update a task",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("update task called")
+	},
+}
+
+// updateCollectionCmd represents the update collection command
+var updateCollectionCmd = &cobra.Command{
+	Use:   "collection",
+	Short: "update a collection",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("update collection called")
+	},
+}
+
 func init() {
 	RootCmd.AddCommand(updateCmd)
+	updateCmd.AddCommand(updateUserCmd)
+	updateCmd.AddCommand(updateTaskCmd)
+	updateCmd.AddCommand(updateCollectionCmd)
 
 	// Here you will define your flags and configuration settings.
 

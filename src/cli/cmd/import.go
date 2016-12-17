@@ -9,17 +9,56 @@ import (
 // importCmd represents the import command
 var importCmd = &cobra.Command{
 	Use:   "import",
-	Short: "Use to import a user, task, or collection from a file",
-	Long: `funtodone-cli is primarily intended to allow simple testing of features, by wrapping the library functions
-	with a command line interface. The web app interface will be the way most real users use funtodone.`,
+	Short: "import tasks, users, or collections of tasks",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+	real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO: Work your own magic here
 		fmt.Println("import called")
 	},
 }
 
+// importUserCmd represents the import user command
+var importUserCmd = &cobra.Command{
+	Use:   "user",
+	Short: "import a user",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("import user called")
+	},
+}
+
+// importTaskCmd represents the import task command
+var importTaskCmd = &cobra.Command{
+	Use:   "task",
+	Short: "import a task",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("import task called")
+	},
+}
+
+// importCollectionCmd represents the import collection command
+var importCollectionCmd = &cobra.Command{
+	Use:   "collection",
+	Short: "import a collection",
+	Long: `funtodone-cli is primarily a wrapper around library functions. Most
+    real users will only use it via the web app interface.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		// TODO: Work your own magic here
+		fmt.Println("import collection called")
+	},
+}
+
 func init() {
 	RootCmd.AddCommand(importCmd)
+	importCmd.AddCommand(importUserCmd)
+	importCmd.AddCommand(importTaskCmd)
+	importCmd.AddCommand(importCollectionCmd)
 
 	// Here you will define your flags and configuration settings.
 
