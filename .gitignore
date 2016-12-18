@@ -42,3 +42,4 @@ pkg/
 **/client/.DS_Store
 **/client/npm-debug.log
 **/src/server
+**/src/funtodone
