@@ -5,8 +5,8 @@ to make the code to create and manage the JSON format.
 
 Larger numbers are higher up the stack.
 
-4: Make a list of the things I need to learn/do to get cobra working
-4: Make a list of command line commands and options to support
+4: Do the first 8 CLI commands in the order listed in cli.list
+4: Write tests for the first 8 CLI commands in the order listed in cli.list
 3: Get a CLI working that just creates a single task
 3: Do simple user login with CLI, and keep a list of stack/cycle/list task IDs
 2: Get library and CLI (and appropriate tests) finished and working
