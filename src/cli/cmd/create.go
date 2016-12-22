@@ -70,4 +70,16 @@ func init() {
 	// is called directly, e.g.:
 	// createCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	createUserCmd.Flags().String("name", "", "The user's name")
+	createUserCmd.Flags().String("password", "", "The user's password")
+	createUserCmd.Flags().String("email", "", "The user's email address")
+	// attributes of a task or of the task's status
+	createTaskCmd.Flags().String("description", "", "The task description")
+	createTaskCmd.Flags().String("summary", "", "A short task summary")
+	createTaskCmd.Flags().Int("level", 0, "The task level (if in a stack, the height on the stack)")
+	createTaskCmd.Flags().Bool("done", false, "True if the task is done")
+	createTaskCmd.Flags().Bool("started", false, "True if the task is started")
+	createTaskCmd.Flags().String("due", "", "Date and time the task is due")
+	createTaskCmd.Flags().String("created", "", "Date and time the task was created")
+	createTaskCmd.Flags().String("modified", "", "Date and time of the last time the task was modified")
+	createTaskCmd.Flags().String("completed", "", "Date and time the task was completed")
 }
