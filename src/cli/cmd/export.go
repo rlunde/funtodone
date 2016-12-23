@@ -55,6 +55,7 @@ var exportCollectionCmd = &cobra.Command{
 }
 
 func init() {
+	fmt.Println("export.go init called")
 	RootCmd.AddCommand(exportCmd)
 	exportCmd.AddCommand(exportUserCmd)
 	exportCmd.AddCommand(exportTaskCmd)
