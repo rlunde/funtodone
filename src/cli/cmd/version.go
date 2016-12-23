@@ -22,5 +22,6 @@ var versionCmd = &cobra.Command{
 }
 
 func init() {
+	fmt.Println("version.go init called")
 	RootCmd.AddCommand(versionCmd)
 }

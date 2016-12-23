@@ -55,6 +55,7 @@ var loadCollectionCmd = &cobra.Command{
 }
 
 func init() {
+	fmt.Println("load.go init called")
 	RootCmd.AddCommand(loadCmd)
 	loadCmd.AddCommand(loadUserCmd)
 	loadCmd.AddCommand(loadTaskCmd)

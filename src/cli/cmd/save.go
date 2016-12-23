@@ -55,6 +55,7 @@ var saveCollectionCmd = &cobra.Command{
 }
 
 func init() {
+	fmt.Println("save.go init called")
 	RootCmd.AddCommand(saveCmd)
 	saveCmd.AddCommand(saveUserCmd)
 	saveCmd.AddCommand(saveTaskCmd)

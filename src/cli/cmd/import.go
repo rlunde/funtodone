@@ -55,6 +55,7 @@ var importCollectionCmd = &cobra.Command{
 }
 
 func init() {
+	fmt.Println("import.go init called")
 	RootCmd.AddCommand(importCmd)
 	importCmd.AddCommand(importUserCmd)
 	importCmd.AddCommand(importTaskCmd)

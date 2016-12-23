@@ -55,6 +55,7 @@ var updateCollectionCmd = &cobra.Command{
 }
 
 func init() {
+	fmt.Println("update.go init called")
 	RootCmd.AddCommand(updateCmd)
 	updateCmd.AddCommand(updateUserCmd)
 	updateCmd.AddCommand(updateTaskCmd)
