@@ -11,12 +11,15 @@ import (
 )
 
 const ( // iota is reset to 0
-	NODE_NONE   = iota // == 0
-	NODE_PARENT = iota // == 1
-	NODE_CHILD  = iota // == 2
+	//NodeNone - indicate a node that isn't a parent or child
+	NodeNone = iota // == 0
+	//NodeParent - indicate a parent node (e.g. when adding a node to another)
+	NodeParent = iota // == 1
+	//NodeChild - indicate a child node (e.g. when adding a node to another)
+	NodeChild = iota // == 2
 )
 
-/* Task can be stand-alone, or a list, or a linear stack
+/*Task -- can be stand-alone, or a list, or a linear stack
  * or a tree. Or it can be some strange combination of lists
  * (using prev and next) and trees (using parent and children).
  *
@@ -29,10 +32,9 @@ const ( // iota is reset to 0
  * a map of ptr -> objectId and of objectId -> ptr, and then only keep the
  * objectId in the object, but this current approach seems simpler, so far.
  */
-
 type Task struct {
 	ID          bson.ObjectId `bson:"_id,omitempty"`
-	ptr         *Task         // mongo didn't like Ptr at all, even when I told it not to save/serialize it
+	ptr         *Task         // mongo didn't like (upper case) Ptr at all, even when I told it not to save/serialize it
 	Parent      *Task         `json:"parent"`
 	Children    []*Task       `json:"children"`
 	Description string        `json:"description"`
@@ -41,7 +43,7 @@ type Task struct {
 	Status      Status        `json:"status"`
 }
 
-//return a new top-level task with no parent or children
+//NewTask - return a new top-level task with no parent or children
 //generate a new UUID if one isn't passed in
 func NewTask(desc string, summary string, status Status, idstr string) *Task {
 	var id bson.ObjectId
@@ -64,13 +66,13 @@ func NewTask(desc string, summary string, status Status, idstr string) *Task {
 	return &task
 }
 
-// should this return an error if the task was already started? For now, it doesn't
+//StartTask - mark task as started. should this return an error if the task was already started? For now, it doesn't
 func StartTask(t *Task) {
 	t.Status.Started = true
 	t.Status.Modified = time.Now()
 }
 
-// should this return an error if the task was already done? For now, it doesn't
+//FinishTask - mark task as finished. should this return an error if the task was already done? For now, it doesn't
 func FinishTask(t *Task) {
 	t.Status.Done = true
 	t.Status.Modified = time.Now()
@@ -87,6 +89,7 @@ type Status struct {
 	Completed time.Time `json:"completed"`
 }
 
+//NewStatus - create a status struct to use in a Task
 func NewStatus(done, started bool, due *time.Time) (*Status, error) {
 	now := time.Now()
 	// error if it's done but not started
@@ -107,38 +110,46 @@ func NewStatus(done, started bool, due *time.Time) (*Status, error) {
 	return &status, nil
 }
 
-/* User is a placeholder for when we build in auth */
+/*User -- a placeholder for when we build in auth */
 type User struct {
 	FirstName string `json:"firstname"`
 	LastName  string `json:"lastname"`
 	Email     string `json:"email"`
 }
 
+//TaskStack - a "stack" is a collection of tasks with subtasks at different levels
 type TaskStack struct {
-	User  User   `json:"user"` // TODO: consider team or group
-	Tasks []Task `json:"tasks"`
+	Description string `json:"description"`
+	Summary     string `json:"summary"`
+	User        User   `json:"user"` // TODO: consider team or group
+	Tasks       []Task `json:"tasks"`
 }
 
+//TaskList - a list of tasks, which aren't necessarily ordered
 type TaskList struct {
-	User  User   `json:"user"` // TODO: consider team or group
-	Tasks []Task `json:"tasks"`
+	Description string `json:"description"`
+	Summary     string `json:"summary"`
+	User        User   `json:"user"` // TODO: consider team or group
+	Tasks       []Task `json:"tasks"`
 }
 
+//TaskCycle - a cycle of tasks, that need to be done periodically
 type TaskCycle struct {
-	User  User   `json:"user"` // TODO: consider team or group
-	Tasks []Task `json:"tasks"`
+	Description string `json:"description"`
+	Summary     string `json:"summary"`
+	User        User   `json:"user"` // TODO: consider team or group
+	Tasks       []Task `json:"tasks"`
 }
 
-/* Add a parent or child of a task.
- */
+//AddTask - Add a parent or child of a task.
 func AddTask(node, newNode *Task, newNodeType int) error {
 	if node == nil || newNode == nil {
 		return errors.New("AddTask called with nil Task")
 	}
-	if newNodeType == NODE_CHILD { // newNode is a child of node
+	if newNodeType == NodeChild { // newNode is a child of node
 		newNode.Parent = node
 		node.Children = append(node.Children, newNode)
-	} else if newNodeType == NODE_PARENT { // newNode is the parent of node
+	} else if newNodeType == NodeParent { // newNode is the parent of node
 		if node.Parent != nil {
 			return errors.New("AddTask can't add parent node: node already has parent")
 		}
@@ -149,6 +160,7 @@ func AddTask(node, newNode *Task, newNodeType int) error {
 	return nil
 }
 
+// RemoveTask - pull a task out of links
 // TODO: remove this node and change parent (if any)
 // and children (if any -- or should this take a recursive flag?)
 func RemoveTask(node *Task, recursive bool) error {
@@ -182,6 +194,7 @@ func RemoveTask(node *Task, recursive bool) error {
 	return nil
 }
 
+//TaskToString - make a printable representation of a task
 // TODO: make this a method
 func TaskToString(task *Task) string {
 	if task == nil {
