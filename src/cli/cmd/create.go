@@ -83,4 +83,8 @@ func init() {
 	createTaskCmd.Flags().String("created", "", "Date and time the task was created")
 	createTaskCmd.Flags().String("modified", "", "Date and time of the last time the task was modified")
 	createTaskCmd.Flags().String("completed", "", "Date and time the task was completed")
+	createCollectionCmd.Flags().String("description", "", "The collection description")
+	createCollectionCmd.Flags().String("summary", "", "A short summary of the collection")
+	createCollectionCmd.Flags().String("type", "", "The type of collection: stack, cycle, or list")
+
 }
