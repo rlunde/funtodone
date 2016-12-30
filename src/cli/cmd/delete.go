@@ -70,5 +70,8 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// deleteCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	deleteUserCmd.Flags().String("name", "", "The user to delete")
+	deleteTaskCmd.Flags().String("id", "", "The task to delete")
+	deleteCollectionCmd.Flags().String("id", "", "The collection to delete")
 
 }
