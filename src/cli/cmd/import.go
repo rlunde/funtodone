@@ -70,5 +70,8 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// importCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	importUserCmd.Flags().String("filename", "", "The file containing the user(s) to import")
+	importTaskCmd.Flags().String("filename", "", "The file containing the task(s) to import")
+	importCollectionCmd.Flags().String("filename", "", "The file containing the collection(s) to import")
 
 }
