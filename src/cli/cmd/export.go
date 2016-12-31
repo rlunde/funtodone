@@ -21,7 +21,7 @@ var exportCmd = &cobra.Command{
 // exportUserCmd represents the export user command
 var exportUserCmd = &cobra.Command{
 	Use:   "user",
-	Short: "export a user",
+	Short: "export a user record, by serializing it to stdout",
 	Long: `funtodone-cli is primarily a wrapper around library functions. Most
     real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -33,7 +33,7 @@ var exportUserCmd = &cobra.Command{
 // exportTaskCmd represents the export task command
 var exportTaskCmd = &cobra.Command{
 	Use:   "task",
-	Short: "export a task",
+	Short: "export a task, by serializing it to stdout",
 	Long: `funtodone-cli is primarily a wrapper around library functions. Most
     real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -45,7 +45,7 @@ var exportTaskCmd = &cobra.Command{
 // exportCollectionCmd represents the export collection command
 var exportCollectionCmd = &cobra.Command{
 	Use:   "collection",
-	Short: "export a collection",
+	Short: "export a collection, by serializing it to stdout",
 	Long: `funtodone-cli is primarily a wrapper around library functions. Most
     real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -60,15 +60,7 @@ func init() {
 	exportCmd.AddCommand(exportUserCmd)
 	exportCmd.AddCommand(exportTaskCmd)
 	exportCmd.AddCommand(exportCollectionCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// exportCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// exportCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-
+	exportUserCmd.Flags().String("id", "", "The id of the user to export")
+	exportTaskCmd.Flags().String("id", "", "The id of the task to export")
+	exportCollectionCmd.Flags().String("id", "", "The id of the collection to export")
 }
