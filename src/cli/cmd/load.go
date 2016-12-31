@@ -9,7 +9,7 @@ import (
 // loadCmd represents the load command
 var loadCmd = &cobra.Command{
 	Use:   "load",
-	Short: "load tasks, users, or collections of tasks",
+	Short: "load tasks, users, or collections of tasks from the database into memory",
 	Long: `funtodone-cli is primarily a wrapper around library functions. Most
 	real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -21,7 +21,7 @@ var loadCmd = &cobra.Command{
 // loadUserCmd represents the load user command
 var loadUserCmd = &cobra.Command{
 	Use:   "user",
-	Short: "load a user",
+	Short: "load a user from the database into memory",
 	Long: `funtodone-cli is primarily a wrapper around library functions. Most
     real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -33,7 +33,7 @@ var loadUserCmd = &cobra.Command{
 // loadTaskCmd represents the load task command
 var loadTaskCmd = &cobra.Command{
 	Use:   "task",
-	Short: "load a task",
+	Short: "load a task from the database into memory",
 	Long: `funtodone-cli is primarily a wrapper around library functions. Most
     real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -45,7 +45,7 @@ var loadTaskCmd = &cobra.Command{
 // loadCollectionCmd represents the load collection command
 var loadCollectionCmd = &cobra.Command{
 	Use:   "collection",
-	Short: "load a collection",
+	Short: "load a collection from the database into memory",
 	Long: `funtodone-cli is primarily a wrapper around library functions. Most
     real users will only use it via the web app interface.`,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -70,5 +70,11 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// loadCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	loadUserCmd.Flags().String("name", "", "The user's name")
+	loadTaskCmd.Flags().String("summary", "", "A short task summary")
+	loadCollectionCmd.Flags().String("summary", "", "A short summary of the collection")
+	loadUserCmd.Flags().String("id", "", "The user id")
+	loadTaskCmd.Flags().String("id", "", "The task id")
+	loadCollectionCmd.Flags().String("id", "", "The collection id")
 
 }
