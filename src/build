@@ -1,2 +1,2 @@
 #!/bin/bash
-go build -o funtodone main.go
+go build -o funtodone-cli main.go

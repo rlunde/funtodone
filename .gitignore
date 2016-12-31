@@ -43,3 +43,4 @@ pkg/
 **/client/npm-debug.log
 **/src/server
 **/src/funtodone
+**/src/funtodone-cli
