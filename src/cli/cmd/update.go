@@ -60,15 +60,23 @@ func init() {
 	updateCmd.AddCommand(updateUserCmd)
 	updateCmd.AddCommand(updateTaskCmd)
 	updateCmd.AddCommand(updateCollectionCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// updateCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// updateCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-
+	updateUserCmd.Flags().String("id", "", "The id of the user to update")
+	updateTaskCmd.Flags().String("id", "", "The id of the task to update")
+	updateCollectionCmd.Flags().String("id", "", "The id of the collection to update")
+	updateUserCmd.Flags().String("name", "", "The user's name")
+	updateUserCmd.Flags().String("password", "", "The user's password")
+	updateUserCmd.Flags().String("email", "", "The user's email address")
+	// attributes of a task or of the task's status
+	updateTaskCmd.Flags().String("description", "", "The task description")
+	updateTaskCmd.Flags().String("summary", "", "A short task summary")
+	updateTaskCmd.Flags().Int("level", 0, "The task level (if in a stack, the height on the stack)")
+	updateTaskCmd.Flags().Bool("done", false, "True if the task is done")
+	updateTaskCmd.Flags().Bool("started", false, "True if the task is started")
+	updateTaskCmd.Flags().String("due", "", "Date and time the task is due")
+	updateTaskCmd.Flags().String("created", "", "Date and time the task was created")
+	updateTaskCmd.Flags().String("modified", "", "Date and time of the last time the task was modified")
+	updateTaskCmd.Flags().String("completed", "", "Date and time the task was completed")
+	updateCollectionCmd.Flags().String("description", "", "The collection description")
+	updateCollectionCmd.Flags().String("summary", "", "A short summary of the collection")
+	updateCollectionCmd.Flags().String("type", "", "The type of collection: stack, cycle, or list")
 }

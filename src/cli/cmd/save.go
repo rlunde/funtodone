@@ -60,15 +60,8 @@ func init() {
 	saveCmd.AddCommand(saveUserCmd)
 	saveCmd.AddCommand(saveTaskCmd)
 	saveCmd.AddCommand(saveCollectionCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// saveCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// saveCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	saveUserCmd.Flags().String("id", "", "The id of the user to save")
+	saveTaskCmd.Flags().String("id", "", "The id of the task to save")
+	saveCollectionCmd.Flags().String("id", "", "The id of the collection to save")
 
 }
