@@ -55,7 +55,7 @@ var deleteCollectionCmd = &cobra.Command{
 }
 
 func init() {
-	fmt.Println("delete.go init called")
+	// fmt.Println("delete.go init called")
 	RootCmd.AddCommand(deleteCmd)
 	deleteCmd.AddCommand(deleteUserCmd)
 	deleteCmd.AddCommand(deleteTaskCmd)
