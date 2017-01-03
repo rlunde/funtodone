@@ -55,21 +55,11 @@ var importCollectionCmd = &cobra.Command{
 }
 
 func init() {
-	fmt.Println("import.go init called")
+	// fmt.Println("import.go init called")
 	RootCmd.AddCommand(importCmd)
 	importCmd.AddCommand(importUserCmd)
 	importCmd.AddCommand(importTaskCmd)
 	importCmd.AddCommand(importCollectionCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// importCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// importCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	importUserCmd.Flags().String("filename", "", "The file containing the user(s) to import")
 	importTaskCmd.Flags().String("filename", "", "The file containing the task(s) to import")
 	importCollectionCmd.Flags().String("filename", "", "The file containing the collection(s) to import")

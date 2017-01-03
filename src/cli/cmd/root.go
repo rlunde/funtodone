@@ -31,7 +31,7 @@ func Execute() {
 }
 
 func init() {
-	fmt.Println("root.go init called")
+	// fmt.Println("root.go init called")
 	cobra.OnInitialize(initConfig)
 
 	// Here you will define your flags and configuration settings.

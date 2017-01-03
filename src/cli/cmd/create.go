@@ -55,7 +55,7 @@ var createCollectionCmd = &cobra.Command{
 }
 
 func init() {
-	fmt.Println("create.go init called")
+	// fmt.Println("create.go init called")
 	RootCmd.AddCommand(createCmd)
 	createCmd.AddCommand(createUserCmd)
 	createCmd.AddCommand(createTaskCmd)

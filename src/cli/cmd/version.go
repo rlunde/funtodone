@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -22,6 +23,6 @@ var versionCmd = &cobra.Command{
 }
 
 func init() {
-	fmt.Println("version.go init called")
+	// fmt.Println("version.go init called")
 	RootCmd.AddCommand(versionCmd)
 }

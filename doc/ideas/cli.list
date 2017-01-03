@@ -24,43 +24,13 @@ I think the order to do things for testing is:
  7. export a collection
  8. import a collection
 
-Operations:
-[ ] add a user
-  [ ] options: name, password, email
-[ ] login as a user, add a session
-  [ ] options: name, password
-[ ] add a task from command line args
-  [ ] options: description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
-[ ] update a task from command line args
-  [ ] options: taskId, description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
-[ ] import a single task from a file
-  [ ] options: name, password
-[ ] export a single task to a file
-  [ ] options: filename or none for stdout
-[ ] load a single task from the database
-  [ ] options: filename
-[ ] save a single task to the database
-  [ ] options: taskId
-[ ] add a child to a task
-  [ ] options: parentId, childId
-[ ] export a collection of tasks (stack, cycle, or list)
-  [ ] options: taskId, filename (optional)
-[ ] import a collection of tasks (stack, cycle, or list)
-  [ ] options: filename
-[ ] save a collection of tasks (stack, cycle, or list)
-  [ ] options: taskId
-[ ] load a collection of tasks (stack, cycle, or list)
-  [ ] options: taskId
-[ ] find a subtask via regex
-  [ ] options: taskId, regex
-[ ] find a task via regex
-  [ ] options: regex
-[ ] remove a child task
-  [ ] options: taskId
-[ ] remove a parent task
-  [ ] options: taskId
-[ ] modify a task (description, summary, level, status fields)
-  [ ] options: taskId, description, summary, level, status.done, status.started, status.due, status.created, status.modified, status.completed
+I realized something very late in the game, which is that if the CLI is intended to make
+testing of the library easier, we then have to test the CLI, which is much harder than
+just writing tests against the library directly. So what's the point of a CLI?
+
+I'm still thinking about that. It's late, but I think the most likely thing to do is throw
+out the whole CLI, and change the server to run a database bootstrap (create an initial user)
+if one doesn't already exist. Then write tests against the library as just regular go tests.
 
 Note that we'll probably just add a "serve" command once we're done testing the CLI which will
 cause it to process the options and then start an HTTP service.
