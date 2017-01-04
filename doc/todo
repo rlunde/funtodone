@@ -9,7 +9,6 @@ To Do:
 [ ] define what MVP looks like
 [ ] get an install script working (even with a hello world version in it)
 [ ] get a test suite working (even with a single test)
-[ ] get a CLI version working with a simple database
 [ ] start with a very basic beginner UI, maybe using require.js, react, backbone, bootstrap
   [ ] ignore webpack, browserify, etc. for now -- don't want or need the infrastructure
   [ ] make a paper prototype or two
@@ -50,7 +49,6 @@ To Do:
 [ ] First steps
  [ ] do the stuff in the current funtodone stack (funtodone/doc/ideas/funtodone.stack)
  [ ] add more tests (see list at end of model_test.go)
- [ ] get a CLI working that calls the same packages as the web will call
  [ ] get persistence to/from mongodb working (use https://labix.org/mgo)
  [ ] edit the stack for funtodone (replace this file)
  [ ] make code that can produce/re-create the JSON for the stack (../src/data/stacks/funtodone.json)
