@@ -200,6 +200,7 @@ Choosing a random task isn't quite all random, since funtodone tries to weight t
   * try not to pick the same task twice in a row (unless it's important and due right away)
   * try to alternate between more fun and less fun tasks
   * try to work on the more important things early in the day
+  * don't let a task starve by lack of attention, but put most of your energy into what is most important
 
 ## Doing Big Things: Too Many Tasks?
 
