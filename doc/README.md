@@ -119,7 +119,7 @@ But here's how you play, in a nutshell -- in general, three clicks and you're do
     d. expand it (add one or more child tasks)
     e. link it (edit what it depends on, or what depends on it)
     f. do it
-    g. promote it to a whole separate Stack, List, or Cycle
+    g. promote it to a whole separate Stack or List
     h. demote it to a FlashTask
   3. One you're doing a task, you can:
     a. go back to the previous stage
@@ -174,6 +174,8 @@ or get them out of the way if you're not. Since we recommend you not work on the
 more than 52 minutes at a time, even the least fun tasks aren't too bad.
 
 ### Chores: Cycles
+
+NOTE: We're postponing cycles until the rest is working -- it may not be a good fit for this project.
 
 Some things have to be done regularly. You have to take out the trash, get your hair cut, and banish the velociraptors
 back through the Time Portal. These tasks are often tied more to the calendar than other tasks (aside from deadlines).

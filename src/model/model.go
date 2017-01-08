@@ -23,7 +23,7 @@ const ( // iota is reset to 0
  * or a tree. Or it can be some strange combination of lists
  * (using prev and next) and trees (using parent and children).
  *
- * In the short term, there will only be lists, cycles (lists that loop), and stacks
+ * In the short term, there will only be lists and stacks
  * trees with only the highest child expanded.
  *
  * We generate the ObjectId that mongo uses for _id ourselves, and also
@@ -131,14 +131,6 @@ type TaskStack struct {
 
 //TaskList - a list of tasks, which aren't necessarily ordered
 type TaskList struct {
-	Description string `json:"description"`
-	Summary     string `json:"summary"`
-	User        User   `json:"user"` // TODO: consider team or group
-	Tasks       []Task `json:"tasks"`
-}
-
-//TaskCycle - a cycle of tasks, that need to be done periodically
-type TaskCycle struct {
 	Description string `json:"description"`
 	Summary     string `json:"summary"`
 	User        User   `json:"user"` // TODO: consider team or group
