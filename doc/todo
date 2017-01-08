@@ -25,7 +25,7 @@ To Do:
 [ ] the font needs to be more "fun" than bootstrap -- see how to do that
 [ ] think about how to make a mobile web app out of it
 
-[ ] gamify lists (as opposed to stacks or cycles)
+[ ] gamify lists (as opposed to stacks)
   [ ] first pick a random task from a list
   [ ] second, log that task, and if it's not done, make sure it doesn't come up again right away (usually)
 
@@ -34,8 +34,8 @@ To Do:
   [ ] redo build script to find src in right places and put executables/etc. in right places
 
 [ ] design operations to be done by command line and API
-  [ ] create a top level stack, cycle, or list
-  [ ] add a subtask to a stack, cycle, or list
+  [ ] create a top level stack or list
+  [ ] add a subtask to a stack or list
     [ ] or, add it as a subtask of the top level or of a subtask
     [ ] generate a task ID
   [ ] edit, move, delete tasks/subtasks
@@ -56,7 +56,7 @@ To Do:
  [ ] get a bare-bones web view working
  [ ] add auth to web view
  [ ] make it look nice enough for MVP
- [ ] start with a "stack" only view, and do cycles and lists when that is working
+ [ ] start with a "stack" only view, and do lists when that is working
  [ ] focus on the fun, and get feedback about next steps
 
 
