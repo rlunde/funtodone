@@ -157,5 +157,12 @@ Note on making things "fun":
  5. Keep a score, and count things like splitting a task, adding a level, getting a task
     done, etc. Give people a stretch goal, and keep track of progress over time.
 
+Actually, the main things that make things fun are:
+ 1. actually getting things done -- hence the drive to divide things up into smaller pieces
+ 2. seeing how much you've got done -- hence keeping graphs, charts, etc. (and making them interesting)
+ 3. getting recognition for getting things done -- have to think how to do this.
+   a) competition vs collaboration vs communication
+   b) see if I can find out what kind of recognition works best, and who it helps the most
+
 I briefly looked into BDD type testing, and it looks like there is some good stuff in ginkgo,
 but I don't have time to do that right now. Later on, look at ginkgo with gomega (https://onsi.github.io/ginkgo/)
