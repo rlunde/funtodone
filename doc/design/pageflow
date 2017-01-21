@@ -27,11 +27,9 @@ Main Page (after login or clicking on email confirm link after creating account)
   * link to a support page
   * links to same doc pages as on login page
   * link to log out
-  * current score, rank, stats
-  * link to friends
   * other than that, a SPA from now on
 
-  0. Choose a Stack, List, Cycle, or Bag of FlashTasks
+  0. Choose a Stack or List
     
   1. Click a button to get a task or make a new one:
     a. new task
@@ -44,8 +42,8 @@ Main Page (after login or clicking on email confirm link after creating account)
     d. expand it (add one or more child tasks)
     e. link it (edit what it depends on, or what depends on it)
     f. do it
-    g. promote it to a whole separate Stack, List, or Cycle
-    h. demote it to a FlashTask
+    g. promote it to a whole separate Stack or List
+    h. delete it
   3. One you're doing a task, you can:
     a. go back to the previous stage
     b. start a timer
@@ -53,27 +51,16 @@ Main Page (after login or clicking on email confirm link after creating account)
     d. edit it
     e. finish it
     f. stop working on it
+    g. delete it
 
 For a Stack, you can:
   1. Reorder tasks at the top level (e.g. those with the same depth)
   2. Add or edit notes attached to any task
   3. Add or edit notes attached to the whole stack
-  4. Do the above 3 steps for a task
 
 For a List, you can:
-  1. Do the above 3 steps
-  2. Add or edit notes attached to any task
-  3. Set a deadline, priority, or importance for a task
-  4. Make a task into a subtask of another
-
-For a Cycle, you can:
-  1. Set frequency
-  2. Set reminders
-  3. Set a deadline, priority, or importance for a task
-  4. Make a task into a subtask of another
-  5. Do the above 3 steps
-
-For FlashTasks, you can:
-  1. Do the above 3 steps
-  2. Move it to a List
+  1. Add or edit notes attached to any task
+  2. Set a deadline, priority, or importance for a task
+  3. Make a task into a subtask of another
+  4. Make a subtask into a separate task
 
