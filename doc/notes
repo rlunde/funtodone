@@ -1,7 +1,7 @@
 
 I'm switching over to a "standard" linux based install (not using Heroku or
 a shared hosting server) -- I signed up for Digital Ocean and mapped the funtodone.com
-domain to it.
+domain to it (although I haven't installed it yet, so don't bother trying it).
 
 I want to take a big step back and set up this github project as a "standard" golang-based
 web project on github, which will require some investigation.

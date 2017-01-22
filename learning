@@ -1,3 +1,4 @@
-technologies to use:
-  1) go for server code
-  2) javascript, bootstrap, and react for client side
+technologies used:
+  1) golang for server code
+  2) mongo for development database
+  3) javascript, bootstrap, and react for client side
