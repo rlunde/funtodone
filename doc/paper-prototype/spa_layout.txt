@@ -15,6 +15,7 @@ left-menu:
     split
     done
     add subtask
+    delete
 right-menu:
     score
     stats

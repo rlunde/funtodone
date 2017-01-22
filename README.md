@@ -4,5 +4,5 @@ goal of eventually knowing go, bootstrap, react, and so on. I will remove this d
 I think the project has reached MVP (minimum viable project) stage. That won't be for a while.
 
 The main README.md file for this project is in the doc directory.
-See: [./doc](https://github.com/rlunde/funtodone/doc)
+See: [./doc](https://github.com/rlunde/funtodone/tree/master/doc)
 
