@@ -5,8 +5,6 @@ to make the code to create and manage the JSON format.
 
 Larger numbers are higher up the stack.
 
-5: looks like ginkgo with gomega is what I need (https://onsi.github.io/ginkgo/)
-4: try to find a BDD library/system for golang (but don't go down rabbit hole)
 3: get a test working that creates a stack, exports it, deletes it, and imports it
 3: when running the service, if the database has no users, create admin based on config file
 2: Get library and appropriate tests finished and working
