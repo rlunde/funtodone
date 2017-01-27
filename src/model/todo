@@ -4,7 +4,5 @@ Next steps:
  [ ] add file I/O
  [ ] add priority and date constraints, size, etc. to Tasks
  [ ] add generic metadata to tasks
- [ ] add tests
+ [ ] add more tests
  [ ] look for test frameworks beyond the basics
- [ ] add a database representation converting pointers to IDs and back
- [ ] add a command line wrapper around all the functions
