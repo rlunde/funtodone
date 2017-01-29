@@ -120,7 +120,7 @@ But here's how you play, in a nutshell -- in general, three clicks and you're do
     e. link it (edit what it depends on, or what depends on it)
     f. do it
     g. promote it to a whole separate Stack or List
-    h. demote it to a FlashTask
+    h. delete it
   3. One you're doing a task, you can:
     a. go back to the previous stage
     b. start a timer
@@ -172,28 +172,6 @@ Part of the fun is to let funtodone pick a next task for you to work on. That wa
 some tasks that are urgent but less fun than others, you can either avoid them if you're lucky,
 or get them out of the way if you're not. Since we recommend you not work on the same task for
 more than 52 minutes at a time, even the least fun tasks aren't too bad.
-
-### Chores: Cycles
-
-NOTE: We're postponing cycles until the rest is working -- it may not be a good fit for this project.
-
-Some things have to be done regularly. You have to take out the trash, get your hair cut, and banish the velociraptors
-back through the Time Portal. These tasks are often tied more to the calendar than other tasks (aside from deadlines).
-
-If a task has to be done regularly, and you just don't want to forget about it, it goes in a Cycle Process.
-
-### Ten Minute Tasks: FlashTasks
-
-Sometimes tiny little things nag at you for years, just because they can. If it will take you less than 10 minutes to do,
-and it's not part of something larger, it goes in the most fun batch of tasks.
-
-A "flashtask" is something that you can do when you only have a few minutes (and "only having a few minutes" happens to
-most of us a LOT). Also, it's something we can use to make ourselves feel good.
-
-"Yay! I finally peeled that Cheez Whiz off the ceiling!"
-
-We'll have a whole section on FlashTasks, but for now just remember that collecting those is a great way to Feel Good
-about Getting Shit Done.
 
 ## Doing Odds & Ends: The Gory Details
 
