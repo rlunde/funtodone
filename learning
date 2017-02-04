@@ -2,4 +2,9 @@ technologies used:
   1) golang for server code
   2) mongo for development database
   3) javascript, bootstrap, and react for client side
-  4) possibly vue.js instead?
+  4) possibly vue.js instead of react?
+
+tools used:
+  1) atom editor
+  2) browser-sync
+  3) jest javascript test framework: https://facebook.github.io/jest/
