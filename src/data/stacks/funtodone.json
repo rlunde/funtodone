@@ -4,11 +4,13 @@
   "description": "get minimum viable project released",
   "tasks": [
     {"step":"1","description":"write tests of library - regenerate this list"},
-    {"step":"2","description":"write tests REST APIs"},
+    {"step":"2","description":"write tests for REST APIs"},
     {"step":"3","description":"write REST APIs"},
     {"step":"4","description":"write tests of an initial web UI"},
     {"step":"5","description":"design initial responsive web UI"},
     {"step":"6","description":"tie UI to REST APIs"}
+    {"step":"7","description":"add user management / auth"}
+    {"step":"8","description":"make it minimally good looking"}
     ]
   }
 }
