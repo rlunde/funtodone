@@ -19,13 +19,27 @@ func TestTaskToString(t *testing.T) {
 	id := bson.ObjectIdHex("583f9a189e743bea858113ca")
 	idstr := id.Hex()
 	task := NewTask("simple task", "do something", status, idstr)
-	s := TaskToString(task)
+	s := task.TaskToString()
 	// fmt.Println(s)
 	expected :=
 		`{"ID":"583f9a189e743bea858113ca","parent":null,"children":null,"description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
 	if expected != s {
 		t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
 	}
+}
+func TestStringToTask(t *testing.T) {
+	status := Status{}
+	id := bson.ObjectIdHex("583f9a189e743bea858113ca")
+	idstr := id.Hex()
+	task := NewTask("simple task", "do something", status, idstr)
+	s := task.TaskToString()
+	// fmt.Println(s)
+	parsedTask := TaskDecoder(s)
+	if parsedTask.ID != id {
+		t.Errorf("expected: %s\nbut got:\n%s", id, parsedTask.ID)
+	}
+	// s = task.TaskToString()
+	// fmt.Println(s)
 }
 func TestNewStatus(t *testing.T) {
 	status, _ := NewStatus(false, false, nil)
