@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log"
 	"os"
+	"strings"
 	"time"
 
 	bson "gopkg.in/mgo.v2/bson"
@@ -191,8 +193,7 @@ func RemoveTask(node *Task, recursive bool) error {
 }
 
 //TaskToString - make a printable representation of a task
-// TODO: make this a method
-func TaskToString(task *Task) string {
+func (task *Task) TaskToString() string {
 	if task == nil {
 		return ""
 	}
@@ -201,4 +202,15 @@ func TaskToString(task *Task) string {
 		fmt.Println(string(taskstr))
 	}
 	return string(taskstr)
+}
+
+//TaskDecoder - deserialize a task from a string
+func TaskDecoder(jsonTask string) Task {
+	dec := json.NewDecoder(strings.NewReader(jsonTask))
+	var t Task
+	err := dec.Decode(&t)
+	if err != nil {
+		log.Print(err)
+	}
+	return t
 }
