@@ -37,8 +37,8 @@ const ( // iota is reset to 0
 type Task struct {
 	ID          bson.ObjectId `bson:"_id,omitempty"`
 	ptr         *Task         // mongo didn't like (upper case) Ptr at all, even when I told it not to save/serialize it
-	Parent      *Task         `json:"parent"`
-	Children    []*Task       `json:"children"`
+	Parent      *Task         `json:"parent,omitempty"`
+	Children    []*Task       `json:"children,omitempty"`
 	Description string        `json:"description"`
 	Summary     string        `json:"summary"`
 	Level       int           `json:"level"`
@@ -145,6 +145,7 @@ func AddTask(node, newNode *Task, newNodeType int) error {
 		return errors.New("AddTask called with nil Task")
 	}
 	if newNodeType == NodeChild { // newNode is a child of node
+		// fmt.Println("adding child node")
 		newNode.Parent = node
 		node.Children = append(node.Children, newNode)
 	} else if newNodeType == NodeParent { // newNode is the parent of node
@@ -204,8 +205,8 @@ func (task *Task) TaskToString() string {
 	return string(taskstr)
 }
 
-//TaskDecoder - deserialize a task from a string
-func TaskDecoder(jsonTask string) Task {
+//DecodeTask - deserialize a task from a string
+func DecodeTask(jsonTask string) Task {
 	dec := json.NewDecoder(strings.NewReader(jsonTask))
 	var t Task
 	err := dec.Decode(&t)

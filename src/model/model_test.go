@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"fmt"
 	"regexp"
 	"testing"
 	"time"
@@ -14,11 +15,16 @@ var (
 	DropDatabase = true
 )
 
-func TestTaskToString(t *testing.T) {
+func SetupTestTask(idStr string, desc string, summary string) *Task {
 	status := Status{}
-	id := bson.ObjectIdHex("583f9a189e743bea858113ca")
+	id := bson.ObjectIdHex(idStr)
 	idstr := id.Hex()
-	task := NewTask("simple task", "do something", status, idstr)
+	task := NewTask(desc, summary, status, idstr)
+	return task
+}
+
+func TestTaskToString(t *testing.T) {
+	task := SetupTestTask("583f9a189e743bea858113ca", "simple task", "do something")
 	s := task.TaskToString()
 	// fmt.Println(s)
 	expected :=
@@ -34,10 +40,11 @@ func TestStringToTask(t *testing.T) {
 	task := NewTask("simple task", "do something", status, idstr)
 	s := task.TaskToString()
 	// fmt.Println(s)
-	parsedTask := TaskDecoder(s)
+	parsedTask := DecodeTask(s)
 	if parsedTask.ID != id {
 		t.Errorf("expected: %s\nbut got:\n%s", id, parsedTask.ID)
 	}
+	// TODO: compare more values here
 	// s = task.TaskToString()
 	// fmt.Println(s)
 }
@@ -165,6 +172,33 @@ func TestFindTask(t *testing.T) {
 			if newtask.Summary != task.Summary {
 				t.Errorf("expected:\n%s\nbut got:\n%s", newtask.Summary, task.Summary)
 			}
+		}
+	}
+}
+
+func TestAddChildTask(t *testing.T) {
+	fmt.Println("creating parent node")
+	parent := SetupTestTask("583f9a189e743bea858113ca", "parent task", "main task")
+	fmt.Println("creating child node")
+	child := SetupTestTask("583f9a189e743bea858113cb", "child task", "subtask")
+	if parent == child {
+		t.Errorf("something went wrong")
+	}
+	fmt.Println("adding child node to parent node")
+	err := AddTask(child, parent, NodeParent)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	fmt.Println("converting parent node to string")
+	s := child.TaskToString()
+	if err != nil {
+		t.Errorf(err.Error())
+	} else {
+		fmt.Println(s)
+		expected :=
+			`{"ID":"583f9a189e743bea858113ca","parent":null,"children":null,"description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
+		if expected != s {
+			t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
 		}
 	}
 }
