@@ -37,7 +37,7 @@ const ( // iota is reset to 0
 type Task struct {
 	ID          bson.ObjectId `bson:"_id,omitempty"`
 	ptr         *Task         // mongo didn't like (upper case) Ptr at all, even when I told it not to save/serialize it
-	Parent      *Task         `json:"parent,omitempty"`
+	Parent      *Task         `json:"-"` // avoid infinite recursion when marshalling json
 	Children    []*Task       `json:"children,omitempty"`
 	Description string        `json:"description"`
 	Summary     string        `json:"summary"`
