@@ -28,7 +28,7 @@ func TestTaskToString(t *testing.T) {
 	s := task.TaskToString()
 	// fmt.Println(s)
 	expected :=
-		`{"ID":"583f9a189e743bea858113ca","parent":null,"children":null,"description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
+		`{"ID":"583f9a189e743bea858113ca","description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
 	if expected != s {
 		t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
 	}
@@ -184,19 +184,16 @@ func TestAddChildTask(t *testing.T) {
 	if parent == child {
 		t.Errorf("something went wrong")
 	}
-	fmt.Println("adding child node to parent node")
-	err := AddTask(child, parent, NodeParent)
+	err := AddTask(parent, child, NodeChild)
 	if err != nil {
 		t.Errorf(err.Error())
 	}
-	fmt.Println("converting parent node to string")
-	s := child.TaskToString()
+	s := parent.TaskToString()
 	if err != nil {
 		t.Errorf(err.Error())
 	} else {
-		fmt.Println(s)
 		expected :=
-			`{"ID":"583f9a189e743bea858113ca","parent":null,"children":null,"description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
+			`{"ID":"583f9a189e743bea858113ca","children":[{"ID":"583f9a189e743bea858113cb","description":"child task","summary":"subtask","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}],"description":"parent task","summary":"main task","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
 		if expected != s {
 			t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
 		}
