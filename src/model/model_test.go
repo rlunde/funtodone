@@ -2,7 +2,6 @@ package model
 
 import (
 	"encoding/json"
-	"fmt"
 	"regexp"
 	"testing"
 	"time"
@@ -177,9 +176,7 @@ func TestFindTask(t *testing.T) {
 }
 
 func TestAddChildTask(t *testing.T) {
-	fmt.Println("creating parent node")
 	parent := SetupTestTask("583f9a189e743bea858113ca", "parent task", "main task")
-	fmt.Println("creating child node")
 	child := SetupTestTask("583f9a189e743bea858113cb", "child task", "subtask")
 	if parent == child {
 		t.Errorf("something went wrong")
@@ -199,16 +196,50 @@ func TestAddChildTask(t *testing.T) {
 		}
 	}
 }
+func TestAddChildTaskToNull(t *testing.T) {
+	child := SetupTestTask("583f9a189e743bea858113cb", "child task", "subtask")
+	err := AddTask(nil, child, NodeChild)
+	if err == nil {
+		t.Errorf("expected an error but didn't get one")
+	}
+}
+func TestAddNullChild(t *testing.T) {
+	parent := SetupTestTask("583f9a189e743bea858113cb", "parent task", "task")
+	err := AddTask(parent, nil, NodeChild)
+	if err == nil {
+		t.Errorf("expected an error but didn't get one")
+	}
+}
+func TestAddParentTask(t *testing.T) {
+	parent := SetupTestTask("583f9a189e743bea858113ca", "parent task", "main task")
+	child := SetupTestTask("583f9a189e743bea858113cb", "child task", "subtask")
+	if parent == child {
+		t.Errorf("something went wrong")
+	}
+	err := AddTask(child, parent, NodeParent)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	s := parent.TaskToString()
+	if err != nil {
+		t.Errorf(err.Error())
+	} else {
+		expected :=
+			`{"ID":"583f9a189e743bea858113ca","children":[{"ID":"583f9a189e743bea858113cb","description":"child task","summary":"subtask","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}],"description":"parent task","summary":"main task","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
+		if expected != s {
+			t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
+		}
+	}
+}
 
 /*
  * TODO: Tests to add
  *  [ ] error tests for TaskToString
  *  [ ] tests for AddTask
-       [ ] nil node
-			 [ ] nil newNode
-			 [ ] add a valid child node
-			 [ ] add a parent node to a node without a parent
 			 [ ] error if add a parent node to a node with a parent
 	     [ ] error if add a node with an invalid newNodeType
+ *  [ ] tests for DecodeTask
+       [ ] initialize optional fields
+			 [ ] parse a node with children
 
 */

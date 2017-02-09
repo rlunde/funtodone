@@ -1,8 +1,6 @@
 Next steps:
  [ ] add JSON output and parsing
  [ ] add file I/O
- [ ] update model_test -- see TODO list in that file
+ [ ] finish model_test -- see TODO list in that file
  [ ] add priority and date constraints, size, etc. to Tasks
  [ ] add generic metadata to tasks
- [ ] add more tests
- [ ] look for test frameworks beyond the basics

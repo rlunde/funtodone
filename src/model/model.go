@@ -153,6 +153,7 @@ func AddTask(node, newNode *Task, newNodeType int) error {
 			return errors.New("AddTask can't add parent node: node already has parent")
 		}
 		node.Parent = newNode
+		newNode.Children = append(newNode.Children, node)
 	} else { // newNodeType is a NONE or bogus
 		return fmt.Errorf("AddTask called with unknown newNodeType: %d", newNodeType)
 	}
