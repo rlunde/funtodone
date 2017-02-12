@@ -44,3 +44,5 @@ pkg/
 **/src/server
 **/src/funtodone
 **/src/funtodone-cli
+**/src/github.com
+**/src/main/funtodone

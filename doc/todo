@@ -33,7 +33,8 @@ To Do:
   [ ] move everything to top level src, bin, doc, dist directories
   [ ] redo build script to find src in right places and put executables/etc. in right places
 
-[ ] design operations to be done by command line and API
+[ ] design operations to be done by REST API
+  [ ] make some curl-based bash scripts to exercise the REST API
   [ ] create a top level stack or list
   [ ] add a subtask to a stack or list
     [ ] or, add it as a subtask of the top level or of a subtask
@@ -58,5 +59,3 @@ To Do:
  [ ] make it look nice enough for MVP
  [ ] start with a "stack" only view, and do lists when that is working
  [ ] focus on the fun, and get feedback about next steps
-
-
