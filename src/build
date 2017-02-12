@@ -1,2 +1,5 @@
 #!/bin/bash
-go build -o funtodone main.go
+cd ..
+export GOPATH=`pwd`
+cd src
+go build -o main/funtodone main/main.go
