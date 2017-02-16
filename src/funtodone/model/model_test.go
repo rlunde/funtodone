@@ -16,7 +16,12 @@ var (
 
 func SetupTestTask(idStr string, desc string, summary string) *Task {
 	status := Status{}
-	id := bson.ObjectIdHex(idStr)
+	var id bson.ObjectId
+	if idStr == "" {
+		id = bson.NewObjectId()
+	} else {
+		id = bson.ObjectIdHex(idStr)
+	}
 	idstr := id.Hex()
 	task := NewTask(desc, summary, status, idstr)
 	return task

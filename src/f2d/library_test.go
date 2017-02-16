@@ -14,31 +14,57 @@ var (
 
 func SetupTestTask(idStr string, desc string, summary string) *model.Task {
 	status := model.Status{}
-	id := bson.ObjectIdHex(idStr)
+	var id bson.ObjectId
+	if idStr == "" {
+		id = bson.NewObjectId()
+	} else {
+		id = bson.ObjectIdHex(idStr)
+	}
 	idstr := id.Hex()
 	task := model.NewTask(desc, summary, status, idstr)
 	return task
 }
-func TestAddChildTask(t *testing.T) {
-	parent := SetupTestTask("583f9a189e743bea858113ca", "parent task", "main task")
-	child := SetupTestTask("583f9a189e743bea858113cb", "child task", "subtask")
-	if parent == child {
-		t.Errorf("something went wrong")
+
+/*
+Reproduce this:
+{"step":"1","description":"write tests of library - regenerate this list"},
+{"step":"2","description":"write tests for REST APIs"},
+{"step":"3","description":"write REST APIs"},
+{"step":"4","description":"write tests of an initial web UI"},
+{"step":"5","description":"design initial responsive web UI"},
+{"step":"6","description":"tie UI to REST APIs"}
+{"step":"7","description":"add user management / auth"}
+{"step":"8","description":"make it minimally good looking"}
+*/
+func TestMakeInitialStack(t *testing.T) {
+	taskstrs := []string{
+		"write tests of library - regenerate this list",
+		"write tests for REST APIs",
+		"write REST APIs",
+		"write tests of an initial web UI",
+		"design initial responsive web UI",
+		"tie UI to REST APIs",
+		"add user management / auth",
+		"make it minimally good looking",
 	}
-	err := model.AddTask(parent, child, model.NodeChild)
-	if err != nil {
-		t.Errorf(err.Error())
-	}
-	s := parent.TaskToString()
-	if err != nil {
-		t.Errorf(err.Error())
-	} else {
-		expected :=
-			`{"ID":"583f9a189e743bea858113ca","children":[{"ID":"583f9a189e743bea858113cb","description":"child task","summary":"subtask","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}],"description":"parent task","summary":"main task","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
-		if expected != s {
-			t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
+	var tasks []*model.Task
+	parent := SetupTestTask("", "parent task", "main task")
+	for i := 0; i < len(taskstrs); i++ {
+		task := SetupTestTask("", taskstrs[i], "task"+string(i))
+		tasks = append(tasks, task)
+		err := model.AddTask(parent, tasks[i], model.NodeChild)
+		if err != nil {
+			t.Errorf(err.Error())
 		}
 	}
+	s := parent.TaskToString()
+
+	expected :=
+		`{"ID":"583f9a189e743bea858113ca","children":[{"ID":"583f9a189e743bea858113cb","description":"child task","summary":"subtask","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}],"description":"parent task","summary":"main task","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
+	if expected != s {
+		t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
+	}
+
 }
 
 /*
