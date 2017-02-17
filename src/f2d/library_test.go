@@ -1,9 +1,10 @@
 package main
 
 import (
-	"testing"
-
 	"funtodone/model"
+	"io/ioutil"
+	"strconv"
+	"testing"
 
 	"gopkg.in/mgo.v2/bson"
 )
@@ -50,19 +51,19 @@ func TestMakeInitialStack(t *testing.T) {
 	var tasks []*model.Task
 	parent := SetupTestTask("", "parent task", "main task")
 	for i := 0; i < len(taskstrs); i++ {
-		task := SetupTestTask("", taskstrs[i], "task"+string(i))
+		task := SetupTestTask("", taskstrs[i], "task"+strconv.Itoa(i))
 		tasks = append(tasks, task)
 		err := model.AddTask(parent, tasks[i], model.NodeChild)
 		if err != nil {
 			t.Errorf(err.Error())
 		}
 	}
-	s := parent.TaskToString()
+	s := parent.TaskToString(true)
 
-	expected :=
-		`{"ID":"583f9a189e743bea858113ca","children":[{"ID":"583f9a189e743bea858113cb","description":"child task","summary":"subtask","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}],"description":"parent task","summary":"main task","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
-	if expected != s {
-		t.Errorf("expected:\n%s\nbut got:\n%s", expected, s)
+	ba := []byte(s)
+	err := ioutil.WriteFile("task.json", ba, 0644)
+	if err != nil {
+		t.Errorf("error in WriteFile: %s\n", err.Error())
 	}
 
 }
@@ -70,8 +71,8 @@ func TestMakeInitialStack(t *testing.T) {
 /*
 TODO:
 For all of these, don't hard-code the object ID -- just generate one
-a) create an in-memory version of the current funtodone.stack
-b) print out the JSON form of that to a file
+x) create an in-memory version of the current funtodone.stack
+x) print out the JSON form of that to a file
 c) read in the JSON form from a file
 d) save it to the database
 e) read it from the database
