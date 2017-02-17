@@ -29,7 +29,7 @@ func SetupTestTask(idStr string, desc string, summary string) *Task {
 
 func TestTaskToString(t *testing.T) {
 	task := SetupTestTask("583f9a189e743bea858113ca", "simple task", "do something")
-	s := task.TaskToString()
+	s := task.TaskToString(false)
 	// fmt.Println(s)
 	expected :=
 		`{"ID":"583f9a189e743bea858113ca","description":"simple task","summary":"do something","level":0,"status":{"done":false,"started":false,"due":"0001-01-01T00:00:00Z","created":"0001-01-01T00:00:00Z","modified":"0001-01-01T00:00:00Z","completed":"0001-01-01T00:00:00Z"}}`
@@ -42,7 +42,7 @@ func TestStringToTask(t *testing.T) {
 	id := bson.ObjectIdHex("583f9a189e743bea858113ca")
 	idstr := id.Hex()
 	task := NewTask("simple task", "do something", status, idstr)
-	s := task.TaskToString()
+	s := task.TaskToString(false)
 	// fmt.Println(s)
 	parsedTask := DecodeTask(s)
 	if parsedTask.ID != id {
@@ -190,7 +190,7 @@ func TestAddChildTask(t *testing.T) {
 	if err != nil {
 		t.Errorf(err.Error())
 	}
-	s := parent.TaskToString()
+	s := parent.TaskToString(false)
 	if err != nil {
 		t.Errorf(err.Error())
 	} else {
@@ -225,7 +225,7 @@ func TestAddParentTask(t *testing.T) {
 	if err != nil {
 		t.Errorf(err.Error())
 	}
-	s := parent.TaskToString()
+	s := parent.TaskToString(false)
 	if err != nil {
 		t.Errorf(err.Error())
 	} else {

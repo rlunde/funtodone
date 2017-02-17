@@ -195,11 +195,17 @@ func RemoveTask(node *Task, recursive bool) error {
 }
 
 //TaskToString - make a printable representation of a task
-func (task *Task) TaskToString() string {
+func (task *Task) TaskToString(prettyPrint bool) string {
 	if task == nil {
 		return ""
 	}
-	taskstr, _ := json.Marshal(task)
+	var taskstr []byte
+	if prettyPrint {
+		taskstr, _ = json.MarshalIndent(task, "", "    ")
+	} else {
+		taskstr, _ = json.Marshal(task)
+	}
+
 	if os.Getenv("DEBUG") != "" {
 		fmt.Println(string(taskstr))
 	}
