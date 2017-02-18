@@ -1,16 +1,128 @@
 {
-"funtodone": {
-  "step":"0",
-  "description": "get minimum viable project released",
-  "tasks": [
-    {"step":"1","description":"write tests of library - regenerate this list"},
-    {"step":"2","description":"write tests for REST APIs"},
-    {"step":"3","description":"write REST APIs"},
-    {"step":"4","description":"write tests of an initial web UI"},
-    {"step":"5","description":"design initial responsive web UI"},
-    {"step":"6","description":"tie UI to REST APIs"}
-    {"step":"7","description":"add user management / auth"}
-    {"step":"8","description":"make it minimally good looking"}
-    ]
-  }
+    "ID": "58a7c73e9e743b2a77c52bf2",
+    "children": [
+        {
+            "ID": "58a7c73e9e743b2a77c52bf3",
+            "description": "write tests of library - regenerate this list",
+            "summary": "task0",
+            "level": 1,
+            "status": {
+                "done": true,
+                "started": true,
+                "due": "0001-01-01T00:00:00Z",
+                "created": "0001-01-01T00:00:00Z",
+                "modified": "0001-01-01T00:00:00Z",
+                "completed": "2017-02-17T00:00:00Z"
+            }
+        },
+        {
+            "ID": "58a7c73e9e743b2a77c52bf4",
+            "description": "write tests for REST APIs",
+            "summary": "task1",
+            "level": 0,
+            "status": {
+                "done": false,
+                "started": false,
+                "due": "0001-01-01T00:00:00Z",
+                "created": "0001-01-01T00:00:00Z",
+                "modified": "0001-01-01T00:00:00Z",
+                "completed": "0001-01-01T00:00:00Z"
+            }
+        },
+        {
+            "ID": "58a7c73e9e743b2a77c52bf5",
+            "description": "write REST APIs",
+            "summary": "task2",
+            "level": 0,
+            "status": {
+                "done": false,
+                "started": false,
+                "due": "0001-01-01T00:00:00Z",
+                "created": "0001-01-01T00:00:00Z",
+                "modified": "0001-01-01T00:00:00Z",
+                "completed": "0001-01-01T00:00:00Z"
+            }
+        },
+        {
+            "ID": "58a7c73e9e743b2a77c52bf6",
+            "description": "write tests of an initial web UI",
+            "summary": "task3",
+            "level": 0,
+            "status": {
+                "done": false,
+                "started": false,
+                "due": "0001-01-01T00:00:00Z",
+                "created": "0001-01-01T00:00:00Z",
+                "modified": "0001-01-01T00:00:00Z",
+                "completed": "0001-01-01T00:00:00Z"
+            }
+        },
+        {
+            "ID": "58a7c73e9e743b2a77c52bf7",
+            "description": "design initial responsive web UI",
+            "summary": "task4",
+            "level": 0,
+            "status": {
+                "done": false,
+                "started": false,
+                "due": "0001-01-01T00:00:00Z",
+                "created": "0001-01-01T00:00:00Z",
+                "modified": "0001-01-01T00:00:00Z",
+                "completed": "0001-01-01T00:00:00Z"
+            }
+        },
+        {
+            "ID": "58a7c73e9e743b2a77c52bf8",
+            "description": "tie UI to REST APIs",
+            "summary": "task5",
+            "level": 0,
+            "status": {
+                "done": false,
+                "started": false,
+                "due": "0001-01-01T00:00:00Z",
+                "created": "0001-01-01T00:00:00Z",
+                "modified": "0001-01-01T00:00:00Z",
+                "completed": "0001-01-01T00:00:00Z"
+            }
+        },
+        {
+            "ID": "58a7c73e9e743b2a77c52bf9",
+            "description": "add user management / auth",
+            "summary": "task6",
+            "level": 0,
+            "status": {
+                "done": false,
+                "started": false,
+                "due": "0001-01-01T00:00:00Z",
+                "created": "0001-01-01T00:00:00Z",
+                "modified": "0001-01-01T00:00:00Z",
+                "completed": "0001-01-01T00:00:00Z"
+            }
+        },
+        {
+            "ID": "58a7c73e9e743b2a77c52bfa",
+            "description": "make it minimally good looking",
+            "summary": "task7",
+            "level": 0,
+            "status": {
+                "done": false,
+                "started": false,
+                "due": "0001-01-01T00:00:00Z",
+                "created": "0001-01-01T00:00:00Z",
+                "modified": "0001-01-01T00:00:00Z",
+                "completed": "0001-01-01T00:00:00Z"
+            }
+        }
+    ],
+    "description": "parent task",
+    "summary": "main task",
+    "level": 0,
+    "status": {
+        "done": false,
+        "started": false,
+        "due": "0001-01-01T00:00:00Z",
+        "created": "0001-01-01T00:00:00Z",
+        "modified": "0001-01-01T00:00:00Z",
+        "completed": "0001-01-01T00:00:00Z"
+    }
 }
