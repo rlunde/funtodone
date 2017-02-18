@@ -213,6 +213,7 @@ func (task *Task) TaskToString(prettyPrint bool) string {
 }
 
 //DecodeTask - deserialize a task from a string
+//TODO: return the error
 func DecodeTask(jsonTask string) Task {
 	dec := json.NewDecoder(strings.NewReader(jsonTask))
 	var t Task

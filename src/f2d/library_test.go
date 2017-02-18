@@ -60,12 +60,23 @@ func TestMakeInitialStack(t *testing.T) {
 	}
 	s := parent.TaskToString(true)
 
-	ba := []byte(s)
-	err := ioutil.WriteFile("task.json", ba, 0644)
+	baOut := []byte(s)
+	err := ioutil.WriteFile("task.json", baOut, 0644)
 	if err != nil {
 		t.Errorf("error in WriteFile: %s\n", err.Error())
 	}
 
+	// now read it back in and see if we can parse it
+	baIn, err := ioutil.ReadFile("task.json")
+	if err != nil {
+		t.Errorf("error in ReadFile: %s\n", err.Error())
+	}
+
+	newTask := model.DecodeTask(string(baIn))
+
+	if newTask.Summary != "main task" {
+		t.Errorf("round trip failed, expected summary to be \"main task\", but got: %s\n", newTask.Summary)
+	}
 }
 
 /*
