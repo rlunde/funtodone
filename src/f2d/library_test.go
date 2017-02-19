@@ -84,7 +84,8 @@ TODO:
 For all of these, don't hard-code the object ID -- just generate one
 x) create an in-memory version of the current funtodone.stack
 x) print out the JSON form of that to a file
-c) read in the JSON form from a file
+x) read in the JSON form from a file
 d) save it to the database
 e) read it from the database
+f) put in reasonable dates for unset dates
 */
