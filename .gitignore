@@ -41,8 +41,6 @@ pkg/
 # misc
 **/client/.DS_Store
 **/client/npm-debug.log
-**/src/server
-**/src/funtodone
 **/src/funtodone-cli
 **/src/github.com
 **/src/f2d/funtodone
