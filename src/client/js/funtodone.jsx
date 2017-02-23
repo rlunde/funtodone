@@ -1,10 +1,10 @@
-var TodosList = React.createClass({
+var TasksList = React.createClass({
     render: function() {
         return (
-            <div className="todosList">
+            <div className="tasksList">
                 <button className="placeholder">Just a placeholder - nothing working yet</button>
             </div>
         );
     }
 });
-ReactDOM.render(< TodosList / >, document.getElementById('todos'));
+ReactDOM.render(< TasksList / >, document.getElementById('tasks'));
