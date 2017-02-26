@@ -2,11 +2,11 @@ package main
 
 import (
 	"funtodone/model"
+	"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"strconv"
 	"testing"
-
-	"gopkg.in/mgo.v2/bson"
+	"time"
 )
 
 var (
@@ -14,7 +14,12 @@ var (
 )
 
 func SetupTestTask(idStr string, desc string, summary string) *model.Task {
-	status := model.Status{}
+	status := model.Status{
+		Done:     false,
+		Started:  false,
+		Created:  time.Now(),
+		Modified: time.Now(),
+	}
 	var id bson.ObjectId
 	if idStr == "" {
 		id = bson.NewObjectId()
