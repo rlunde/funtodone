@@ -236,12 +236,27 @@ func TestAddParentTask(t *testing.T) {
 		}
 	}
 }
+func TestAddParentToTaskWithParent(t *testing.T) {
+	parent := SetupTestTask("583f9a189e743bea858113ca", "parent task", "main task")
+	child := SetupTestTask("583f9a189e743bea858113cb", "child task", "subtask")
+	if parent == child {
+		t.Errorf("something went wrong")
+	}
+	err := AddTask(child, parent, NodeParent)
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	parent2 := SetupTestTask("583f9a189e743bea858113cc", "parent task 2", "main task 2")
+	err = AddTask(child, parent2, NodeParent)
+	if err == nil {
+		t.Errorf("expected error when adding second parent, but it succeeded")
+	}
+}
 
 /*
  * TODO: Tests to add
  *  [ ] error tests for TaskToString
  *  [ ] tests for AddTask
-			 [ ] error if add a parent node to a node with a parent
 	     [ ] error if add a node with an invalid newNodeType
  *  [ ] tests for DecodeTask
        [ ] initialize optional fields
