@@ -10,12 +10,12 @@ Adding a little random fun (and a little extra intelligence) to your todo list
 
 # The Enemy
 
-Distraction, procrastination, and constant interruptions are killing our productivity, our 
-self-esteem, our ability to concentrate, and (possibly due to increased stress as a 
-result) even our health. 
+Distraction, procrastination, and constant interruptions are killing our productivity, our
+self-esteem, our ability to concentrate, and (possibly due to increased stress as a
+result) even our health.
 
-But lets face it -- we're knowledge workers. We can't go hide in the forest and cut ourselves 
-off from the Internet and still get our work done. 
+But lets face it -- we're knowledge workers. We can't go hide in the forest and cut ourselves
+off from the Internet and still get our work done.
 
 If you look up procrastination in Amazon, you'll currently find 7129 results among books.
 A search for distraction returns another 1775. There are LOTS of software tools already available
@@ -29,7 +29,7 @@ This is another one. But this one is different:
 
 # Why Now?
 
-Things are only going to get worse. 
+Things are only going to get worse.
 
   * the main economic force driving the internet is advertising
   * advertisers want your eyeballs
@@ -160,7 +160,7 @@ TODO: put some pictures in here
 ### Odds & Ends: Lists
 
 This is what you might see in a standard To Do list. Things like "Write the report on paranormal activity in the library" or
-"Clean up the back yard, and figure out where all the velociraptor poop is coming from." 
+"Clean up the back yard, and figure out where all the velociraptor poop is coming from."
 
 Tasks in a list don't (usually) have to be done in a particular order, although sometimes it makes sense to group them
 based on where or when you need to do them.
@@ -168,7 +168,7 @@ based on where or when you need to do them.
 List items will often have some sort of importance or urgency, or deadlines. FunToDone can help make sure there aren't things
 that never get done, because they're never the most important or the most urgent.
 
-Part of the fun is to let funtodone pick a next task for you to work on. That way if you've got 
+Part of the fun is to let funtodone pick a next task for you to work on. That way if you've got
 some tasks that are urgent but less fun than others, you can either avoid them if you're lucky,
 or get them out of the way if you're not. Since we recommend you not work on the same task for
 more than 52 minutes at a time, even the least fun tasks aren't too bad.
@@ -185,7 +185,7 @@ Choosing a random task isn't quite all random, since funtodone tries to weight t
 ## Doing Big Things: Too Many Tasks?
 
 You might think that continuously splitting tasks into smaller and smaller pieces will make it
-seem overwhelming. 
+seem overwhelming.
 
 The trick is that (normally) you're not looking at the whole list, but just a single sub-task or
 a parent task and a list of its subtasks.
@@ -196,12 +196,29 @@ cleaning up after a big party -- it can feel overwhelming at first, but if you t
 "OK, I'm just going to spend five minutes washing dishes" then, after that, you look around
 and it's not so bad any more.
 
-The Japanese principal of Kaizen works a lot like that. You make small changes rather than 
+The Japanese principal of Kaizen works a lot like that. You make small changes rather than
 trying for big heroic ones, and before you know it, really big things get done -- without
 all the wailing and teeth gnashing that a large change would entail.
+
+## Hey! You Said There Would Be "Chores"...
+
+There are always chores. Initially, we had another category of task list, called "Cycles,"
+which was where you would set up repeating tasks like taking out the trash, or scraping the
+barnacles off your dinghy (to prevent a dingy dinghy). It didn't seem like that was adding
+any real value, though, over either a regular list (with help picking a semi-random task) or
+any of the 17.4 billion other todo lists out there.
+
+Then there are the little bitty tasks (we call them "ten minute tasks") which are almost
+not worth the trouble of writing down, but you can't always do them right away and you don't
+want to forget them. We even came up with a cool name for those: FlashTasks. The problem was,
+if those really *are* tiny, having a special way to keep track of them is usually overkill,
+and if you only *think* they are tiny until you realize they're disguised evil tasks waiting
+to take over your entire afternoon, then they need the same kind of tracking that any other
+task needs.
+
+So we dropped those. At least for now.
 
 # License
 
 This is open source software, licensed under the MIT license. That seemed like that most permissive
 version available. Please see the LICENSE file for details.
-
