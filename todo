@@ -1,4 +1,7 @@
 [ ] do the tasks in src/data/stacks/funtodone.json
 [ ] redo the documentation - write more like tutorial than like idea dump
 [ ] begin with UI/UX design, sticking to just the essential elements
-
+  [ ] use react, but avoid package managers and dependency hell
+  [ ] use bootstrap and plan for mobile first
+  [ ] use TDD -- pick a lightweight framework, even if it doesn't mesh too well with react?
+    [ ] this looks like a reasonably good starting point? https://medium.freecodecamp.com/simple-react-testing-d9e25ec87e2#.wmizcb10p
