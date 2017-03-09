@@ -2,7 +2,7 @@ package service
 
 import "gopkg.in/gin-gonic/gin.v1"
 
-/*
+/*RunService runs the main service endpoints
  * TODO:
  *   1) REST service to handle task CRUD
  *   2) User auth and session management
@@ -19,5 +19,9 @@ func RunService() {
 			"message": "pong",
 		})
 	})
-	r.Run() // listen and serve on 0.0.0.0:8080
+	// Using authboss is much more complicated than this -- see:
+	// https://github.com/go-authboss/authboss/wiki/Integration-with-gin-gonic
+	// http.Handle("/authboss", ab.NewRouter())
+	// http.ListenAndServe(":8082", nil) // main service endpoints are on 8080
+	r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
