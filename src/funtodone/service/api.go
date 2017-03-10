@@ -23,5 +23,6 @@ func RunService() {
 	// https://github.com/go-authboss/authboss/wiki/Integration-with-gin-gonic
 	// http.Handle("/authboss", ab.NewRouter())
 	// http.ListenAndServe(":8082", nil) // main service endpoints are on 8080
+	// if authboss is on another port, we may have to enble CORS?
 	r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
