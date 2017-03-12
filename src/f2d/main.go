@@ -14,11 +14,11 @@ import (
 /*
  */
 func main() {
-	ab := authboss.New() // Usually store this globally
-	ab.MountPath = "/authboss"
-	ab.LogWriter = os.Stdout
+	service.AuBo = authboss.New() // Usually store this globally
+	AuBoMountPath = "/authboss"
+	service.AuBo.LogWriter = os.Stdout
 
-	if err := ab.Init(); err != nil {
+	if err := service.AuBo.Init(); err != nil {
 		// Handle error, don't let program continue to run
 		log.Fatalln(err)
 	}
