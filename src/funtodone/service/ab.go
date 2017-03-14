@@ -2,13 +2,19 @@ package service
 
 import ( // plugin package
 	// register authboss register module
+	"encoding/base64"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/render"
+	"github.com/gorilla/securecookie"
+	"github.com/gorilla/sessions"
+	"github.com/justinas/nosurf"
 	authboss "gopkg.in/authboss.v1"
 	// register authboss login module
 	// to lock user after N authentication failures
@@ -95,4 +101,44 @@ func initAuthBossLayout(ab *authboss.Authboss, r *gin.Engine) {
 		ab.Layout = html.Template.Funcs(template.FuncMap(funcs)).Lookup("authboss.tmpl")
 		// ab.Layout.ExecuteTemplate(os.Stdout, "layout.html.tpl", nil)
 	}
+}
+
+var database = NewMemStorer()
+
+func initAuthBossParam(r *gin.Engine) *authboss.Authboss {
+	ab := authboss.New()
+	ab.Storer = database
+	ab.CookieStoreMaker = NewCookieStorer
+	ab.SessionStoreMaker = NewSessionStorer
+	ab.ViewsPath = filepath.Join("ab_views")
+	//ab.RootURL = `http://localhost:5567`
+
+	ab.LayoutDataMaker = layoutData
+
+	ab.MountPath = "/auth"
+	ab.LogWriter = os.Stdout
+
+	ab.XSRFName = "csrf_token"
+	ab.XSRFMaker = func(_ http.ResponseWriter, r *http.Request) string {
+		return nosurf.Token(r)
+	}
+
+	initAuthBossLayout(ab, r)
+	ab.Mailer = authboss.LogMailer(os.Stdout)
+	initAuthBossPolicy(ab)
+
+	if err := ab.Init(); err != nil {
+		// Handle error, don't let program continue to run
+		log.Fatalln(err)
+	}
+	return ab
+}
+
+func initAuthBossRoute(r *gin.Engine) {
+	cookieStoreKey, _ := base64.StdEncoding.DecodeString(`NpEPi8pEjKVjLGJ6kYCS+VTCzi6BUuDzU0wrwXyf5uDPArtlofn2AG6aTMiPmN3C909rsEWMNqJqhIVPGP3Exg==`)
+	sessionStoreKey, _ := base64.StdEncoding.DecodeString(`AbfYwmmt8UCwUuhd9qvfNA9UCuN1cVcKJN1ofbiky6xCyyBj20whe40rJa3Su0WOWLWcPpO1taqJdsEI/65+JA==`)
+	cookieStore = securecookie.New(cookieStoreKey, nil)
+	sessionStore = sessions.NewCookieStore(sessionStoreKey)
+	AuBo = initAuthBossParam(r)
+	r.Any("/auth/*w", gin.WrapH(AuBo.NewRouter()))
 }
