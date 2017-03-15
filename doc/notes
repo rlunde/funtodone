@@ -164,3 +164,24 @@ Actually, the main things that make things fun are:
 
 I briefly looked into BDD type testing, and it looks like there is some good stuff in ginkgo,
 but I don't have time to do that right now. Later on, look at ginkgo with gomega (https://onsi.github.io/ginkgo/)
+
+I've been adding authboss stuff into the service, but I'm having second thoughts
+as usual. It's too complicated, too undocumented, and too likely to break when they
+release their refactored "v2" release (see their website).
+
+There's a JWT example middleware for Gin as well, which may fit in somehow -- I'd
+love to figure out how and where to use JWT.
+
+I'm very discouraged about this. I want a step by step guide for how to add
+authentication to a Gin-based web service with a JS/React front-end, or at least
+something that's close enough that I can figure it out without spending some
+enormous number of hours. That's not happening.
+
+Maybe what I need to do is back up and make a sample project with a code generator
+that makes exactly the sort of sample project that I want?
+
+It should be a command line app that asks questions and saves a config file. It should
+generate something that works with either Gin or Gorilla (or negroni?), with a front-end
+sample that works with either react or vue.
+
+How would I even approach a project like that? Maybe make it a part of goodwin?
