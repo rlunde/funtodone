@@ -185,3 +185,11 @@ generate something that works with either Gin or Gorilla (or negroni?), with a f
 sample that works with either react or vue.
 
 How would I even approach a project like that? Maybe make it a part of goodwin?
+
+There's a command line app and sample go web service named bluejay that looks close
+to what I want, except that it uses mysql rather than mongo (although the guy who
+made it made another project with mongo as an option). Maybe the easier thing to
+do would be to start off with that, and migrate to mongo and Gin?
+
+https://blue-jay.github.io/
+https://github.com/blue-jay/blueprint
