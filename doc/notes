@@ -193,3 +193,11 @@ do would be to start off with that, and migrate to mongo and Gin?
 
 https://blue-jay.github.io/
 https://github.com/blue-jay/blueprint
+
+Well, I've looked at that, and put it under newsrc here, but while it looks like a
+great thing to explore and learn from, it's far too complicated and undocumented.
+Again. So I think the thing to do is start with the authboss stuff, and make a
+project (a stack) to gradually convert it into something reasonable.
+
+Just because it's going to be difficult, confusing, take a long time, and not be
+worth very much when I'm finished with it, doesn't mean it's not worth doing.
