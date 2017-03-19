@@ -1,0 +1,13 @@
+Next steps for service:
+
+Authentication:
+ [ ] get user login with sessions working
+ [ ] convert users and sessions storage to mongodb
+ [ ] get account creation working with mongodb
+ [ ] get email account verification working
+ [ ] get password change working
+ [ ] get password recovery working
+
+Note: I don't plan to implement OAuth2 or account lockout after repeated login failures
+(maybe later, but the point of this project is to have fun while getting things done, not
+do a complete job of authentication).
