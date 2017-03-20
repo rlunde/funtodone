@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"time"
 
+	authboss "gopkg.in/authboss.v1"
+
 	"github.com/davecgh/go-spew/spew"
-	"gopkg.in/authboss.v1"
 )
 
 var nextUserID int

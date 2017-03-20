@@ -1,6 +1,10 @@
 package service
 
-import "gopkg.in/gin-gonic/gin.v1"
+import (
+	"net/http"
+
+	"gopkg.in/gin-gonic/gin.v1"
+)
 
 /*RunService runs the main service endpoints
  * TODO:
@@ -14,11 +18,21 @@ import "gopkg.in/gin-gonic/gin.v1"
  */
 func RunService() {
 	r := gin.Default()
+	r.Static("resources", "./resources")
+
+	r.LoadHTMLGlob("resources/views/gin-gonic/*")
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
 		})
 	})
+
+	r.GET("/", func(c *gin.Context) {
+		data := layoutData(c.Writer, c.Request)
+		c.HTML(http.StatusOK, "index.tmpl", data)
+	})
+
+	initAuthBossRoute(r)
 	// Using authboss is much more complicated than this -- see:
 	// https://github.com/go-authboss/authboss/wiki/Integration-with-gin-gonic
 	// http.Handle("/authboss", ab.NewRouter())

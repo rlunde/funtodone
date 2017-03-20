@@ -10,12 +10,12 @@ import ( // plugin package
 	"path/filepath"
 	"time"
 
-	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/render"
 	"github.com/gorilla/securecookie"
 	"github.com/gorilla/sessions"
 	"github.com/justinas/nosurf"
 	authboss "gopkg.in/authboss.v1"
+	"gopkg.in/gin-gonic/gin.v1"
 	// register authboss login module
 	// to lock user after N authentication failures
 )
