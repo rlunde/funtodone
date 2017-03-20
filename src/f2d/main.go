@@ -15,7 +15,7 @@ import (
  */
 func main() {
 	service.AuBo = authboss.New() // Usually store this globally
-	AuBoMountPath = "/authboss"
+	// AuBoMountPath := "/authboss"
 	service.AuBo.LogWriter = os.Stdout
 
 	if err := service.AuBo.Init(); err != nil {
