@@ -2,6 +2,8 @@ Next steps for service:
 
 Authentication:
  [ ] get user login with sessions working
+   [ ] move the react/bootstrap stuff from the client dir into the template dir
+   [ ] combine the react/bootstrap starting point with the template stuff from authboss
  [ ] convert users and sessions storage to mongodb
  [ ] get account creation working with mongodb
  [ ] get email account verification working
