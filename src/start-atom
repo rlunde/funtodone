@@ -2,4 +2,4 @@
 cd ..
 export GOPATH=`pwd`
 cd src
-atom .
+atom ..
