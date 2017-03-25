@@ -60,3 +60,12 @@ To Do:
  [ ] make it look nice enough for MVP
  [ ] start with a "stack" only view, and do lists when that is working
  [ ] focus on the fun, and get feedback about next steps
+
+Restart lists:
+[ ] consolidate all the todo stuff in one place, make it into a stack and backlog
+[ ] consolidate all the readme stuff in one place:
+  [ ] why? what problems we're trying to solve
+  [ ] what? features that map to each problem
+  [ ] how? explanation of how it all works (or will work)
+  [ ] when? a swag at a schedule for MVP
+  
