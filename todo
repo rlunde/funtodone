@@ -1,7 +1,43 @@
-[ ] do the tasks in src/data/stacks/funtodone.json
+Overall project todo:
+=====================
+
 [ ] redo the documentation - write more like tutorial than like idea dump
+[ ] consolidate and update the README.md files
+[ ] consolidate and update the notes
+[ ] get client and server barely working together
+
+Client todo (src/client):
+=====================
+
 [ ] begin with UI/UX design, sticking to just the essential elements
   [ ] use react, but avoid package managers and dependency hell
-  [ ] use bootstrap and plan for mobile first
+  [ ] use bootstrap and plan to do mobile first
   [ ] use TDD -- pick a lightweight framework, even if it doesn't mesh too well with react?
     [ ] this looks like a reasonably good starting point? https://medium.freecodecamp.com/simple-react-testing-d9e25ec87e2#.wmizcb10p
+
+Model next steps (src/funtodone/model):
+=======================================
+
+ [ ] add JSON output and parsing
+ [ ] add file I/O
+ [ ] finish model_test -- see TODO list in that file
+ [ ] add priority and date constraints, size, etc. to Tasks
+ [ ] add generic metadata to tasks
+
+
+Service next steps (src/funtodone/service):
+===========================================
+
+Authentication:
+ [ ] get user login with sessions working
+   [ ] combine the react/bootstrap stuff from the client dir with the authboss stuff in the template dir
+     [ ] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
+ [ ] convert users and sessions storage to mongodb
+ [ ] get account creation working with mongodb
+ [ ] get email account verification working
+ [ ] get password change working
+ [ ] get password recovery working
+
+Note: I don't plan to implement OAuth2 or account lockout after repeated login failures
+(maybe later, but the point of this project is to have fun while getting things done, not
+do a complete job of authentication).

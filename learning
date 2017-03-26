@@ -1,5 +1,7 @@
 technologies used:
   1) golang for server code
+    a) authboss for authentication
+    b) gin for web services
   2) mongo for development database
   3) javascript, bootstrap, react and redux for client side
 
