@@ -5,12 +5,10 @@ to make the code to create and manage the JSON format.
 
 Larger numbers are higher up the stack.
 
-3: get a test working that creates a stack, exports it, deletes it, and imports it
 3: when running the service, if the database has no users, create admin based on config file
 2: Get library and appropriate tests finished and working
 2: Learn about what makes games work, and write up docs and blogs describing psychology and mechanics
 2: Study/list what features people use and like in kanban, agile, todo lists, trello, etc.
-2: Make a cycle for vision/brainstorming, writing, coding, testing, planning that I do for each increment of FunToDone
 2: Get website and progressive web apps (and tests) finished and working
 1: Get all code (library, website, apps), docs, and tests finished and up to quality standards
 1: Deploy it to a site that can stand up to a moderate load, with plans for scaling and monetizing (at least paying for hosting and bandwidth)
