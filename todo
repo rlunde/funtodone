@@ -8,14 +8,25 @@ Overall project todo:
 =====================
 
 [ ] redo the documentation - write more like tutorial than like idea dump
+  [ ] consolidate all the readme stuff in one place:
+  [ ] why? what problems we're trying to solve
+  [ ] what? features that map to each problem
+  [ ] how? explanation of how it all works (or will work)
+  [ ] when? a swag at a schedule for MVP
 [ ] consolidate and update the README.md files
 [ ] consolidate and update the notes
 [ ] get client and server barely working together
+  [ ] get minimal login working with brief react/bootstrap client using go/authboss in service
 [ ] as soon as FunToDone is working at all, move this ToDo into it
-[ ] define what MVP looks like
+[ ] define what MVP looks like (and what defines looking nice enough for MVP)
 [ ] get an install script working (even with a hello world version in it)
 [ ] get an integration test suite working (even with a single test)
 [ ] write a step by step guide for setting things up with database and project
+[ ] think about how to make a mobile web app out of it
+[ ] reorganize codebase: figure out a good directory structure + package structure
+[ ] make it look nice enough for MVP
+[ ] start with a "stack" only view, and do lists when that is working
+[ ] focus on the fun, and get feedback about next steps
 
 Client todo (src/client):
 =====================
@@ -23,7 +34,8 @@ Client todo (src/client):
 [ ] begin with UI/UX design, sticking to just the essential elements
   [ ] use react, but avoid package managers and dependency hell
   [ ] use TDD -- pick a lightweight framework, even if it doesn't mesh too well with react?
-    [ ] this looks like a reasonably good starting point? https://medium.freecodecamp.com/simple-react-testing-d9e25ec87e2#.wmizcb10p
+    [ ] this looks like a reasonably good starting point? 
+        https://medium.freecodecamp.com/simple-react-testing-d9e25ec87e2#.wmizcb10p
 [ ] start with a very basic beginner UI, maybe using require.js, react, redux, bootstrap
   [ ] ignore webpack, browserify, etc. for now if I can -- don't want or need the infrastructure
   [ ] use bootstrap and plan to do mobile first responsive design
@@ -43,7 +55,7 @@ Model next steps (src/funtodone/model):
  [ ] finish model_test -- see TODO list in that file
  [ ] add priority and date constraints, size, etc. to Tasks
  [ ] add generic metadata to tasks
-
+ [ ] finish getting persistence to/from mongodb working (use https://labix.org/mgo)
 
 Service next steps (src/funtodone/service):
 ===========================================
@@ -62,55 +74,21 @@ Note: I don't plan to implement OAuth2 or account lockout after repeated login f
 (maybe later, but the point of this project is to have fun while getting things done, not
 do a complete job of authentication).
 
-TODO TODO: move the following up into sections
+Testing:
+  [ ] make some curl-based bash scripts to exercise the REST API
 
-To Do:
-[ ] implement a basic server side web api and web server for the assets
-[ ] get a minimal set of auth features working
-  [ ] implement all the usual login/password features (new account, change pw, lost pw)
-[ ] think about how to make a mobile web app out of it
+Features next steps (across service, client, and model):
+========================================================
 
 [ ] gamify lists (as opposed to stacks)
   [ ] first pick a random task from a list
   [ ] second, log that task, and if it's not done, make sure it doesn't come up again right away (usually)
 
-[ ] I need to reorganize this codebase: github shouldn't have a subdirectory called github
-  [ ] move everything to top level src, bin, doc, dist directories
-  [ ] redo build script to find src in right places and put executables/etc. in right places
-
-[ ] design operations to be done by REST API
-  [ ] make some curl-based bash scripts to exercise the REST API
-  [ ] create a top level stack or list
-  [ ] add a subtask to a stack or list
-    [ ] or, add it as a subtask of the top level or of a subtask
-    [ ] generate a task ID
-  [ ] edit, move, delete tasks/subtasks
+[ ] stack/list operations:
   [ ] look at the operations to support on tasks
     [ ] mark it done
     [ ] split it into N pieces
     [ ] add/edit/delete notes about task
     [ ] collapse into parent (if parent isn't next up)
-    (see "ideas" in this directory)
-
-[ ] First steps
- [ ] get minimal login working with brief react/bootstrap client using go/authboss in service
  [ ] do the stuff in the current funtodone stack (funtodone/doc/ideas/funtodone.stack)
- [ ] add more tests (see list at end of model_test.go)
- [ ] get persistence to/from mongodb working (use https://labix.org/mgo)
- [ ] edit the stack for funtodone (replace this file)
- [ ] make code that can produce/re-create the JSON for the stack (../src/data/stacks/funtodone.json)
- [ ] add the rest of the operations above to the stack
- [ ] get a bare-bones web view working
- [ ] add auth to web view
- [ ] make it look nice enough for MVP
- [ ] start with a "stack" only view, and do lists when that is working
- [ ] focus on the fun, and get feedback about next steps
 
-Restart lists:
-[ ] consolidate all the todo stuff in one place, make it into a stack and backlog
-[ ] consolidate all the readme stuff in one place:
-  [ ] why? what problems we're trying to solve
-  [ ] what? features that map to each problem
-  [ ] how? explanation of how it all works (or will work)
-  [ ] when? a swag at a schedule for MVP
-  
