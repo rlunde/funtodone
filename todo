@@ -82,7 +82,13 @@ Features next steps (across service, client, and model):
 
 [ ] gamify lists (as opposed to stacks)
   [ ] first pick a random task from a list
-  [ ] second, log that task, and if it's not done, make sure it doesn't come up again right away (usually)
+  [ ] second, log that task, and if it's not done, make sure it doesn't come up again right away
+    [ ] have an optional timer that counts a min and max time (at least 5 min, up to 90 min?)
+    [ ] have an optional deadline, that affects whether the task comes up again sooner than it would otherwise
+    [ ] don't alternate between too many different uncompleted tasks (maybe 3?)
+  [ ] have a way to turn a simple list item into a stack (ask what is next step)
+  [ ] try a conversational interface / ask questions?
+  [ ] optionally keep score - number of tasks completed (balanced by how small they are -- don't encourange nanotasks)
 
 [ ] stack/list operations:
   [ ] look at the operations to support on tasks
