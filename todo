@@ -124,3 +124,14 @@ Features next steps (across service, client, and model):
     [ ] force yourself to prioritize: pick the top 10 things, then pick the top 3 of those, then the top 1
     [ ] remind yourself that decisions aren't permanent, just pick something
     [ ] reward yourself for saying "no"
+
+[ ] try out minimal gamification
+ [ ] brainstorming...
+   [ ] keep score - 1 point for every task started, 5 for every task completed
+   [ ] bet against yourself - commit to pay micropayments (like overdue library book) if task not done
+   [ ] compete as teams but with more meaningful teams than "red" vs "green" (or whatever)
+     [ ] divide total score by number of team members
+     [ ] money paid for each match goes to non-profit selected by winner
+     [ ] trash talking
+     [ ] baton passing (tasks themselves aren't shared, but are associated with a numbered "baton")
+   [ ] show a graph of players locations, and avg. score per location/country
