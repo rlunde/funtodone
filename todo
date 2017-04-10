@@ -97,6 +97,8 @@ Features next steps (across service, client, and model):
     [ ] add/edit/delete notes about task
     [ ] collapse into parent (if parent isn't next up)
  [ ] do the stuff in the current funtodone stack (funtodone/doc/ideas/funtodone.stack)
+ [ ] don't show people expanded views of tasks that aren't on top (or make it collapse by default)
+ [ ] don't show more than the top item of any level of a stack
 
 [ ] focus on the causes of procrastination and distraction, and how to work around them
   [ ] causes
@@ -141,3 +143,4 @@ Features next steps (across service, client, and model):
   [ ] tell success stories
   [ ] seinfeld technique - don't break the chain
   [ ] look through literature for other techniques
+  [ ] make funny video tutorials of using stacks and lists, with explanations of why to simplify
