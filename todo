@@ -13,8 +13,8 @@ Overall project todo:
   [ ] what? features that map to each problem
   [ ] how? explanation of how it all works (or will work)
   [ ] when? a swag at a schedule for MVP
-[ ] consolidate and update the README.md files
-[ ] consolidate and update the notes
+[x] consolidate and update the README.md files
+[x] consolidate and update the notes
 [ ] get client and server barely working together
   [ ] get minimal login working with brief react/bootstrap client using go/authboss in service
 [ ] as soon as FunToDone is working at all, move this ToDo into it
