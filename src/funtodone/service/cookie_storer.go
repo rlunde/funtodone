@@ -11,15 +11,18 @@ import (
 
 var cookieStore *securecookie.SecureCookie
 
+//CookieStorer is used by authboss to save authorization in cookies
 type CookieStorer struct {
 	w http.ResponseWriter
 	r *http.Request
 }
 
+//NewCookieStorer creates a CookieStorer
 func NewCookieStorer(w http.ResponseWriter, r *http.Request) authboss.ClientStorer {
 	return &CookieStorer{w, r}
 }
 
+//Get returns the authorization from a cookie
 func (s CookieStorer) Get(key string) (string, bool) {
 	cookie, err := s.r.Cookie(key)
 	if err != nil {
@@ -35,6 +38,7 @@ func (s CookieStorer) Get(key string) (string, bool) {
 	return value, true
 }
 
+//Put stores the authorization in a cookie
 func (s CookieStorer) Put(key, value string) {
 	encoded, err := cookieStore.Encode(key, value)
 	if err != nil {
@@ -50,6 +54,7 @@ func (s CookieStorer) Put(key, value string) {
 	http.SetCookie(s.w, cookie)
 }
 
+//Del deletes a cookie containing an authorization
 func (s CookieStorer) Del(key string) {
 	cookie := &http.Cookie{
 		MaxAge: -1,
