@@ -111,6 +111,7 @@ func (s MemStorer) GetOAuth(uid, provider string) (result interface{}, err error
 	return &user, nil
 }
 
+//AddToken appends a key/value to the tokens in a Storer
 func (s MemStorer) AddToken(key, token string) error {
 	s.Tokens[key] = append(s.Tokens[key], token)
 	fmt.Println("AddToken")
@@ -118,6 +119,8 @@ func (s MemStorer) AddToken(key, token string) error {
 	return nil
 }
 
+//DelTokens deletes all tokens with the given key
+//it says it should return an error, but it doesn't
 func (s MemStorer) DelTokens(key string) error {
 	delete(s.Tokens, key)
 	fmt.Println("DelTokens")
@@ -125,6 +128,8 @@ func (s MemStorer) DelTokens(key string) error {
 	return nil
 }
 
+//UseToken looks for a token in the tokens store and removes it.
+//If there isn't one, it's an error.
 func (s MemStorer) UseToken(givenKey, token string) error {
 	toks, ok := s.Tokens[givenKey]
 	if !ok {
@@ -142,6 +147,7 @@ func (s MemStorer) UseToken(givenKey, token string) error {
 	return authboss.ErrTokenNotFound
 }
 
+//ConfirmUser looks for and returns a user with the given token
 func (s MemStorer) ConfirmUser(tok string) (result interface{}, err error) {
 	fmt.Println("==============", tok)
 
@@ -154,6 +160,7 @@ func (s MemStorer) ConfirmUser(tok string) (result interface{}, err error) {
 	return nil, authboss.ErrUserNotFound
 }
 
+//RecoverUser looks for and returns the user with the given recoverToken
 func (s MemStorer) RecoverUser(rec string) (result interface{}, err error) {
 	for _, u := range s.Users {
 		if u.RecoverToken == rec {
