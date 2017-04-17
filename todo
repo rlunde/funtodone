@@ -8,13 +8,11 @@ Overall project todo:
 =====================
 
 [ ] redo the documentation - write more like tutorial than like idea dump
-  [ ] consolidate all the readme stuff in one place:
   [ ] why? what problems we're trying to solve
   [ ] what? features that map to each problem
   [ ] how? explanation of how it all works (or will work)
   [ ] when? a swag at a schedule for MVP
-[x] consolidate and update the README.md files
-[x] consolidate and update the notes
+[ ] write down how to build and run and test what's currently there
 [ ] get client and server barely working together
   [ ] get minimal login working with brief react/bootstrap client using go/authboss in service
 [ ] as soon as FunToDone is working at all, move this ToDo into it
@@ -34,7 +32,7 @@ Client todo (src/client):
 [ ] begin with UI/UX design, sticking to just the essential elements
   [ ] use react, but avoid package managers and dependency hell
   [ ] use TDD -- pick a lightweight framework, even if it doesn't mesh too well with react?
-    [ ] this looks like a reasonably good starting point? 
+    [ ] this looks like a reasonably good starting point?
         https://medium.freecodecamp.com/simple-react-testing-d9e25ec87e2#.wmizcb10p
 [ ] start with a very basic beginner UI, maybe using require.js, react, redux, bootstrap
   [ ] ignore webpack, browserify, etc. for now if I can -- don't want or need the infrastructure
@@ -148,4 +146,3 @@ Features next steps (across service, client, and model):
 [ ] more ways to avoid distractions or deal with them
   [ ] http://www.lifehack.org/articles/productivity/10-critical-tips-prevent-distraction-and-sharpen-your-focus.html
   [ ] http://liveyourlegend.net/11-steps-to-insane-focus-get-more-of-what-matters-done-in-3-hours-than-most-do-in-a-week/
-
