@@ -22,3 +22,10 @@ To run unit tests on the main package (including the library):
   2. cd f2d
   3. go test
 
+The run the client (react) side of things:
+  1. cd src
+  2. cd client
+  3. ./run
+  This runs index.html, which has a react page from the tutorial, and includes a very simple login/register jQuery form
+
+
