@@ -13,6 +13,7 @@ Overall project todo:
   [ ] how? explanation of how it all works (or will work)
   [ ] when? a swag at a schedule for MVP
 [ ] write down how to build and run and test what's currently there
+[ ] check out goth as a replacement for authboss: https://github.com/markbates/goth
 [ ] get client and server barely working together
   [ ] get minimal login working with brief react/bootstrap client using go/authboss in service
 [ ] as soon as FunToDone is working at all, move this ToDo into it
