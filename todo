@@ -12,10 +12,9 @@ Overall project todo:
   [ ] what? features that map to each problem
   [ ] how? explanation of how it all works (or will work)
   [ ] when? a swag at a schedule for MVP
-[ ] write down how to build and run and test what's currently there
 [ ] check out goth as a replacement for authboss: https://github.com/markbates/goth
 [ ] get client and server barely working together
-  [ ] get minimal login working with brief react/bootstrap client using go/authboss in service
+  [ ] see next-steps for step-by-step with this
 [ ] as soon as FunToDone is working at all, move this ToDo into it
 [ ] define what MVP looks like (and what defines looking nice enough for MVP)
 [ ] get an install script working (even with a hello world version in it)
