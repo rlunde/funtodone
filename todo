@@ -12,7 +12,9 @@ Overall project todo:
   [ ] what? features that map to each problem
   [ ] how? explanation of how it all works (or will work)
   [ ] when? a swag at a schedule for MVP
-[ ] check out goth as a replacement for authboss: https://github.com/markbates/goth
+[x] check out goth as a replacement for authboss: https://github.com/markbates/goth
+  -- it only supports OAuth (and OAuth2) -- I want something that also manages its own logins
+[ ] check out http://libs.club/golang/web/authentication to see if anything else is better than authboss
 [ ] get client and server barely working together
   [ ] see next-steps for step-by-step with this
 [ ] as soon as FunToDone is working at all, move this ToDo into it
