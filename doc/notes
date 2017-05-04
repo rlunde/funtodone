@@ -154,3 +154,13 @@ project (a stack) to gradually convert it into something reasonable.
 Just because it's going to be difficult, confusing, take a long time, and not be
 worth very much when I'm finished with it, doesn't mean it's not worth doing.
 
+Here are some links to resources / articles for debugging go code:
+  [ ] https://golang.org/doc/gdb
+  [ ] https://atom.io/packages/go-debug
+  [ ] https://intelligentbee.com/blog/2016/12/15/debugging-golang-apps-in-docker-with-visual-studio-code/
+  [ ] https://www.youtube.com/watch?v=JS3ZYem-XPg (debug go code in visual studio)
+  [ ] https://github.com/Microsoft/vscode-go/wiki/Debugging-Go-code-using-VS-Code
+  [ ] https://nanxiao.gitbooks.io/golang-101-hacks/content/posts/debugging.html
+  [ ] https://ttboj.wordpress.com/2016/02/15/debugging-golang-programs/
+  [ ] https://blog.cloudflare.com/go-has-a-debugger-and-its-awesome/
+
