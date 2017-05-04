@@ -1,0 +1,6 @@
+#!/bin/bash
+cd ..
+export GOPATH=`pwd`
+cd src
+code .
+
