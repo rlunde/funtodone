@@ -11,3 +11,7 @@ The next thing to do is to merge those two sides into one. Something like this:
 [ ] connect the user model from go into authboss, and into mgo, so new users can be created
 [ ] make a list of next steps after that to clean up the landing page and finish authentication
 
+Trying a 1,2,3 approach:
+  [x] set up nginx
+  [x] find/document nginx, figure out where to point it, document it
+  [x] update nginx and restart it
