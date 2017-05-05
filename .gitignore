@@ -44,3 +44,4 @@ pkg/
 **/src/funtodone-cli
 **/src/github.com
 **/src/f2d/funtodone
+**/src/f2d/task.json
