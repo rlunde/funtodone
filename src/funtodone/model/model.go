@@ -173,7 +173,7 @@ func RemoveTask(node *Task, recursive bool) error {
 	// remove children recursively, if any
 	if len(node.Children) > 0 {
 		for _, child := range node.Children {
-			RemoveTask(child, recursive)
+			_ = RemoveTask(child, recursive) // we ignore errors -- should we?
 		}
 	}
 	parent := node.Parent

@@ -53,7 +53,7 @@ func (s SessionStorer) Put(key, value string) {
 	}
 
 	session.Values[key] = value
-	session.Save(s.r, s.w)
+	session.Save(s.r, s.w) // TODO: check error
 }
 
 //Del deletes a value if found, but doesn't return an error if it wasn't
@@ -65,5 +65,5 @@ func (s SessionStorer) Del(key string) {
 	}
 
 	delete(session.Values, key)
-	session.Save(s.r, s.w)
+	session.Save(s.r, s.w) // TODO: check error
 }
