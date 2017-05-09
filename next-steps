@@ -4,7 +4,7 @@ that uses go. See what-how-where.txt for a desription of how to build and test e
 
 The next thing to do is to merge those two sides into one. Something like this:
 
-[ ] make an nginx config that serves up static content and proxies REST API calls to the go service
+[x] make an nginx config that serves up static content and proxies REST API calls to the go service
 [ ] gradually move the golang/authboss stuff over into the react client (merge with what's there)
 [ ] make some tests of the combined go/authboss/react project
 [ ] add an mgo variant of the session store for authboss
@@ -15,3 +15,6 @@ Trying a 1,2,3 approach:
   [x] set up nginx
   [x] find/document nginx, figure out where to point it, document it
   [x] update nginx and restart it
+  [x] to load the react client from nginx: http://localhost/f2d/
+  [x] see src/client/nginx.txt
+
