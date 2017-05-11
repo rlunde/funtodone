@@ -1,0 +1,6 @@
+a) work on logging in (client page, server code)
+   1) work on creating a login
+      a) try to make a user in mongodb
+         1) write what is involved, where things are, what to look at
+         2) make a specific task under project with locations, urls, next steps
+         3) make pseudocode for server/client
