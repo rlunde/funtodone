@@ -4,3 +4,10 @@ a) work on logging in (client page, server code)
          1) write what is involved, where things are, what to look at
          2) make a specific task under project with locations, urls, next steps
          3) make pseudocode for server/client
+
+
+a.1.a.1) write what is involved, where things are, what to look at
+  1) start at authboss page: https://github.com/go-authboss/authboss
+  2) register a new account: https://github.com/go-authboss/authboss/tree/master/register
+  3) update ./src/funtodone/service/storer.go to use mongodb
+  4) maybe some hints here? https://godoc.org/github.com/mwmahlberg/mongostore
