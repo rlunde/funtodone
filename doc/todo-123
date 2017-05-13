@@ -4,6 +4,10 @@ a) work on logging in (client page, server code)
          1) write what is involved, where things are, what to look at
          2) make a specific task under project with locations, urls, next steps
          3) make pseudocode for server/client
+      b) try to call a REST API from the register modal
+         1) move the modal from index.html into a JSX class in funtodone.jsx
+         2) see how it's doing ReactDOM.render(< TasksList / >, document.getElementById('tasks'));
+         
 
 
 a.1.a.1) write what is involved, where things are, what to look at

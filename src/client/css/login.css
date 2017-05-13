@@ -97,3 +97,9 @@ body {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+#login-form {
+  display: block;
+}
+#register-form {
+   display: none;
+}
