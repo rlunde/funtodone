@@ -9,6 +9,11 @@ var TodoOutline = React.createClass({
                   <li>figure out how to add <a href="https://github.com/go-authboss/authboss">authboss</a> to do login/register</li>
                   <ol>
                       <li>User registration</li>
+                      <ol>
+                        <li>Send a POST from form to service</li>
+                        <li>Verify that user doesn't already exist</li>
+                        <li>Create the new user, and return success</li>
+                      </ol>
                       <li>Confirming registrations via e-mail</li>
                       <li>User authentication via password</li>
                       <li>Password recovery via e-mail</li>
