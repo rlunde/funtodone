@@ -20,7 +20,8 @@ func RunService() {
 	r := gin.Default()
 	r.Static("resources", "./resources")
 
-	r.LoadHTMLGlob("resources/views/gin-gonic/*")
+	// r.LoadHTMLGlob("resources/views/gin-gonic/*")
+	r.LoadHTMLGlob("client/*.tmpl")
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",

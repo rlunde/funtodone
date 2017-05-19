@@ -51,7 +51,6 @@ Client todo (src/client):
 Model next steps (src/funtodone/model):
 =======================================
 
- [x] add JSON output and parsing
  [ ] add file I/O (the library_test.go file reads/writes a file itself -- add that to model package)
  [ ] finish model_test -- see TODO list in that file
  [ ] add priority and date constraints, size, etc. to Tasks
@@ -61,10 +60,17 @@ Model next steps (src/funtodone/model):
 Service next steps (src/funtodone/service):
 ===========================================
 
+Testing:
+ [ ] manual testing
+   [ ] run ./f2d/funtodone to start go REST service
+   [ ] try localhost:8080/ping to see it's working
 Authentication:
  [ ] get user login with sessions working
    [ ] combine the react/bootstrap stuff from the client dir with the authboss stuff in the template dir
      [ ] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
+       [ ] now can use the build and run script
+       [ ] http://localhost/f2d/ uses nginx to load index.html from "client"
+       [ ] http://localhost:8080/ uses go with gin/authboss to load index.tmpl from "client"
  [ ] convert users and sessions storage to mongodb
  [ ] get account creation working with mongodb
  [ ] get email account verification working
