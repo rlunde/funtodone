@@ -154,6 +154,9 @@ project (a stack) to gradually convert it into something reasonable.
 Just because it's going to be difficult, confusing, take a long time, and not be
 worth very much when I'm finished with it, doesn't mean it's not worth doing.
 
+I looked into goth also (as a replacement for authboss: https://github.com/markbates/goth)
+  -- it only supports OAuth (and OAuth2) -- I want something that also manages its own logins
+
 Here are some links to resources / articles for debugging go code:
   [ ] https://golang.org/doc/gdb
   [ ] https://atom.io/packages/go-debug

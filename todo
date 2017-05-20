@@ -12,10 +12,6 @@ Overall project todo:
   [ ] what? features that map to each problem
   [ ] how? explanation of how it all works (or will work)
   [ ] when? a swag at a schedule for MVP
-[x] check out goth as a replacement for authboss: https://github.com/markbates/goth
-  -- it only supports OAuth (and OAuth2) -- I want something that also manages its own logins
-[x] check out http://libs.club/golang/web/authentication to see if anything else is better than authboss
-  -- looks like everything only does OpenID Connect and OAuth2, which is OK, but sadly, many people still want login/password
 [ ] get client and server barely working together
   [ ] see next-steps for step-by-step with this
 [ ] as soon as FunToDone is working at all, move this ToDo into it
@@ -67,10 +63,16 @@ Testing:
 Authentication:
  [ ] get user login with sessions working
    [ ] combine the react/bootstrap stuff from the client dir with the authboss stuff in the template dir
-     [ ] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
-       [ ] now can use the build and run script
-       [ ] http://localhost/f2d/ uses nginx to load index.html from "client"
-       [ ] http://localhost:8080/ uses go with gin/authboss to load index.tmpl from "client"
+     [x] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
+       [x] now can use the build and run script
+       [x] http://localhost/f2d/ uses nginx to load index.html from "client"
+       [x] http://localhost:8080/ uses go with gin/authboss to load index.tmpl from "client"
+     [ ] figure out how to call authboss to create a user (register), from react
+       [ ] try to find an example project that uses authboss
+         [ ] look at / try to figure out https://github.com/go-authboss/authboss-sample
+       [ ] also look at JWT -- e.g. https://github.com/appleboy/gin-jwt
+       [ ] in theory, should be able to use authboss to authenticate a login or registration, then JWT for sessions (somehow)
+       [ ] figure out how to call mongodb from authboss to create user
  [ ] convert users and sessions storage to mongodb
  [ ] get account creation working with mongodb
  [ ] get email account verification working
