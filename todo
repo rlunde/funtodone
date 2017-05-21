@@ -64,17 +64,17 @@ Authentication:
  [ ] get user login with sessions working
    [ ] combine the react/bootstrap stuff from the client dir with the authboss stuff in the template dir
      [x] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
-       [x] now can use the build and run script
        [x] http://localhost/f2d/ uses nginx to load index.html from "client"
        [x] http://localhost:8080/ uses go with gin/authboss to load index.tmpl from "client"
      [ ] figure out how to call authboss to create a user (register), from react
        [ ] try to find an example project that uses authboss
          [ ] look at / try to figure out https://github.com/go-authboss/authboss-sample
        [ ] also look at JWT -- e.g. https://github.com/appleboy/gin-jwt
+       [ ] or maybe just ditch authboss and use this? https://github.com/apexskier/httpauth
+       [ ] also look at https://github.com/urfave/negroni -- canned 3rd party middleware
        [ ] in theory, should be able to use authboss to authenticate a login or registration, then JWT for sessions (somehow)
        [ ] figure out how to call mongodb from authboss to create user
  [ ] convert users and sessions storage to mongodb
- [ ] get account creation working with mongodb
  [ ] get email account verification working
  [ ] get password change working
  [ ] get password recovery working
