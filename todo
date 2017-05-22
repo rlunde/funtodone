@@ -74,6 +74,10 @@ Authentication:
        [ ] also look at https://github.com/urfave/negroni -- canned 3rd party middleware
        [ ] in theory, should be able to use authboss to authenticate a login or registration, then JWT for sessions (somehow)
        [ ] figure out how to call mongodb from authboss to create user
+       [ ] or maybe, start with PHP, Ruby, Python (or something) convert to react, THEN see about authboss?
+         [ ] http://michaelsoriano.com/building-a-user-registration-system-part-1-new-user-form/
+         [ ] https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
+         [ ] https://django-book.readthedocs.io/en/latest/chapter14.html
  [ ] convert users and sessions storage to mongodb
  [ ] get email account verification working
  [ ] get password change working
