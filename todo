@@ -78,6 +78,10 @@ Authentication:
          [ ] http://michaelsoriano.com/building-a-user-registration-system-part-1-new-user-form/
          [ ] https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
          [ ] https://django-book.readthedocs.io/en/latest/chapter14.html
+       [ ] some react registration examples
+         [ ] https://www.viget.com/articles/building-a-multi-step-registration-form-with-react
+         [ ] https://codepen.io/mikepro4/pen/pvKYZG
+         [ ] https://stormpath.com/blog/build-a-react-app-with-user-authentication
  [ ] convert users and sessions storage to mongodb
  [ ] get email account verification working
  [ ] get password change working
