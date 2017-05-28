@@ -79,9 +79,9 @@ Authentication:
          [ ] https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
          [ ] https://django-book.readthedocs.io/en/latest/chapter14.html
        [ ] some react registration examples
-         [ ] (start here?) https://github.com/codereviewvideos/react-login-registration-example
          [ ] https://www.viget.com/articles/building-a-multi-step-registration-form-with-react
          [ ] https://vladimirponomarev.com/blog/authentication-in-react-apps-creating-components
+         [ ] this (for pay) course looks like it might be interesting!
  [ ] convert users and sessions storage to mongodb
  [ ] get email account verification working
  [ ] get password change working
@@ -194,4 +194,3 @@ Features next steps (across service, client, and model):
   [ ] https://www.nickkolenda.com/user-experience/
   [ ] https://www.elegantthemes.com/blog/resources/10-rules-of-good-ui-design-to-follow-on-every-web-design-project
   [ ] https://designmodo.com/responsive-design-examples/
-
