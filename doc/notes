@@ -167,3 +167,9 @@ Here are some links to resources / articles for debugging go code:
   [ ] https://ttboj.wordpress.com/2016/02/15/debugging-golang-programs/
   [ ] https://blog.cloudflare.com/go-has-a-debugger-and-its-awesome/
 
+The registration form sample I'm starting with came from:
+https://bootsnipp.com/snippets/featured/login-and-register-tabbed-form
+
+There's something broken in the stubbed out login/register form, but I don't know what yet.
+You can't select the register form, and you can't enter text in the username field of the
+login form. There are no errors in the js console. 
