@@ -172,4 +172,14 @@ https://bootsnipp.com/snippets/featured/login-and-register-tabbed-form
 
 There's something broken in the stubbed out login/register form, but I don't know what yet.
 You can't select the register form, and you can't enter text in the username field of the
-login form. There are no errors in the js console. 
+login form. There are no errors in the js console.
+
+I figured out a workaround (not elegant) to select the register form -- since React
+hasn't rendered yet, the jQuery stuff to fade in/out the forms will have run before
+the elements it refers to exist. I plunked that jQuery into the JSX after the render.
+I'll bet there's a much better way.
+
+The reason we don't show input is explained by react state management:
+https://facebook.github.io/react/docs/two-way-binding-helpers.html
+
+That's the next thing to do.
