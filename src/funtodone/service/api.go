@@ -18,10 +18,14 @@ import (
  */
 func RunService() {
 	r := gin.Default()
-	r.Static("resources", "./resources")
+	//r.Static("resources", "./resources")
+	r.Static("/js", "./client/js")
+	r.Static("/css", "./client/css")
+	r.Static("/img", "./client/img")
 
 	// r.LoadHTMLGlob("resources/views/gin-gonic/*")
-	r.LoadHTMLGlob("client/*.tmpl")
+	//r.LoadHTMLGlob("client/*.tmpl")
+	r.LoadHTMLGlob("client/*.html")
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
@@ -30,7 +34,8 @@ func RunService() {
 
 	r.GET("/", func(c *gin.Context) {
 		data := layoutData(c.Writer, c.Request)
-		c.HTML(http.StatusOK, "index.tmpl", data)
+		//c.HTML(http.StatusOK, "index.tmpl", data)
+		c.HTML(http.StatusOK, "index.html", data)
 	})
 
 	initAuthBossRoute(r)
