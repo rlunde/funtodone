@@ -15,6 +15,7 @@ import ( // plugin package
 	"github.com/gorilla/sessions"
 	"github.com/justinas/nosurf"
 	authboss "gopkg.in/authboss.v1"
+	"gopkg.in/authboss.v1/register"
 	"gopkg.in/gin-gonic/gin.v1"
 	// register authboss login module
 	// to lock user after N authentication failures
@@ -97,6 +98,11 @@ func initAuthBossParam(r *gin.Engine) *authboss.Authboss {
 	ab.Mailer = authboss.LogMailer(os.Stdout)
 	initAuthBossPolicy(ab)
 
+	reg := register.Register{}
+	if err := reg.Initialize(ab); err != nil {
+		panic(err)
+	}
+
 	if err := ab.Init(); err != nil {
 		// Handle error, don't let program continue to run
 		log.Fatalln(err)
@@ -105,6 +111,7 @@ func initAuthBossParam(r *gin.Engine) *authboss.Authboss {
 }
 
 func initAuthBossRoute(r *gin.Engine) {
+	//TODO: change these keys
 	cookieStoreKey, _ := base64.StdEncoding.DecodeString(`NpEPi8pEjKVjLGJ6kYCS+VTCzi6BUuDzU0wrwXyf5uDPArtlofn2AG6aTMiPmN3C909rsEWMNqJqhIVPGP3Exg==`)
 	sessionStoreKey, _ := base64.StdEncoding.DecodeString(`AbfYwmmt8UCwUuhd9qvfNA9UCuN1cVcKJN1ofbiky6xCyyBj20whe40rJa3Su0WOWLWcPpO1taqJdsEI/65+JA==`)
 	cookieStore = securecookie.New(cookieStoreKey, nil)
