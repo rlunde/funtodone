@@ -99,6 +99,7 @@ func initAuthBossParam(r *gin.Engine) *authboss.Authboss {
 	initAuthBossPolicy(ab)
 
 	reg := register.Register{}
+	reg.Storer = NewMemStorer()
 	if err := reg.Initialize(ab); err != nil {
 		panic(err)
 	}

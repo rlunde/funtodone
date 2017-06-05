@@ -7,6 +7,7 @@ and a simple service/database for people who want to sync.
 Overall project todo:
 =====================
 
+[ ] rip out all the authboss crap
 [ ] redo the documentation - write more like tutorial than like idea dump
   [ ] why? what problems we're trying to solve
   [ ] what? features that map to each problem
@@ -66,22 +67,14 @@ Authentication:
      [x] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
        [x] http://localhost/f2d/ uses nginx to load index.html from "client"
        [x] http://localhost:8080/ uses go with gin/authboss to load index.tmpl from "client"
-     [ ] figure out how to call authboss to create a user (register), from react
-       [ ] try to find an example project that uses authboss
-         [ ] look at / try to figure out https://github.com/go-authboss/authboss-sample
-       [ ] also look at JWT -- e.g. https://github.com/appleboy/gin-jwt
-       [ ] or maybe just ditch authboss and use this? https://github.com/apexskier/httpauth
-       [ ] also look at https://github.com/urfave/negroni -- canned 3rd party middleware
-       [ ] in theory, should be able to use authboss to authenticate a login or registration, then JWT for sessions (somehow)
-       [ ] figure out how to call mongodb from authboss to create user
-       [ ] or maybe, start with PHP, Ruby, Python (or something) convert to react, THEN see about authboss?
+     [ ] figure out how to register a user, starting from react
+       [ ] start with PHP, Ruby, Python (or something) convert to react
          [ ] http://michaelsoriano.com/building-a-user-registration-system-part-1-new-user-form/
          [ ] https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
          [ ] https://django-book.readthedocs.io/en/latest/chapter14.html
        [ ] some react registration examples
          [ ] https://www.viget.com/articles/building-a-multi-step-registration-form-with-react
          [ ] https://vladimirponomarev.com/blog/authentication-in-react-apps-creating-components
-         [ ] this (for pay) course looks like it might be interesting!
  [ ] convert users and sessions storage to mongodb
  [ ] get email account verification working
  [ ] get password change working
