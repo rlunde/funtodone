@@ -33,17 +33,13 @@ func RunService() {
 	})
 
 	r.GET("/", func(c *gin.Context) {
-		data := layoutData(c.Writer, c.Request)
-		//c.HTML(http.StatusOK, "index.tmpl", data)
-		c.HTML(http.StatusOK, "index.html", data)
+		// data := layoutData(c.Writer, c.Request)
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": "Main website",
+		})
 	})
 
-	initAuthBossRoute(r)
-	// Using authboss is much more complicated than this -- see:
-	// https://github.com/go-authboss/authboss/wiki/Integration-with-gin-gonic
-	// http.Handle("/authboss", ab.NewRouter())
 	// http.ListenAndServe(":8082", nil) // main service endpoints are on 8080
-	// if authboss is on another port, we may have to enble CORS?
 	// TODO: check r.Run for error return
 	r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
