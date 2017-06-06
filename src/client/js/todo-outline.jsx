@@ -6,19 +6,7 @@ var TodoOutline = React.createClass({
           <ol>
               <li>design the basic layout of the FunToDone single page app</li>
               <ol type="A">
-                  <li>figure out how to add <a href="https://github.com/go-authboss/authboss">authboss</a> to do login/register</li>
-                  <ol>
-                      <li>User registration</li>
-                      <ol>
-                        <li>Send a POST from form to service</li>
-                        <li>Verify that user doesn't already exist</li>
-                        <li>Create the new user, and return success</li>
-                      </ol>
-                      <li>Confirming registrations via e-mail</li>
-                      <li>User authentication via password</li>
-                      <li>Password recovery via e-mail</li>
-                      <li>Reset a User's password</li>
-                  </ol>
+                  <li>figure out my own authentication (gave up trying to use authboss)</li>
                   <li>generate a sample stack and sample list for each new user</li>
                   <li>show a list of compound lists (stacks, lists) belonging to user</li>
                   <li>create a new stack</li>

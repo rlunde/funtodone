@@ -7,7 +7,7 @@ and a simple service/database for people who want to sync.
 Overall project todo:
 =====================
 
-[ ] rip out all the authboss crap
+[x] rip out all the authboss crap
 [ ] redo the documentation - write more like tutorial than like idea dump
   [ ] why? what problems we're trying to solve
   [ ] what? features that map to each problem
@@ -63,10 +63,9 @@ Testing:
    [ ] try localhost:8080/ping to see it's working
 Authentication:
  [ ] get user login with sessions working
-   [ ] combine the react/bootstrap stuff from the client dir with the authboss stuff in the template dir
+   [ ] combine the react/bootstrap stuff from the client dir with golang authentication stuff
      [x] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
        [x] http://localhost/f2d/ uses nginx to load index.html from "client"
-       [x] http://localhost:8080/ uses go with gin/authboss to load index.tmpl from "client"
      [ ] figure out how to register a user, starting from react
        [ ] start with PHP, Ruby, Python (or something) convert to react
          [ ] http://michaelsoriano.com/building-a-user-registration-system-part-1-new-user-form/
