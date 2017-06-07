@@ -66,6 +66,11 @@ Authentication:
    [ ] combine the react/bootstrap stuff from the client dir with golang authentication stuff
      [x] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
        [x] http://localhost/f2d/ uses nginx to load index.html from "client"
+     [ ] POST a user name and a password hash (initially)
+       [ ] handle the post, send back a session cookie
+       [ ] session state can be logged out, pending email validation, or logged in
+       [ ] read up on using JWT and using OAUTH2
+       [ ] think about making a code generator
      [ ] figure out how to register a user, starting from react
        [ ] start with PHP, Ruby, Python (or something) convert to react
          [ ] http://michaelsoriano.com/building-a-user-registration-system-part-1-new-user-form/
