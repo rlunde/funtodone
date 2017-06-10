@@ -18,13 +18,10 @@ import (
  */
 func RunService() {
 	r := gin.Default()
-	//r.Static("resources", "./resources")
 	r.Static("/js", "./client/js")
 	r.Static("/css", "./client/css")
 	r.Static("/img", "./client/img")
 
-	// r.LoadHTMLGlob("resources/views/gin-gonic/*")
-	//r.LoadHTMLGlob("client/*.tmpl")
 	r.LoadHTMLGlob("client/*.html")
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
@@ -33,13 +30,11 @@ func RunService() {
 	})
 
 	r.GET("/", func(c *gin.Context) {
-		// data := layoutData(c.Writer, c.Request)
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Main website",
 		})
 	})
 
-	// http.ListenAndServe(":8082", nil) // main service endpoints are on 8080
 	// TODO: check r.Run for error return
 	r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
