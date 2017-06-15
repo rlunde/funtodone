@@ -1,0 +1,32 @@
+Request URL:http://localhost:8080/login
+Request Method:POST
+Status Code:404 Not Found
+Remote Address:[::1]:8080
+Referrer Policy:no-referrer-when-downgrade
+
+Response Headers
+Content-Length:18
+Content-Type:text/plain
+Date:Thu, 15 Jun 2017 03:01:01 GMT
+
+Request Headers
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip, deflate, br
+Accept-Language:en-US,en;q=0.8
+Cache-Control:no-cache
+Connection:keep-alive
+Content-Length:59
+Content-Type:application/x-www-form-urlencoded
+DNT:1
+Host:localhost:8080
+Origin:http://localhost:8080
+Pragma:no-cache
+Referer:http://localhost:8080/
+Upgrade-Insecure-Requests:1
+User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+
+Form Data
+username:ron
+password:foo
+remember:true
+login-submit:Log In<F29>
