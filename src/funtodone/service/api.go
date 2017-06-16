@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"net/http"
 
 	"gopkg.in/gin-gonic/gin.v1"
@@ -28,7 +29,7 @@ func RunService() {
 			"message": "pong",
 		})
 	})
-
+	r.POST("/register", RegisterAccount)
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Main website",
@@ -37,4 +38,21 @@ func RunService() {
 
 	// TODO: check r.Run for error return
 	r.Run(":8080") // listen and serve on 0.0.0.0:8080
+}
+
+//RegisterAccount -- create a new login
+func RegisterAccount(c *gin.Context) {
+	//TODO: sanity check input parameters
+	username, found := c.GetPostForm("username")
+	if !found {
+		fmt.Printf("RegisterAccount called but username is not set\n")
+	} else {
+		fmt.Printf("RegisterAccount called with username %s\n", username)
+	}
+	//TODO: validate that account doesn't already exist
+	//TODO: try to create login and save it in database
+	//TODO: create a session cookie
+	//TODO: return success or error message
+	//TODO: on success, send email and display a verify email form
+	//TODO: on error, display error message and redirect to register form
 }
