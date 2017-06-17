@@ -1,6 +1,7 @@
 package service
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 
@@ -48,6 +49,28 @@ func RegisterAccount(c *gin.Context) {
 		fmt.Printf("RegisterAccount called but username is not set\n")
 	} else {
 		fmt.Printf("RegisterAccount called with username %s\n", username)
+	}
+	email, found := c.GetPostForm("email")
+	if !found {
+		fmt.Printf("RegisterAccount called but email is not set\n")
+	} else {
+		//TODO: validate email (at least look for reasonable looking address)
+		fmt.Printf("RegisterAccount called with email %s\n", email)
+	}
+	password, found := c.GetPostForm("password")
+	if !found {
+		fmt.Printf("RegisterAccount called but password is not set\n")
+	} else {
+		fmt.Printf("RegisterAccount called with password\n")
+	}
+	cpassword, found := c.GetPostForm("confirm-password")
+	if !found {
+		fmt.Printf("RegisterAccount called but confirm-password is not set\n")
+	} else {
+		fmt.Printf("RegisterAccount called with confirm-password\n")
+	}
+	if password != cpassword {
+		c.AbortWithError(400, errors.New("Password and confirm-password do not match"))
 	}
 	//TODO: validate that account doesn't already exist
 	//TODO: try to create login and save it in database
