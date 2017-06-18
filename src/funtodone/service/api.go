@@ -43,34 +43,11 @@ func RunService() {
 
 //RegisterAccount -- create a new login
 func RegisterAccount(c *gin.Context) {
-	//TODO: sanity check input parameters
-	username, found := c.GetPostForm("username")
-	if !found {
-		fmt.Printf("RegisterAccount called but username is not set\n")
+	username, email, password, err := getRegistrationData(c)
+	if err != nil {
+		c.AbortWithError(400, err)
 	} else {
-		fmt.Printf("RegisterAccount called with username %s\n", username)
-	}
-	email, found := c.GetPostForm("email")
-	if !found {
-		fmt.Printf("RegisterAccount called but email is not set\n")
-	} else {
-		//TODO: validate email (at least look for reasonable looking address)
-		fmt.Printf("RegisterAccount called with email %s\n", email)
-	}
-	password, found := c.GetPostForm("password")
-	if !found {
-		fmt.Printf("RegisterAccount called but password is not set\n")
-	} else {
-		fmt.Printf("RegisterAccount called with password\n")
-	}
-	cpassword, found := c.GetPostForm("confirm-password")
-	if !found {
-		fmt.Printf("RegisterAccount called but confirm-password is not set\n")
-	} else {
-		fmt.Printf("RegisterAccount called with confirm-password\n")
-	}
-	if password != cpassword {
-		c.AbortWithError(400, errors.New("Password and confirm-password do not match"))
+		fmt.Printf("RegisterAccount called with username %s, email %s, password %s\n", username, email, password)
 	}
 	//TODO: validate that account doesn't already exist
 	//TODO: try to create login and save it in database
@@ -78,4 +55,34 @@ func RegisterAccount(c *gin.Context) {
 	//TODO: return success or error message
 	//TODO: on success, send email and display a verify email form
 	//TODO: on error, display error message and redirect to register form
+}
+func getRegistrationData(c *gin.Context) (username, email, password string, err error) {
+	err = nil
+	//sanity check input parameters
+	username, found := c.GetPostForm("username")
+	if !found {
+		err = errors.New("RegisterAccount called but username is not set")
+		return
+	}
+	email, found = c.GetPostForm("email")
+	if !found {
+		err = errors.New("RegisterAccount called but email is not set")
+		return
+	}
+	//TODO: validate email (at least look for reasonable looking address)
+
+	password, found = c.GetPostForm("password")
+	if !found {
+		err = errors.New("RegisterAccount called but password is not set")
+		return
+	}
+	cpassword, found := c.GetPostForm("confirm-password")
+	if !found {
+		err = errors.New("RegisterAccount called but confirm-password is not set")
+		return
+	}
+	if password != cpassword {
+		err = errors.New("Password and confirm-password do not match")
+	}
+	return
 }
