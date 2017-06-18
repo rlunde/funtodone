@@ -65,21 +65,21 @@ Authentication:
    [ ] combine the react/bootstrap stuff from the client dir with golang authentication stuff
      [x] try leaving the client stuff where it is, and see if I can get gin to pull templates from that dir
        [x] http://localhost/f2d/ uses nginx to load index.html from "client"
-     [ ] POST a user name and a password hash (initially)
-       [ ] use react to handle the POST, not the regular form post
-       [ ] handle the post, send back a session cookie
+     [ ] figure out how to register a user, starting from react
+         [ ] use react to handle the POST, not the regular form post
+         [ ] start with PHP, Ruby, Python (or something) convert to react
+           [ ] http://michaelsoriano.com/building-a-user-registration-system-part-1-new-user-form/
+           [ ] https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
+           [ ] https://django-book.readthedocs.io/en/latest/chapter14.html
+         [ ] some react registration examples
+           [ ] https://www.viget.com/articles/building-a-multi-step-registration-form-with-react
+           [ ] https://vladimirponomarev.com/blog/authentication-in-react-apps-creating-components
+     [ ] login using a POST of a user name and a password hash (initially)
+       [ ] use react to do the POST, not the regular form post
+       [ ] handle the post, send back a session cookie and (optional) error
        [ ] session state can be logged out, pending email validation, or logged in
        [ ] read up on using JWT and using OAUTH2
        [ ] think about making a code generator
-     [ ] figure out how to register a user, starting from react
-       [ ] use react to handle the POST, not the regular form post
-       [ ] start with PHP, Ruby, Python (or something) convert to react
-         [ ] http://michaelsoriano.com/building-a-user-registration-system-part-1-new-user-form/
-         [ ] https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
-         [ ] https://django-book.readthedocs.io/en/latest/chapter14.html
-       [ ] some react registration examples
-         [ ] https://www.viget.com/articles/building-a-multi-step-registration-form-with-react
-         [ ] https://vladimirponomarev.com/blog/authentication-in-react-apps-creating-components
  [ ] convert users and sessions storage to mongodb
  [ ] get email account verification working
  [ ] get password change working
