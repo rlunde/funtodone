@@ -80,6 +80,8 @@ Authentication:
        [ ] session state can be logged out, pending email validation, or logged in
        [ ] read up on using JWT and using OAUTH2
        [ ] think about making a code generator
+ [ ] I had a brainstorm, and thought about using a stand-alone microservice for auth, and just proxy through to it
+   [ ] maybe start with something like: https://github.com/davidguttman/authentic ?
  [ ] convert users and sessions storage to mongodb
  [ ] get email account verification working
  [ ] get password change working
