@@ -81,7 +81,10 @@ Authentication:
        [ ] read up on using JWT and using OAUTH2
        [ ] think about making a code generator
  [ ] I had a brainstorm, and thought about using a stand-alone microservice for auth, and just proxy through to it
-   [ ] maybe start with something like: https://github.com/davidguttman/authentic ?
+   [ ] maybe start with something like: https://github.com/davidguttman/authentic ? (and http://dry.ly/authentic )
+   [ ] also see: https://gist.github.com/codesword/1b997a259d2509c3b0ea7f087c9b5466
+   [ ] and: https://medium.com/technology-learning/how-we-solved-authentication-and-authorization-in-our-microservice-architecture-994539d1b6e6
+   [ ] also: https://astaxie.gitbooks.io/build-web-application-with-golang/en/06.2.html
  [ ] convert users and sessions storage to mongodb
  [ ] get email account verification working
  [ ] get password change working
@@ -93,6 +96,13 @@ do a complete job of authentication).
 
 Testing:
   [ ] make some curl-based bash scripts to exercise the REST API
+  [ ] golang REST testing: 
+    [ ] https://blog.gopheracademy.com/advent-2014/testing-microservices-in-go/
+    [ ] https://medium.com/@PurdonKyle/building-a-unit-testable-api-in-golang-b42ff1fcbae7
+  [ ] React/Redux testing: 
+    [ ] https://facebook.github.io/jest/docs/tutorial-react.html
+    [ ] http://redux.js.org/docs/recipes/WritingTests.html
+    [ ] https://medium.com/@gethylgeorge/testing-a-react-redux-app-using-jest-and-enzyme-b349324803a9
 
 Features next steps (across service, client, and model):
 ========================================================
