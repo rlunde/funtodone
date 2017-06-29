@@ -71,7 +71,9 @@ class LoginOrRegister extends React.Component {
                   <hr/>
                   <div className="row">
                     <div className="col-lg-12"></div>
-                    {/* TODO: use JS to POST data, not the default form handling */}
+                    {/* TODO: use JS to POST data, not the default form handling 
+                        using no action, but instead using: onSubmit={this.handleSubmit}
+                    */}
                     <form id="login-form" action="/funtodone/login" method="post" role="form">
                       <div className="form-group">
                         <input type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange}/>
@@ -101,7 +103,9 @@ class LoginOrRegister extends React.Component {
                         </div>
                       </div>
                     </form>
-                    {/* TODO: use JS to POST data, not the default form handling */}
+                    {/* TODO: use JS to POST data, not the default form handling 
+                        using no action, but instead using: onSubmit={this.handleSubmit}
+                    */}
                     <form id="register-form" action="/funtodone/register" method="post" role="form">
                       <div className="form-group">
                         <input type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange}/>
