@@ -49,12 +49,47 @@ class LoginOrRegister extends React.Component {
     $('#login-form-link').removeClass('active');
     link.addClass('active');
   }
+  register(url) {
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(this.state),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'no-cors'
+    }).then(result => result.json()).then(items => {
+      console.log(items);
+      this.setState({items})
+    });
+  }
+  login(url) {
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode: 'no-cors'
+    }).then(result => result.json()).then(items => {
+      console.log(items);
+      this.setState({items})
+    });
+  }
   handleSubmit(event) {
     event.preventDefault();
     console.log("submit from: " + event.target.id);
-    console.log("data:" + $("#" + event.target.id).serialize());
+    var formdata = $("#" + event.target.id).serialize();
+    console.log("data:" + formdata);
     $('#lrModal').modal('hide');
     /*TODO: redirect to error page or main page on result of POST to REST API*/
+    /*TODO: get the base URL from configuration */
+    const baseUrl = "http://localhost:8080";
+    if (event.target.id === "register-form") {
+      this.register(baseUrl + "/register");
+    } else if (event.target.id === "login-form") {
+      this.login(baseUrl + "/login");
+    }
   }
   render() {
     return (
@@ -81,7 +116,7 @@ class LoginOrRegister extends React.Component {
                     {/* TODO: use JS to POST data, not the default form handling
                         using no action, but instead using: onSubmit={this.handleSubmit}
                     */}
-                    <form id="login-form" action="" onSubmit={this.handleSubmit} method="post" role="form">
+                    <form id="login-form" action="" onSubmit={this.handleSubmit.bind(this)} method="post" role="form">
                       <div className="form-group">
                         <input type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange}/>
                       </div>
@@ -113,7 +148,7 @@ class LoginOrRegister extends React.Component {
                     {/* TODO: use JS to POST data, not the default form handling
                         using no action, but instead using: onSubmit={this.handleSubmit}
                     */}
-                    <form id="register-form" action="" onSubmit={this.handleSubmit} method="post" role="form">
+                    <form id="register-form" action="" onSubmit={this.handleSubmit.bind(this)} method="post" role="form">
                       <div className="form-group">
                         <input type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange}/>
                       </div>

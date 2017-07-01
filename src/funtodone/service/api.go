@@ -60,8 +60,9 @@ func getRegistrationData(c *gin.Context) (username, email, password string, err 
 	err = nil
 	//sanity check input parameters
 	username, found := c.GetPostForm("username")
+	context := fmt.Sprintf("%#v\n", *(c.Request))
 	if !found {
-		err = errors.New("RegisterAccount called but username is not set")
+		err = errors.New("RegisterAccount called but username is not set" + context)
 		return
 	}
 	email, found = c.GetPostForm("email")
