@@ -56,33 +56,26 @@ func RegisterAccount(c *gin.Context) {
 	//TODO: on success, send email and display a verify email form
 	//TODO: on error, display error message and redirect to register form
 }
+
+/*Login - need to use BindJSON to retrieve from gin, since now posting from React as JSON struct */
+type Login struct {
+	Username     string `form:"username" json:"username" binding:"required"`
+	Password     string `form:"password" json:"password" binding:"required"`
+	ConfPassword string `form:"confpassword" json:"confpassword" binding:"required"`
+	Email        string `form:"email" json:"email" binding:"required"`
+	Remember     bool   `form:"remember" json:"remember" `
+}
+
 func getRegistrationData(c *gin.Context) (username, email, password string, err error) {
-	err = nil
-	//sanity check input parameters
-	username, found := c.GetPostForm("username")
-	context := fmt.Sprintf("%#v\n", *(c.Request))
-	if !found {
-		err = errors.New("RegisterAccount called but username is not set" + context)
-		return
-	}
-	email, found = c.GetPostForm("email")
-	if !found {
-		err = errors.New("RegisterAccount called but email is not set")
-		return
+
+	var json Login
+	err = c.BindJSON(&json)
+	if err == nil {
+		fmt.Printf("Got username: %s\n", json.Username)
 	}
 	//TODO: validate email (at least look for reasonable looking address)
 
-	password, found = c.GetPostForm("password")
-	if !found {
-		err = errors.New("RegisterAccount called but password is not set")
-		return
-	}
-	cpassword, found := c.GetPostForm("confirm-password")
-	if !found {
-		err = errors.New("RegisterAccount called but confirm-password is not set")
-		return
-	}
-	if password != cpassword {
+	if json.Password != json.ConfPassword {
 		err = errors.New("Password and confirm-password do not match")
 	}
 	return
