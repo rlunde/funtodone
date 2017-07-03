@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/badoux/checkmail"
 	"gopkg.in/gin-gonic/gin.v1"
 )
 
@@ -73,8 +74,14 @@ func getRegistrationData(c *gin.Context) (username, email, password string, err 
 	if err == nil {
 		fmt.Printf("Got username: %s\n", json.Username)
 	}
-	//TODO: validate email (at least look for reasonable looking address)
-
+	err = checkmail.ValidateFormat(json.Email)
+	if err != nil {
+		return
+	}
+	err = checkmail.ValidateHost(json.Email)
+	if err != nil {
+		return
+	}
 	if json.Password != json.ConfPassword {
 		err = errors.New("Password and confirm-password do not match")
 	}
