@@ -32,6 +32,7 @@ func RunService() {
 		})
 	})
 	r.POST("/register", RegisterAccount)
+	r.POST("/login", LoginWithAccount)
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Main website",
@@ -58,8 +59,21 @@ func RegisterAccount(c *gin.Context) {
 	//TODO: on error, display error message and redirect to register form
 }
 
-/*Login - need to use BindJSON to retrieve from gin, since now posting from React as JSON struct */
-type Login struct {
+//LoginWithAccount -- create a new login
+func LoginWithAccount(c *gin.Context) {
+	username, password, err := getLoginData(c)
+	if err != nil {
+		c.AbortWithError(400, err)
+	} else {
+		fmt.Printf("LoginWithAccount called with username %s, password %s\n", username, password)
+	}
+	//TODO: create a session cookie
+	//TODO: return success or error message
+	//TODO: on error, display error message and redirect back to login form
+}
+
+/*Registration - need to use BindJSON to retrieve from gin, since now posting from React as JSON struct */
+type Registration struct {
 	Username     string `form:"username" json:"username" binding:"required"`
 	Password     string `form:"password" json:"password" binding:"required"`
 	ConfPassword string `form:"confpassword" json:"confpassword" binding:"required"`
@@ -69,7 +83,7 @@ type Login struct {
 
 func getRegistrationData(c *gin.Context) (username, email, password string, err error) {
 
-	var json Login
+	var json Registration
 	err = c.BindJSON(&json)
 	if err == nil {
 		fmt.Printf("Got username: %s\n", json.Username)
@@ -85,5 +99,27 @@ func getRegistrationData(c *gin.Context) (username, email, password string, err 
 	if json.Password != json.ConfPassword {
 		err = errors.New("Password and confirm-password do not match")
 	}
+	username = json.Username
+	email = json.Email
+	password = json.Password
+	return
+}
+
+/*Login - need to use BindJSON to retrieve from gin, since now posting from React as JSON struct */
+type Login struct {
+	Username string `form:"username" json:"username" binding:"required"`
+	Password string `form:"password" json:"password" binding:"required"`
+	Remember bool   `form:"remember" json:"remember" `
+}
+
+func getLoginData(c *gin.Context) (username, password string, err error) {
+
+	var json Login
+	err = c.BindJSON(&json)
+	if err == nil {
+		fmt.Printf("Got username: %s\n", json.Username)
+	}
+	username = json.Username
+	password = json.Password
 	return
 }
