@@ -32,7 +32,12 @@ func RunService() {
 		})
 	})
 	r.POST("/register", RegisterAccount)
+	/* session related operations: login creates a session, logout destroys one */
 	r.POST("/login", LoginWithAccount)
+	r.POST("/logout", Logout)
+
+	/* all other operations require a valid session, and validation happens as a first step */
+
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Main website",
@@ -59,7 +64,7 @@ func RegisterAccount(c *gin.Context) {
 	//TODO: on error, display error message and redirect to register form
 }
 
-//LoginWithAccount -- create a new login
+//LoginWithAccount -- create a new session, or return an error
 func LoginWithAccount(c *gin.Context) {
 	username, password, err := getLoginData(c)
 	if err != nil {
@@ -68,6 +73,13 @@ func LoginWithAccount(c *gin.Context) {
 		fmt.Printf("LoginWithAccount called with username %s, password %s\n", username, password)
 	}
 	//TODO: create a session cookie
+	//TODO: return success or error message
+	//TODO: on error, display error message and redirect back to login form
+}
+
+//Logout -- destroy a session
+func Logout(c *gin.Context) {
+	//TODO: delete a session cookie
 	//TODO: return success or error message
 	//TODO: on error, display error message and redirect back to login form
 }
