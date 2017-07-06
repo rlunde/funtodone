@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"funtodone/service"
 	//"log"
 	//"net/http"
@@ -18,6 +19,17 @@ import (
  *   cd .. ; ./build -- build this service
  *   ./funtodone -- run this service
  */
+
+var globalSessions *service.SessionManager
+
+//  initialize the session manager (init is run automatically)
+func init() {
+	var err error
+	globalSessions, err = service.NewManager("memory", "gosessionid", 3600)
+	if err != nil {
+		fmt.Printf("Error creating session manager: %s", err.Error())
+	}
+}
 func main() {
 	service.RunService()
 }
