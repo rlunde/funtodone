@@ -73,7 +73,13 @@ func LoginWithAccount(c *gin.Context) {
 		fmt.Printf("LoginWithAccount called with username %s, password %s\n", username, password)
 	}
 	//TODO: create a session cookie
+	w := c.Writer
+	r := c.Request
+	sess := globalSessions.SessionStart(w, r)
 	//TODO: return success or error message
+	//TODO: verify password is correct
+	sess.Set("username", username)
+	http.Redirect(w, r, "/", 302)
 	//TODO: on error, display error message and redirect back to login form
 }
 
