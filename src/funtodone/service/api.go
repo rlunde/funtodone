@@ -85,7 +85,10 @@ func LoginWithAccount(c *gin.Context) {
 
 //Logout -- destroy a session
 func Logout(c *gin.Context) {
-	//TODO: delete a session cookie
+	w := c.Writer
+	r := c.Request
+	globalSessions.SessionEnd(w, r)
+	http.Redirect(w, r, "/", 302)
 	//TODO: return success or error message
 	//TODO: on error, display error message and redirect back to login form
 }

@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"sync"
+	"time"
 )
 
 var globalSessions *SessionManager
@@ -89,5 +90,19 @@ func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Reque
 		sid, _ := url.QueryUnescape(cookie.Value)
 		session, _ = manager.provider.SessionRead(sid)
 	}
+	return
+}
+func (manager *SessionManager) SessionEnd(w http.ResponseWriter, r *http.Request) (session Session) {
+	manager.lock.Lock()
+	defer manager.lock.Unlock()
+	cookie, err := r.Cookie(manager.cookieName)
+	if err != nil || cookie.Value == "" {
+
+	} else {
+		sid, _ := url.QueryUnescape(cookie.Value)
+		_ = manager.provider.SessionDestroy(sid)
+	}
+	cookie = &http.Cookie{Name: manager.cookieName, Value: "deleted", Path: "/", HttpOnly: true, Expires: time.Unix(0, 0)}
+	http.SetCookie(w, cookie)
 	return
 }

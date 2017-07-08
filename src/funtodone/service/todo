@@ -1,0 +1,5 @@
+[ ] the "provider" is a useless abstraction here (remove it)
+[ ] convert the memory session implementation into mongodb
+[x] delete the session on logout
+[ ] test session deletion
+[ ] validate the password hash before creating a session
