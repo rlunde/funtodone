@@ -3,3 +3,11 @@
 [x] delete the session on logout
 [ ] test session deletion
 [ ] validate the password hash before creating a session
+
+I want to move all the session management and auth stuff to
+separate packages, and ultimately into a separate microservice.
+Auth and sessions have been an annoying impediment to getting
+projects done, in part because the code is too tightly coupled
+with app code. I'd like to have the only interaction between
+the app and the auth/session services be done via REST APIs and
+Javascript components.
