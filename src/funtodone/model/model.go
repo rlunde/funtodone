@@ -112,17 +112,6 @@ func NewStatus(done, started bool, due *time.Time) (*Status, error) {
 	return &status, nil
 }
 
-/*User -- a placeholder for when we build in auth
-So far, at least, we're thinking of just having collections tied to
-a user, and only having tasks as part of collections. A user might move
-a task from one collection to another, or copy a task from one to another,
-but it would always be the same user.*/
-type User struct {
-	FirstName string `json:"firstname"`
-	LastName  string `json:"lastname"`
-	Email     string `json:"email"`
-}
-
 //TaskStack - a "stack" is a collection of tasks with subtasks at different levels
 type TaskStack struct {
 	Description string `json:"description"`
