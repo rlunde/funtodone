@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"funtodone/model"
+
 	"github.com/badoux/checkmail"
 	"gopkg.in/gin-gonic/gin.v1"
 )
@@ -72,7 +74,8 @@ func LoginWithAccount(c *gin.Context) {
 	} else {
 		fmt.Printf("LoginWithAccount called with username %s, password %s\n", username, password)
 	}
-	//TODO: create a session cookie
+	pwhash, err := model.Crypt([]byte(password))
+	fmt.Printf("Password hash is %s\n", string(pwhash))
 	w := c.Writer
 	r := c.Request
 	sess := globalSessions.SessionStart(w, r)
