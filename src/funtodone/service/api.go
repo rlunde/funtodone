@@ -39,7 +39,8 @@ func RunService() {
 	r.POST("/logout", Logout)
 
 	/* all other operations require a valid session, and validation happens as a first step */
-
+	/* I need to compose index.html dynamically, so the pieces that relate to the user (and
+	   the logout link) are only shown if there is a valid session. */
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Main website",
