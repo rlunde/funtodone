@@ -11,6 +11,11 @@ import (
 	"time"
 )
 
+/*
+ * This is based on:
+ * https://astaxie.gitbooks.io/build-web-application-with-golang/en/06.2.html
+ */
+
 var globalSessions *SessionManager
 
 //  initialize the session manager (init is run automatically)
@@ -22,9 +27,6 @@ func init() {
 	}
 }
 
-/*
- * https://astaxie.gitbooks.io/build-web-application-with-golang/en/06.2.html
- */
 //Session -- keep track of web session
 type Session interface {
 	Set(key, value interface{}) error //set session value
@@ -32,6 +34,8 @@ type Session interface {
 	Delete(key interface{}) error     //delete session value
 	SessionID() string                //back current sessionID
 }
+
+//SessionProvider -- overly abstract for what we want -- remove this
 type SessionProvider interface {
 	SessionInit(sid string) (Session, error)
 	SessionRead(sid string) (Session, error)
@@ -41,6 +45,7 @@ type SessionProvider interface {
 
 var providers = make(map[string]SessionProvider)
 
+//SessionManager -- overly abstract for what we want -- remove this
 type SessionManager struct {
 	cookieName  string
 	lock        sync.Mutex // protects session
@@ -48,6 +53,7 @@ type SessionManager struct {
 	maxlifetime int64
 }
 
+//NewManager -- return a session manager of the given name (overly abstract -- remove)
 func NewManager(providerName, cookieName string, maxlifetime int64) (*SessionManager, error) {
 	provider, ok := providers[providerName]
 	if !ok {
@@ -58,7 +64,7 @@ func NewManager(providerName, cookieName string, maxlifetime int64) (*SessionMan
 
 // Register makes a session provider available by the provided name.
 // If a Register is called twice with the same name or if the driver is nil,
-// it panics.
+// it panics. We only plan to have a single provider, so all this can go.
 func Register(name string, provider SessionProvider) {
 	if provider == nil {
 		panic("session: Register provider is nil")
@@ -69,6 +75,7 @@ func Register(name string, provider SessionProvider) {
 	providers[name] = provider
 }
 
+//sessionID -- make an ID as a 32 byte random number
 func (manager *SessionManager) sessionID() string {
 	b := make([]byte, 32)
 	if _, err := io.ReadFull(rand.Reader, b); err != nil {
@@ -77,6 +84,8 @@ func (manager *SessionManager) sessionID() string {
 	return base64.URLEncoding.EncodeToString(b)
 }
 
+//SessionStart -- get the session cookie (if it exists) or make a new sessionID,
+//then return the session.
 func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Request) (session Session) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
@@ -92,6 +101,8 @@ func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Reque
 	}
 	return
 }
+
+//SessionEnd -- delete the session from the server, then delete the cookie.
 func (manager *SessionManager) SessionEnd(w http.ResponseWriter, r *http.Request) (session Session) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
