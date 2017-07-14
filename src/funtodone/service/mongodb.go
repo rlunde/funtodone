@@ -106,5 +106,5 @@ func (pder *Provider) SessionUpdate(sid string) error {
 
 func init() {
 	pder.sessions = make(map[string]*list.Element, 0)
-	Register("memory", pder)
+	Register("mongodb", pder)
 }
