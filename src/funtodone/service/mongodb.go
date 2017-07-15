@@ -42,7 +42,7 @@ func (st *SessionStore) SessionID() string {
 
 type Provider struct {
 	lock     sync.Mutex               // lock
-	sessions map[string]*list.Element // save in memory
+	sessions map[string]*list.Element // save in memory // TODO: replace with mongodb
 	list     *list.List               // gc
 }
 
@@ -52,13 +52,13 @@ func (pder *Provider) SessionInit(sid string) (Session, error) {
 	v := make(map[interface{}]interface{}, 0)
 	newsess := &SessionStore{sid: sid, timeAccessed: time.Now(), value: v}
 	element := pder.list.PushBack(newsess)
-	pder.sessions[sid] = element
+	pder.sessions[sid] = element // TODO: store in mongodb
 	return newsess, nil
 }
 
 func (pder *Provider) SessionRead(sid string) (Session, error) {
 	if element, ok := pder.sessions[sid]; ok {
-		return element.Value.(*SessionStore), nil
+		return element.Value.(*SessionStore), nil // TODO: retrieve from mongodb
 	} else {
 		sess, err := pder.SessionInit(sid)
 		return sess, err
@@ -68,7 +68,7 @@ func (pder *Provider) SessionRead(sid string) (Session, error) {
 
 func (pder *Provider) SessionDestroy(sid string) error {
 	if element, ok := pder.sessions[sid]; ok {
-		delete(pder.sessions, sid)
+		delete(pder.sessions, sid) // TODO: delete from mongodb
 		pder.list.Remove(element)
 		return nil
 	}
@@ -85,7 +85,7 @@ func (pder *Provider) SessionGC(maxlifetime int64) {
 			break
 		}
 		if (element.Value.(*SessionStore).timeAccessed.Unix() + maxlifetime) < time.Now().Unix() {
-			pder.list.Remove(element)
+			pder.list.Remove(element) // TODO: delete from mongodb
 			delete(pder.sessions, element.Value.(*SessionStore).sid)
 		} else {
 			break
@@ -96,7 +96,7 @@ func (pder *Provider) SessionGC(maxlifetime int64) {
 func (pder *Provider) SessionUpdate(sid string) error {
 	pder.lock.Lock()
 	defer pder.lock.Unlock()
-	if element, ok := pder.sessions[sid]; ok {
+	if element, ok := pder.sessions[sid]; ok { // TODO: update in mongodb
 		element.Value.(*SessionStore).timeAccessed = time.Now()
 		pder.list.MoveToFront(element)
 		return nil
@@ -105,6 +105,6 @@ func (pder *Provider) SessionUpdate(sid string) error {
 }
 
 func init() {
-	pder.sessions = make(map[string]*list.Element, 0)
+	pder.sessions = make(map[string]*list.Element, 0) // TODO: connect to mongodb
 	Register("mongodb", pder)
 }
