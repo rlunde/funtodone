@@ -39,13 +39,16 @@ func FindUserByID(c *mgo.Collection, id bson.ObjectId) (*User, error) {
 	return &result, err
 }
 
-func NewUserIdStr() string {
+//NewUserIDStr - return an ID for use in MongoDB for a user
+func NewUserIDStr() string {
 	var id bson.ObjectId
 	id = bson.NewObjectId()
 	idstr := id.Hex()
 	return idstr
 }
-func UserIdFromIdStr(idStr string) bson.ObjectId {
+
+//UserIDFromIDStr - convert a user ID into a string that can be used in other places
+func UserIDFromIDStr(idStr string) bson.ObjectId {
 	id := bson.ObjectIdHex(idStr)
 	return id
 }

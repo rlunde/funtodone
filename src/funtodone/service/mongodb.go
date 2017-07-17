@@ -2,24 +2,61 @@ package service
 
 import (
 	"container/list"
+	"fmt"
 	"sync"
 	"time"
+
+	mgo "gopkg.in/mgo.v2"
 )
+
+type sessionConfig struct {
+	mongoSession        *mgo.Session
+	mongoCollection     *mgo.Collection
+	mongoHost           string
+	mongoDatabase       string
+	mongoCollectionName string
+}
+
+var SessionConfig sessionConfig
+
+//GetDatabaseConnection - open a Mongo database for storing sessions
+func GetDatabaseConnection() (*sessionConfig, error) {
+	//TODO: read the host and database from a config file
+	SessionConfig = sessionConfig{
+		mongoHost:           "127.0.0.1",
+		mongoDatabase:       "funtodone",
+		mongoCollectionName: "sessions",
+	}
+	mongoSession, err := mgo.Dial(SessionConfig.mongoHost)
+	if err != nil {
+		fmt.Printf("Could not open mongo database session: %s", err.Error())
+		return nil, err
+	}
+	SessionConfig.mongoSession = mongoSession
+	SessionConfig.mongoSession.SetMode(mgo.Monotonic, true)
+
+	mongoCollection := SessionConfig.mongoSession.DB(SessionConfig.mongoDatabase).C(SessionConfig.mongoCollectionName)
+	SessionConfig.mongoCollection = mongoCollection
+	return &SessionConfig, nil
+}
 
 var pder = &Provider{list: list.New()}
 
+//SessionStore - for each session, keep a map of name/value pairs and a last accessed time
 type SessionStore struct {
 	sid          string                      // unique session id
 	timeAccessed time.Time                   // last access time
 	value        map[interface{}]interface{} // session value stored inside
 }
 
+//Set - save a key/value pair in a session in the database
 func (st *SessionStore) Set(key, value interface{}) error {
 	st.value[key] = value
 	pder.SessionUpdate(st.sid)
 	return nil
 }
 
+//Get - retrieve a value for a key, for a session, from the database
 func (st *SessionStore) Get(key interface{}) interface{} {
 	pder.SessionUpdate(st.sid)
 	if v, ok := st.value[key]; ok {
