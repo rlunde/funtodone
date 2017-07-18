@@ -3,6 +3,7 @@
 [x] delete the session on logout
 [ ] test session deletion
 [ ] validate the password hash before creating a session
+[ ] fix linter errors -- for one thing, it's copying a lock
 
 I want to move all the session management and auth stuff to
 separate packages, and ultimately into a separate microservice.

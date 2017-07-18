@@ -17,7 +17,8 @@ type User struct {
 	Email        string `json:"email"`
 	PasswordHash []byte `json:"-"`
 	Password     string `json:"password,omitempty"`
-	//TODO: indicate whether to use password hash or OAuth2, and if OAuth2, which provider
+	//TODO: indicate whether to use password hash or OAuth2, and if OAuth2, which
+	//authorization server
 }
 
 func clear(b []byte) {
@@ -32,23 +33,23 @@ func Crypt(password []byte) ([]byte, error) {
 	return bcrypt.GenerateFromPassword(password, bcrypt.DefaultCost)
 }
 
-//FindUserByID - read a user record from mongodb by its ID
-func FindUserByID(c *mgo.Collection, id bson.ObjectId) (*User, error) {
+//FindObjectByID - read a user record from mongodb by its ID
+func FindObjectByID(c *mgo.Collection, id bson.ObjectId) (*User, error) {
 	result := User{}
 	err := c.Find(bson.M{"_id": id}).One(&result)
 	return &result, err
 }
 
-//NewUserIDStr - return an ID for use in MongoDB for a user
-func NewUserIDStr() string {
+//CreateObjectIDStr - return an ID for use in MongoDB for a user
+func CreateObjectIDStr() string {
 	var id bson.ObjectId
 	id = bson.NewObjectId()
 	idstr := id.Hex()
 	return idstr
 }
 
-//UserIDFromIDStr - convert a user ID into a string that can be used in other places
-func UserIDFromIDStr(idStr string) bson.ObjectId {
+//ObjectIDFromIDStr - convert a user ID into a string that can be used in other places
+func ObjectIDFromIDStr(idStr string) bson.ObjectId {
 	id := bson.ObjectIdHex(idStr)
 	return id
 }
