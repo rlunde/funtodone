@@ -28,6 +28,7 @@ func init() {
 }
 
 //Session -- keep track of web session
+//TODO: rethink this whole mess
 type Session interface {
 	Set(key, value interface{}) error //set session value
 	Get(key interface{}) interface{}  //get session value
@@ -36,44 +37,44 @@ type Session interface {
 }
 
 //SessionProvider -- overly abstract for what we want -- remove this
-type SessionProvider interface {
-	SessionInit(sid string) (Session, error)
-	SessionRead(sid string) (Session, error)
-	SessionDestroy(sid string) error
-	SessionGC(maxLifeTime int64)
-}
+// type SessionProvider interface {
+// 	SessionInit(sid string) (Session, error)
+// 	SessionRead(sid string) (Session, error)
+// 	SessionDestroy(sid string) error
+// 	SessionGC(maxLifeTime int64)
+// }
 
-var providers = make(map[string]SessionProvider)
+// var providers = make(map[string]SessionProvider)
 
 //SessionManager -- overly abstract for what we want -- remove this
 type SessionManager struct {
 	cookieName  string
 	lock        sync.Mutex // protects session
-	provider    SessionProvider
+	store       *SessionStore
 	maxlifetime int64
 }
 
 //NewManager -- return a session manager of the given name (overly abstract -- remove)
 func NewManager(providerName, cookieName string, maxlifetime int64) (*SessionManager, error) {
-	provider, ok := providers[providerName]
-	if !ok {
-		return nil, fmt.Errorf("session: unknown provider %q (forgotten import?)", providerName)
-	}
-	return &SessionManager{provider: provider, cookieName: cookieName, maxlifetime: maxlifetime}, nil
+	// provider, ok := providers[providerName]
+	// if !ok {
+	// 	return nil, fmt.Errorf("session: unknown provider %q (forgotten import?)", providerName)
+	// }
+	return &SessionManager{cookieName: cookieName, maxlifetime: maxlifetime}, nil
 }
 
 // Register makes a session provider available by the provided name.
 // If a Register is called twice with the same name or if the driver is nil,
 // it panics. We only plan to have a single provider, so all this can go.
-func Register(name string, provider SessionProvider) {
-	if provider == nil {
-		panic("session: Register provider is nil")
-	}
-	if _, dup := providers[name]; dup {
-		panic("session: Register called twice for provider " + name)
-	}
-	providers[name] = provider
-}
+// func Register(name string, provider SessionProvider) {
+// 	if provider == nil {
+// 		panic("session: Register provider is nil")
+// 	}
+// 	if _, dup := providers[name]; dup {
+// 		panic("session: Register called twice for provider " + name)
+// 	}
+// 	providers[name] = provider
+// }
 
 //sessionID -- make an ID as a 32 byte random number
 func (manager *SessionManager) sessionID() string {
@@ -92,18 +93,18 @@ func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Reque
 	cookie, err := r.Cookie(manager.cookieName)
 	if err != nil || cookie.Value == "" {
 		sid := manager.sessionID()
-		session, _ = manager.provider.SessionInit(sid)
+		session, _ = SessionInit(manager, sid)
 		cookie := http.Cookie{Name: manager.cookieName, Value: url.QueryEscape(sid), Path: "/", HttpOnly: true, MaxAge: int(manager.maxlifetime)}
 		http.SetCookie(w, &cookie)
 	} else {
 		sid, _ := url.QueryUnescape(cookie.Value)
-		session, _ = manager.provider.SessionRead(sid)
+		session, _ = SessionRead(manager, sid)
 	}
 	return
 }
 
 //SessionEnd -- delete the session from the server, then delete the cookie.
-func (manager *SessionManager) SessionEnd(w http.ResponseWriter, r *http.Request) (session Session) {
+func (manager *SessionManager) SessionEnd(mgr *SessionManager, w http.ResponseWriter, r *http.Request) (session Session) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	cookie, err := r.Cookie(manager.cookieName)
@@ -111,7 +112,7 @@ func (manager *SessionManager) SessionEnd(w http.ResponseWriter, r *http.Request
 
 	} else {
 		sid, _ := url.QueryUnescape(cookie.Value)
-		_ = manager.provider.SessionDestroy(sid)
+		_ = SessionDestroy(mgr, sid)
 	}
 	cookie = &http.Cookie{Name: manager.cookieName, Value: "deleted", Path: "/", HttpOnly: true, Expires: time.Unix(0, 0)}
 	http.SetCookie(w, cookie)

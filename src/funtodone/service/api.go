@@ -91,7 +91,7 @@ func LoginWithAccount(c *gin.Context) {
 func Logout(c *gin.Context) {
 	w := c.Writer
 	r := c.Request
-	globalSessions.SessionEnd(w, r)
+	globalSessions.SessionEnd(globalSessions, w, r)
 	http.Redirect(w, r, "/", 302)
 	//TODO: return success or error message
 	//TODO: on error, display error message and redirect back to login form
