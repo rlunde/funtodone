@@ -46,19 +46,18 @@ type SessionStore struct {
 	sid          string                      // unique session id
 	timeAccessed time.Time                   // last access time
 	value        map[interface{}]interface{} // session value stored inside
-	mgr          SessionManager
 }
 
 //Set - save a key/value pair in a session in the database
-func (st *SessionStore) Set(key, value interface{}) error {
+func (st *SessionStore) Set(mgr *SessionManager, key, value interface{}) error {
 	st.value[key] = value
-	SessionUpdate(st.mgr, st.sid)
+	SessionUpdate(mgr, st.sid)
 	return nil
 }
 
 //Get - retrieve a value for a key, for a session, from the database
-func (st *SessionStore) Get(key interface{}) interface{} {
-	SessionUpdate(st.mgr, st.sid)
+func (st *SessionStore) Get(mgr *SessionManager, key interface{}) interface{} {
+	SessionUpdate(mgr, st.sid)
 	if v, ok := st.value[key]; ok {
 		return v
 	} else {
@@ -67,9 +66,9 @@ func (st *SessionStore) Get(key interface{}) interface{} {
 	//return nil
 }
 
-func (st *SessionStore) Delete(key interface{}) error {
+func (st *SessionStore) Delete(mgr *SessionManager, key interface{}) error {
 	delete(st.value, key)
-	SessionUpdate(st.mgr, st.sid)
+	SessionUpdate(mgr, st.sid)
 	return nil
 }
 
@@ -84,32 +83,32 @@ func (st *SessionStore) SessionID() string {
 // }
 
 // func (pder *Provider) SessionInit(sid string) (Session, error) {
-
-func SessionInit(mgr SessionManager, sid string) (Session, error) {
+//TODO: rethink this whole thing
+func SessionInit(mgr *SessionManager, sid string) (Session, error) {
 	mgr.lock.Lock()
 	defer mgr.lock.Unlock()
-	v := make(map[interface{}]interface{}, 0)
-	newsess := &SessionStore{sid: sid, timeAccessed: time.Now(), value: v}
+	// v := make(map[interface{}]interface{}, 0)
+
 	//TODO: store the session in mongodb
 	// element := pder.list.PushBack(newsess)
 	// pder.sessions[sid] = element // TODO: store in mongodb
-	return newsess, nil
+	return nil, nil // TODO: return a session
 }
 
 // func (pder *Provider) SessionRead(sid string) (Session, error) {
-func SessionRead(ss SessionStore, sid string) (Session, error) {
+func SessionRead(mgr *SessionManager, sid string) (Session, error) {
 	//TODO: retrieve the session from mongodb if it's there
-	element := ss.Get(sid) // TODO: change this to FindObjectByID
+	element := mgr.store.Get(mgr, sid) // TODO: change this to FindObjectByID
 	if element != nil {
 		return element.(Session), nil
 	} else {
-		sess, err := SessionInit(ss.mgr, sid)
+		sess, err := SessionInit(mgr, sid)
 		return sess, err
 	}
 	//return nil, nil
 }
 
-func SessionDestroy(mgr SessionManager, sid string) error {
+func SessionDestroy(mgr *SessionManager, sid string) error {
 	// TODO: delete from mongodb
 	// if element, ok := pder.sessions[sid]; ok {
 	// 	delete(pder.sessions, sid)
@@ -137,7 +136,7 @@ func SessionGC(mgr SessionManager, maxlifetime int64) {
 	// }
 }
 
-func SessionUpdate(mgr SessionManager, sid string) error {
+func SessionUpdate(mgr *SessionManager, sid string) error {
 	mgr.lock.Lock()
 	defer mgr.lock.Unlock()
 	// TODO: update in mongodb
