@@ -79,7 +79,7 @@ func LoginWithAccount(c *gin.Context) {
 	fmt.Printf("Password hash is %s\n", string(pwhash))
 	w := c.Writer
 	r := c.Request
-	sess := globalSessions.SessionStart(w, r)
+	sess := globalSessionManager.SessionStart(w, r)
 	//TODO: return success or error message
 	//TODO: verify password is correct
 	sess.Set("username", username)
@@ -91,7 +91,7 @@ func LoginWithAccount(c *gin.Context) {
 func Logout(c *gin.Context) {
 	w := c.Writer
 	r := c.Request
-	globalSessions.SessionEnd(globalSessions, w, r)
+	globalSessionManager.SessionEnd(globalSessionManager, w, r)
 	http.Redirect(w, r, "/", 302)
 	//TODO: return success or error message
 	//TODO: on error, display error message and redirect back to login form

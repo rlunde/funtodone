@@ -70,7 +70,7 @@ to make you laugh out loud with glee.
 Yeah, neither do we. At first, we want to make sure import/export is super easy
 to use, so you can save/restore all your stuff in Dropbox, or Google Drive, or iCloud,
 or on your own drive. Later on, we hope to try using APIs from those main storage
-providers to let you read/write from your own files under there directly, but we'll
+vendors to let you read/write from your own files under there directly, but we'll
 see. In the mean time, we're putting it into a MongoDB database in the hosted version
 of FunToDone, and you're (obviously) welcome to put it in your own database if you
 clone it and run it yourself.

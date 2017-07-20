@@ -138,7 +138,7 @@ func GetTestDatabaseConnection(t *testing.T) (*mgo.Session, *mgo.Collection, err
 	}
 
 	session.SetMode(mgo.Monotonic, true)
-	// We are only running this one test, so drop the test database firstname
+	// We are only running this one test, so drop the test database first
 	err = DropDatabaseOnce(session)
 	if err != nil {
 		session.Close()
