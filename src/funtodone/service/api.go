@@ -76,10 +76,16 @@ func LoginWithAccount(c *gin.Context) {
 		fmt.Printf("LoginWithAccount called with username %s, password %s\n", username, password)
 	}
 	pwhash, err := model.Crypt([]byte(password))
+	if err != nil {
+		c.AbortWithError(400, err)
+	}
 	fmt.Printf("Password hash is %s\n", string(pwhash))
 	w := c.Writer
 	r := c.Request
-	sess := globalSessionManager.SessionStart(w, r)
+	sess, err := globalSessionManager.SessionStart(w, r)
+	if err != nil {
+		c.AbortWithError(400, err)
+	}
 	//TODO: return success or error message
 	//TODO: verify password is correct
 	sess.Set("username", username)
