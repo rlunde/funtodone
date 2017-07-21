@@ -1,11 +1,19 @@
 package service
 
 import (
+	"errors"
 	"fmt"
 
 	mgo "gopkg.in/mgo.v2"
 )
 
+//TODO: move database refs out of config struct to its own struct
+
+/* Note: see article on escape analysis: references are passed into functions, not out.
+http://www.agardner.me/golang/garbage/collection/gc/escape/analysis/2015/10/18/go-escape-analysis.html
+*/
+
+//SessionConfig -- keep track of all the config data
 type SessionConfig struct {
 	mongoSession        *mgo.Session
 	mongoCollection     *mgo.Collection
@@ -25,13 +33,16 @@ func GetSessionConfig(mgr *SessionManager) {
 }
 
 //GetDatabaseConnection - open a Mongo database for storing sessions
-func GetDatabaseConnection() (mgr *SessionManager, err error) {
-
-	mgr = globalSessionManager
+func GetDatabaseConnection(mgr *SessionManager) (err error) {
+	//Note: pass globalSessionManager as the argument to this function
+	if mgr == nil {
+		err = errors.New("GetDatabaseConnection called with nil SessionManager")
+		return
+	}
 	mongoSession, err := mgo.Dial(mgr.sessionConfig.mongoHost)
 	if err != nil {
 		fmt.Printf("Could not open mongo database session: %s", err.Error())
-		return nil, err
+		return err
 	}
 	mgr.sessionConfig.mongoSession = mongoSession
 	mgr.sessionConfig.mongoSession.SetMode(mgo.Monotonic, true)
@@ -41,29 +52,62 @@ func GetDatabaseConnection() (mgr *SessionManager, err error) {
 	return
 }
 
-func SessionInit(mgr *SessionManager, sid string) (session *Session, err error) {
+//SessionInit - create a new session record in MongoDB
+func SessionInit(mgr *SessionManager, session *Session) (err error) {
+	if mgr == nil {
+		err = errors.New("SessionInit called with nil SessionManager")
+		return
+	}
+	if session == nil {
+		err = errors.New("SessionInit called with nil Session")
+		return
+	}
 	mgr.lock.Lock()
 	defer mgr.lock.Unlock()
 	//TODO: store the session in mongodb
-	return nil, nil // TODO: return a session
+	return nil // TODO: return a session
 }
 
-// func (pder *Provider) SessionRead(sid string) (Session, error) {
-func SessionRead(mgr *SessionManager, sid string) (session *Session, err error) {
+func SessionRead(mgr *SessionManager, session *Session) (err error) {
+	if mgr == nil {
+		err = errors.New("SessionRead called with nil SessionManager")
+		return
+	}
+	if session == nil {
+		err = errors.New("SessionRead called with nil Session")
+		return
+	}
 	//TODO: retrieve the session from mongodb if it's there
 
-	return nil, nil
+	return nil
 }
 
-func SessionDestroy(mgr *SessionManager, sid string) error {
+func SessionDestroy(mgr *SessionManager, session *Session) (err error) {
+	if mgr == nil {
+		err = errors.New("SessionDestroy called with nil SessionManager")
+		return
+	}
+	if session == nil {
+		err = errors.New("SessionDestroy called with nil Session")
+		return
+	}
 	// TODO: delete from mongodb
 
 	return nil
 }
 
-func SessionUpdate(mgr *SessionManager, sid string) error {
-	mgr.lock.Lock()
-	defer mgr.lock.Unlock()
+func SessionUpdate(mgr *SessionManager, session *Session) (err error) {
+	if mgr == nil {
+		err = errors.New("SessionUpdate called with nil SessionManager")
+		return
+	}
+	if session == nil {
+		err = errors.New("SessionUpdate called with nil Session")
+		return
+	}
+	//TODO: figure out if we still need this lock for anything
+	// mgr.lock.Lock()
+	// defer mgr.lock.Unlock()
 	// TODO: update in mongodb
 
 	return nil

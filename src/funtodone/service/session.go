@@ -75,18 +75,24 @@ func (manager *SessionManager) sessionID() string {
 
 //SessionStart -- get the session cookie (if it exists) or make a new sessionID,
 //then return the session.
-func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Request) (session *Session) {
+func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Request) (session Session, err error) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	cookie, err := r.Cookie(manager.cookieName)
+
 	if err != nil || cookie.Value == "" {
 		sid := manager.sessionID()
-		session, _ = SessionInit(manager, sid)
+		session.sessionID = sid
+		err = SessionInit(manager, &session)
+		if err != nil {
+			return session, err
+		}
 		cookie := http.Cookie{Name: manager.cookieName, Value: url.QueryEscape(sid), Path: "/", HttpOnly: true, MaxAge: int(manager.maxlifetime)}
 		http.SetCookie(w, &cookie)
 	} else {
 		sid, _ := url.QueryUnescape(cookie.Value)
-		session, _ = SessionRead(manager, sid)
+		session.sessionID = sid
+		err = SessionRead(manager, &session)
 	}
 	return
 }
@@ -100,7 +106,8 @@ func (manager *SessionManager) SessionEnd(mgr *SessionManager, w http.ResponseWr
 
 	} else {
 		sid, _ := url.QueryUnescape(cookie.Value)
-		_ = SessionDestroy(mgr, sid)
+		session.sessionID = sid
+		_ = SessionDestroy(mgr, &session)
 	}
 	cookie = &http.Cookie{Name: manager.cookieName, Value: "deleted", Path: "/", HttpOnly: true, Expires: time.Unix(0, 0)}
 	http.SetCookie(w, cookie)
