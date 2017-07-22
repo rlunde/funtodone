@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	mgo "gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 //TODO: move database refs out of config struct to its own struct
@@ -22,6 +23,7 @@ type SessionConfig struct {
 	mongoCollectionName string
 }
 
+//GetSessionConfig -- return the config data for the session
 //TODO: read the host and database from a config file
 func GetSessionConfig(mgr *SessionManager) {
 	sessionConfig := SessionConfig{
@@ -62,12 +64,21 @@ func SessionInit(mgr *SessionManager, session *Session) (err error) {
 		err = errors.New("SessionInit called with nil Session")
 		return
 	}
+	if mgr.sessionConfig.mongoSession == nil {
+		err = errors.New("SessionInit called with nil SessionManager mongoSession")
+		return
+	}
 	mgr.lock.Lock()
 	defer mgr.lock.Unlock()
-	//TODO: store the session in mongodb
+	c := mgr.sessionConfig.mongoCollection
+	err = c.Insert(session)
+	if err != nil {
+		return err
+	}
 	return nil // TODO: return a session
 }
 
+//SessionRead -- get the session out of mongodb
 func SessionRead(mgr *SessionManager, session *Session) (err error) {
 	if mgr == nil {
 		err = errors.New("SessionRead called with nil SessionManager")
@@ -77,9 +88,14 @@ func SessionRead(mgr *SessionManager, session *Session) (err error) {
 		err = errors.New("SessionRead called with nil Session")
 		return
 	}
-	//TODO: retrieve the session from mongodb if it's there
-
-	return nil
+	if mgr.sessionConfig.mongoSession == nil {
+		err = errors.New("SessionInit called with nil SessionManager mongoSession")
+		return
+	}
+	id := bson.ObjectIdHex(session.sessionID)
+	c := mgr.sessionConfig.mongoCollection
+	err = c.Find(bson.M{"_id": id}).One(session)
+	return err // err is nil if it found it
 }
 
 func SessionDestroy(mgr *SessionManager, session *Session) (err error) {
