@@ -9,6 +9,8 @@ import (
 	"net/url"
 	"sync"
 	"time"
+
+	"gopkg.in/mgo.v2/bson"
 )
 
 /*
@@ -32,6 +34,7 @@ func init() {
 
 //Session -- keep track of web session
 type Session struct {
+	_id        bson.ObjectId // this ties it tightly to mongo -- better to have a wrapper struct
 	sessionID  string
 	lastAccess int64 // unix time of last access
 }
