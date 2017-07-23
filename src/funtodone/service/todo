@@ -1,9 +1,12 @@
-[ ] the "provider" is a useless abstraction here (remove it)
-[ ] convert the memory session implementation into mongodb
+[x] the "provider" is a useless abstraction here (remove it)
+[x] convert the memory session implementation into mongodb
 [x] delete the session on logout
+[ ] test session insert
+[ ] test session update
+[ ] test session read
 [ ] test session deletion
 [ ] validate the password hash before creating a session
-[ ] fix linter errors -- for one thing, it's copying a lock
+[ ] fix linter errors
 
 I want to move all the session management and auth stuff to
 separate packages, and ultimately into a separate microservice.
