@@ -36,27 +36,33 @@ func init() {
 type Session struct {
 	_id        bson.ObjectId // this ties it tightly to mongo -- better to have a wrapper struct
 	sessionID  string
-	lastAccess int64 // unix time of last access
+	lastAccess int64                       // unix time of last access
+	m          map[interface{}]interface{} // holds a map of any key to any value
 }
 
 //Set -- store a value of any type in a session
 func (session *Session) Set(key, value interface{}) error {
+	session.m[key] = value
 	return nil
 }
 
 //Get -- get a value of any type from a session
 func (session *Session) Get(key interface{}) interface{} {
-	return nil
+	return session.m[key]
 }
 
 //Delete -- delete a key/value pair from a session
 func (session *Session) Delete(key, value interface{}) error {
+	delete(session.m, key)
 	return nil
 }
 
-//NewSession -- create a session and return a reference to it
-func NewSession() (session *Session) {
-	return nil
+//NewSession return a new session with the map and lastAccess initialized
+func NewSession(sid string) (session Session) {
+	session = Session{sessionID: sid,
+		m:          make(map[interface{}]interface{}),
+		lastAccess: time.Now().Unix()}
+	return
 }
 
 //SessionManager -- overly abstract for what we want -- remove this
@@ -85,7 +91,7 @@ func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Reque
 
 	if err != nil || cookie.Value == "" {
 		sid := manager.sessionID()
-		session.sessionID = sid
+		session = NewSession(sid)
 		err = SessionInit(manager, &session)
 		if err != nil {
 			return session, err
@@ -94,7 +100,7 @@ func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Reque
 		http.SetCookie(w, &cookie)
 	} else {
 		sid, _ := url.QueryUnescape(cookie.Value)
-		session.sessionID = sid
+		session = NewSession(sid)
 		err = SessionRead(manager, &session)
 	}
 	return

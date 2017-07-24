@@ -1,6 +1,9 @@
 [x] the "provider" is a useless abstraction here (remove it)
 [x] convert the memory session implementation into mongodb
 [x] delete the session on logout
+[ ] set a value in a session
+[ ] get a value from a session
+[ ] delete a value from a session
 [ ] test session insert
 [ ] test session update
 [ ] test session read

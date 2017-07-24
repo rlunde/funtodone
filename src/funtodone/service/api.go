@@ -89,6 +89,8 @@ func LoginWithAccount(c *gin.Context) {
 	//TODO: return success or error message
 	//TODO: verify password is correct
 	sess.Set("username", username)
+	//update the session in mongodb
+	SessionUpdate(globalSessionManager, &sess)
 	http.Redirect(w, r, "/", 302)
 	//TODO: on error, display error message and redirect back to login form
 }
