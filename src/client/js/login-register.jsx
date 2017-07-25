@@ -4,22 +4,17 @@ class LoginOrRegister extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
       email: '',
       password: '',
       confpassword: '',
       remember: false
     };
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleConfPasswordChange = this.handleConfPasswordChange.bind(this);
     this.handleRememberChange = this.handleRememberChange.bind(this);
     this.handleLoginFormClick = this.handleLoginFormClick.bind(this);
     this.handleRegisterFormClick = this.handleRegisterFormClick.bind(this);
-  }
-  handleUsernameChange(event) {
-    this.setState({username: event.target.value});
   }
   handleEmailChange(event) {
     this.setState({email: event.target.value});
@@ -118,7 +113,7 @@ class LoginOrRegister extends React.Component {
                     */}
                     <form id="login-form" action="" onSubmit={this.handleSubmit.bind(this)} method="post" role="form">
                       <div className="form-group">
-                        <input type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange}/>
+                        <input type="text" name="email" id="email" tabIndex="1" className="form-control" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange}/>
                       </div>
                       <div className="form-group">
                         <input type="password" name="password" id="password" tabIndex="2" className="form-control" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}/>
@@ -149,9 +144,6 @@ class LoginOrRegister extends React.Component {
                         using no action, but instead using: onSubmit={this.handleSubmit}
                     */}
                     <form id="register-form" action="" onSubmit={this.handleSubmit.bind(this)} method="post" role="form">
-                      <div className="form-group">
-                        <input type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange}/>
-                      </div>
                       <div className="form-group">
                         <input type="email" name="email" id="email" tabIndex="1" className="form-control" placeholder="Email Address" value={this.state.email} onChange={this.handleEmailChange}/>
                       </div>

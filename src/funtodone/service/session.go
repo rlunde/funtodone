@@ -53,7 +53,7 @@ func (session *Session) Get(key interface{}) interface{} {
 
 //Delete -- delete a key/value pair from a session
 func (session *Session) Delete(key, value interface{}) error {
-	delete(session.m, key)
+	delete(session.m, key) // do we need to return an error if it isn't there?
 	return nil
 }
 
