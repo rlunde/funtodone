@@ -23,6 +23,11 @@ type SessionConfig struct {
 	mongoCollectionName string
 }
 
+//dbconn -- return the database connection
+func (manager *SessionManager) dbconn() *mgo.Collection {
+	return manager.sessionConfig.mongoCollection
+}
+
 //GetSessionConfig -- return the config data for the session
 //TODO: read the host and database from a config file
 func GetSessionConfig(mgr *SessionManager) {

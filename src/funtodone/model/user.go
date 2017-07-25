@@ -12,11 +12,10 @@ a user, and only having tasks as part of collections. A user might move
 a task from one collection to another, or copy a task from one to another,
 but it would always be the same user.*/
 type User struct {
-	FirstName    string `json:"firstname"`
-	LastName     string `json:"lastname"`
-	Email        string `json:"email"`
+	// we will just use email as the account identifier for now
+	Email        string `json:"email"` // this must be unique per user record
 	PasswordHash []byte `json:"-"`
-	Password     string `json:"password,omitempty"`
+	// Password     string `json:"password,omitempty"`
 	//TODO: indicate whether to use password hash or OAuth2, and if OAuth2, which
 	//authorization server
 }
@@ -33,10 +32,17 @@ func Crypt(password []byte) ([]byte, error) {
 	return bcrypt.GenerateFromPassword(password, bcrypt.DefaultCost)
 }
 
-//FindObjectByID - read a user record from mongodb by its ID
-func FindObjectByID(c *mgo.Collection, id bson.ObjectId) (*User, error) {
+//FindUserByID - read a user record from mongodb by its ID
+func FindUserByID(c *mgo.Collection, id bson.ObjectId) (*User, error) {
 	result := User{}
 	err := c.Find(bson.M{"_id": id}).One(&result)
+	return &result, err
+}
+
+//FindUserByEmail - read a user record from mongodb by the email address
+func FindUserByEmail(c *mgo.Collection, email string) (*User, error) {
+	result := User{}
+	err := c.Find(bson.M{"Email": email}).One(&result)
 	return &result, err
 }
 
