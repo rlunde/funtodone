@@ -17,6 +17,11 @@ import (
  *   2) User auth and session management
  *   3) REST service to handle user task collections
  *
+ * TODO: convert from Gin to either net/http or (maybe) to https://github.com/go-chi/chi
+ *   I don't think Gin is providing anything I want. I have never seen a complete example
+ *   using middleware, which is the recommended approach for authentication. If I'm going
+ *   to have to figure it out from scratch, I may as well stick to the standard library.
+ *
  * Assumptions:
  *   a) use nginx to handle requests for web resources on port 80 or 443, and proxy REST requests to this port
  *   b) no need to think about user groups, roles, permissions etc. but don't make them hard to add later
@@ -40,7 +45,10 @@ func RunService() {
 
 	/* all other operations require a valid session, and validation happens as a first step */
 	/* I need to compose index.html dynamically, so the pieces that relate to the user (and
-	   the logout link) are only shown if there is a valid session. */
+	   the logout link) are only shown if there is a valid session. Otherwise index.html is
+		 a regular landing page with basic information and login/register links */
+	/* TODO: figure out how to map all other GET urls to a standard handler that does
+	   the session validation, etc. */
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Main website",
