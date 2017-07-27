@@ -1,9 +1,10 @@
-[x] the "provider" is a useless abstraction here (remove it)
-[x] convert the memory session implementation into mongodb
-[x] delete the session on logout
-[ ] set a value in a session
-[ ] get a value from a session
-[ ] delete a value from a session
+[ ] refactor session stuff and redo separation of concerns
+  [ ] sessions should have their own package
+  [ ] session should use an interface for persistence (but not a pluggable "provider")
+  [ ] eliminate duplicated code
+  [ ] sessions should know about cookies, and be able to set/get key/value pairs from mongodb
+  [ ] refactor api to isolate session interactions
+  [ ] write some end-to-end integration tests (look at react testing?)
 [ ] test session insert
 [ ] test session update
 [ ] test session read
