@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"funtodone/model"
+	"funtodone/session"
 
 	"github.com/badoux/checkmail"
 	"gopkg.in/gin-gonic/gin.v1"
@@ -90,7 +91,8 @@ func LoginWithAccount(c *gin.Context) {
 	}
 	fmt.Printf("Password hash is %s\n", string(pwhash))
 	//Get the user from the database if it's there
-	user, err := model.FindUserByEmail(globalSessionManager.dbconn(), email)
+	mgr := session.GetMgr()
+	user, err := model.FindUserByEmail(mgr.DbConn(), email)
 	if err != nil {
 		c.AbortWithError(400, err)
 	}
@@ -100,14 +102,14 @@ func LoginWithAccount(c *gin.Context) {
 	}
 	w := c.Writer
 	r := c.Request
-	sess, err := globalSessionManager.SessionStart(w, r)
+	sess, err := session.GetMgr().SessionStart(w, r)
 	if err != nil {
 		c.AbortWithError(400, err)
 	}
 	//TODO: return success or error message
 	sess.Set("email", email)
 	//update the session in mongodb
-	SessionUpdate(globalSessionManager, &sess)
+	session.SessionUpdate(session.GetMgr(), &sess)
 	http.Redirect(w, r, "/", 302)
 }
 
@@ -115,7 +117,7 @@ func LoginWithAccount(c *gin.Context) {
 func Logout(c *gin.Context) {
 	w := c.Writer
 	r := c.Request
-	globalSessionManager.SessionEnd(globalSessionManager, w, r)
+	session.GetMgr().SessionEnd(session.GetMgr(), w, r)
 	http.Redirect(w, r, "/", 302)
 	//TODO: return success or error message
 	//TODO: on error, display error message and redirect back to login form

@@ -1,4 +1,4 @@
-package service
+package session
 
 import (
 	"errors"
@@ -23,8 +23,8 @@ type SessionConfig struct {
 	mongoCollectionName string
 }
 
-//dbconn -- return the database connection
-func (manager *SessionManager) dbconn() *mgo.Collection {
+//DbConn -- return the database connection
+func (manager *SessionManager) DbConn() *mgo.Collection {
 	return manager.sessionConfig.mongoCollection
 }
 
@@ -41,7 +41,7 @@ func GetSessionConfig(mgr *SessionManager) {
 
 //GetDatabaseConnection - open a Mongo database for storing sessions
 func GetDatabaseConnection(mgr *SessionManager) (err error) {
-	//Note: pass globalSessionManager as the argument to this function
+	//Note: pass globalSessionMgr as the argument to this function
 	if mgr == nil {
 		err = errors.New("GetDatabaseConnection called with nil SessionManager")
 		return

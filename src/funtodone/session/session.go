@@ -1,4 +1,4 @@
-package service
+package session
 
 import (
 	"crypto/rand"
@@ -18,12 +18,16 @@ import (
  * https://astaxie.gitbooks.io/build-web-application-with-golang/en/06.2.html
  */
 
-var globalSessionManager *SessionManager
+var globalSessionMgr *SessionManager
+
+func GetMgr() *SessionManager {
+	return globalSessionMgr
+}
 
 //  initialize the session manager (init is run automatically)
 func init() {
 	var err error
-	globalSessionManager = &SessionManager{
+	globalSessionMgr = &SessionManager{
 		cookieName:  "gosessionid",
 		maxlifetime: 3600,
 	}
