@@ -14,8 +14,8 @@ import (
 http://www.agardner.me/golang/garbage/collection/gc/escape/analysis/2015/10/18/go-escape-analysis.html
 */
 
-//SessionConfig -- keep track of all the config data
-type SessionConfig struct {
+//Config -- keep track of all the config data
+type Config struct {
 	mongoSession        *mgo.Session
 	mongoCollection     *mgo.Collection
 	mongoHost           string
@@ -24,14 +24,14 @@ type SessionConfig struct {
 }
 
 //DbConn -- return the database connection
-func (manager *SessionManager) DbConn() *mgo.Collection {
+func (manager *Manager) DbConn() *mgo.Collection {
 	return manager.sessionConfig.mongoCollection
 }
 
 //GetSessionConfig -- return the config data for the session
 //TODO: read the host and database from a config file
-func GetSessionConfig(mgr *SessionManager) {
-	sessionConfig := SessionConfig{
+func GetSessionConfig(mgr *Manager) {
+	sessionConfig := Config{
 		mongoHost:           "127.0.0.1",
 		mongoDatabase:       "funtodone",
 		mongoCollectionName: "sessions",
@@ -40,10 +40,10 @@ func GetSessionConfig(mgr *SessionManager) {
 }
 
 //GetDatabaseConnection - open a Mongo database for storing sessions
-func GetDatabaseConnection(mgr *SessionManager) (err error) {
+func GetDatabaseConnection(mgr *Manager) (err error) {
 	//Note: pass globalSessionMgr as the argument to this function
 	if mgr == nil {
-		err = errors.New("GetDatabaseConnection called with nil SessionManager")
+		err = errors.New("GetDatabaseConnection called with nil Manager")
 		return
 	}
 	mongoSession, err := mgo.Dial(mgr.sessionConfig.mongoHost)
@@ -62,9 +62,9 @@ func GetDatabaseConnection(mgr *SessionManager) (err error) {
 }
 
 //SessionInit - create a new session record in MongoDB
-func SessionInit(mgr *SessionManager, session *Session) (err error) {
+func SessionInit(mgr *Manager, session *Session) (err error) {
 	if mgr == nil {
-		err = errors.New("SessionInit called with nil SessionManager")
+		err = errors.New("SessionInit called with nil Manager")
 		return
 	}
 	if session == nil {
@@ -72,14 +72,13 @@ func SessionInit(mgr *SessionManager, session *Session) (err error) {
 		return
 	}
 	if mgr.sessionConfig.mongoSession == nil {
-		err = errors.New("SessionInit called with nil SessionManager mongoSession")
+		err = errors.New("SessionInit called with nil Manager mongoSession")
 		return
 	}
 	mgr.lock.Lock()
 	defer mgr.lock.Unlock()
-	id := bson.ObjectIdHex(session.sessionID)
+	// id := bson.ObjectIdHex(session.sessionID)
 	c := mgr.sessionConfig.mongoCollection
-	session._id = id
 	err = c.Insert(session)
 	if err != nil {
 		return err
@@ -88,9 +87,9 @@ func SessionInit(mgr *SessionManager, session *Session) (err error) {
 }
 
 //SessionRead -- get the session out of mongodb
-func SessionRead(mgr *SessionManager, session *Session) (err error) {
+func SessionRead(mgr *Manager, session *Session) (err error) {
 	if mgr == nil {
-		err = errors.New("SessionRead called with nil SessionManager")
+		err = errors.New("SessionRead called with nil Manager")
 		return
 	}
 	if session == nil {
@@ -98,19 +97,19 @@ func SessionRead(mgr *SessionManager, session *Session) (err error) {
 		return
 	}
 	if mgr.sessionConfig.mongoSession == nil {
-		err = errors.New("SessionRead called with nil SessionManager mongoSession")
+		err = errors.New("SessionRead called with nil Manager mongoSession")
 		return
 	}
-	id := bson.ObjectIdHex(session.sessionID)
+	// id := bson.ObjectIdHex(session.sessionID)
 	c := mgr.sessionConfig.mongoCollection
-	err = c.Find(bson.M{"_id": id}).One(session)
+	err = c.Find(bson.M{"sessionID": session.sessionID}).One(session)
 	return err // err is nil if it found it
 }
 
 //SessionDestroy -- delete a session record from mongodb
-func SessionDestroy(mgr *SessionManager, session *Session) (err error) {
+func SessionDestroy(mgr *Manager, session *Session) (err error) {
 	if mgr == nil {
-		err = errors.New("SessionDestroy called with nil SessionManager")
+		err = errors.New("SessionDestroy called with nil Manager")
 		return
 	}
 	if session == nil {
@@ -118,19 +117,18 @@ func SessionDestroy(mgr *SessionManager, session *Session) (err error) {
 		return
 	}
 	if mgr.sessionConfig.mongoSession == nil {
-		err = errors.New("SessionDestroy called with nil SessionManager mongoSession")
+		err = errors.New("SessionDestroy called with nil Manager mongoSession")
 		return
 	}
-	id := bson.ObjectIdHex(session.sessionID)
 	c := mgr.sessionConfig.mongoCollection
-	err = c.Remove(bson.M{"_id": id})
+	err = c.Remove(bson.M{"sessionID": session.sessionID})
 	return err // err is nil if it found it
 }
 
 //SessionUpdate -- update a session in mongodb, and update the last access time
-func SessionUpdate(mgr *SessionManager, session *Session) (err error) {
+func SessionUpdate(mgr *Manager, session *Session) (err error) {
 	if mgr == nil {
-		err = errors.New("SessionUpdate called with nil SessionManager")
+		err = errors.New("SessionUpdate called with nil Manager")
 		return
 	}
 	if session == nil {
@@ -138,12 +136,11 @@ func SessionUpdate(mgr *SessionManager, session *Session) (err error) {
 		return
 	}
 	if mgr.sessionConfig.mongoSession == nil {
-		err = errors.New("SessionUpdate called with nil SessionManager mongoSession")
+		err = errors.New("SessionUpdate called with nil Manager mongoSession")
 		return
 	}
-	id := bson.ObjectIdHex(session.sessionID)
 	c := mgr.sessionConfig.mongoCollection
-	err = c.Update(bson.M{"_id": id}, session)
+	err = c.Update(bson.M{"sessionID": session.sessionID}, session)
 	return err // err is nil if it found it
 }
 
