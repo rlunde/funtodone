@@ -1,5 +1,5 @@
 [ ] refactor session stuff and redo separation of concerns
-  [ ] sessions should have their own package
+  [x] sessions should have their own package
   [ ] session should use an interface for persistence (but not a pluggable "provider")
   [ ] eliminate duplicated code
   [ ] sessions should know about cookies, and be able to set/get key/value pairs from mongodb

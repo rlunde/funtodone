@@ -9,8 +9,6 @@ import (
 	"net/url"
 	"sync"
 	"time"
-
-	"gopkg.in/mgo.v2/bson"
 )
 
 /*
@@ -18,16 +16,17 @@ import (
  * https://astaxie.gitbooks.io/build-web-application-with-golang/en/06.2.html
  */
 
-var globalSessionMgr *SessionManager
+var globalSessionMgr *Manager
 
-func GetMgr() *SessionManager {
+//GetMgr - we only have a single global session manager -- do we need any?
+func GetMgr() *Manager {
 	return globalSessionMgr
 }
 
 //  initialize the session manager (init is run automatically)
 func init() {
 	var err error
-	globalSessionMgr = &SessionManager{
+	globalSessionMgr = &Manager{
 		cookieName:  "gosessionid",
 		maxlifetime: 3600,
 	}
@@ -38,7 +37,6 @@ func init() {
 
 //Session -- keep track of web session
 type Session struct {
-	_id        bson.ObjectId // this ties it tightly to mongo -- better to have a wrapper struct
 	sessionID  string
 	lastAccess int64                       // unix time of last access
 	m          map[interface{}]interface{} // holds a map of any key to any value
@@ -69,16 +67,16 @@ func NewSession(sid string) (session Session) {
 	return
 }
 
-//SessionManager -- overly abstract for what we want -- remove this
-type SessionManager struct {
+//Manager -- I don't know if we still need a lock?
+type Manager struct {
 	cookieName    string
 	lock          sync.Mutex // protects session
 	maxlifetime   int64
-	sessionConfig SessionConfig
+	sessionConfig Config
 }
 
 //sessionID -- make an ID as a 32 byte random number
-func (manager *SessionManager) sessionID() string {
+func (manager *Manager) sessionID() string {
 	b := make([]byte, 32)
 	if _, err := io.ReadFull(rand.Reader, b); err != nil {
 		return ""
@@ -88,7 +86,7 @@ func (manager *SessionManager) sessionID() string {
 
 //SessionStart -- get the session cookie (if it exists) or make a new sessionID,
 //then return the session.
-func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Request) (session Session, err error) {
+func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (session Session, err error) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	cookie, err := r.Cookie(manager.cookieName)
@@ -111,7 +109,7 @@ func (manager *SessionManager) SessionStart(w http.ResponseWriter, r *http.Reque
 }
 
 //SessionEnd -- delete the session from the server, then delete the cookie.
-func (manager *SessionManager) SessionEnd(mgr *SessionManager, w http.ResponseWriter, r *http.Request) (session Session) {
+func (manager *Manager) SessionEnd(mgr *Manager, w http.ResponseWriter, r *http.Request) (session Session) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	cookie, err := r.Cookie(manager.cookieName)
