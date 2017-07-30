@@ -89,6 +89,13 @@ func (manager *Manager) sessionID() string {
 func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (session Session, err error) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
+	// if this is the first session, open a database connection
+	if manager.sessionConfig.mongoSession == nil {
+		err = GetDatabaseConnection(manager)
+		if err != nil {
+			return Session{}, err
+		}
+	}
 	cookie, err := r.Cookie(manager.cookieName)
 
 	if err != nil || cookie.Value == "" {
