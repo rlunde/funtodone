@@ -1,3 +1,5 @@
+[ ] ran into a bug trying to debug a test -- need to use go I build myself, rather than one installed via homebrew
+  [ ] need to install delve to use that go
 [ ] refactor session stuff and redo separation of concerns
   [x] sessions should have their own package
   [ ] session should use an interface for persistence (but not a pluggable "provider")
