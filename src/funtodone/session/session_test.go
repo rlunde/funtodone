@@ -22,7 +22,7 @@ func TestSessionInitAndRead(t *testing.T) {
 	if err != nil {
 		t.Errorf("SessionInit failed: %s\n", err.Error())
 	}
-	returnedSession := Session{sessionID: session.sessionID}
+	returnedSession := Session{SessionID: session.SessionID}
 	err = SessionRead(mgr, &returnedSession)
 	if err != nil {
 		t.Errorf("SessionRead failed: %s\n", err.Error())

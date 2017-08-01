@@ -33,7 +33,7 @@ func (manager *Manager) DbConn() *mgo.Collection {
 func GetSessionConfig(mgr *Manager) {
 	sessionConfig := Config{
 		mongoHost:           "127.0.0.1",
-		mongoDatabase:       "funtodone",
+		mongoDatabase:       "test", // change to funtodone
 		mongoCollectionName: "sessions",
 	}
 	mgr.sessionConfig = sessionConfig
@@ -69,8 +69,9 @@ func SessionInit(mgr *Manager, session *Session) (err error) {
 	}
 	mgr.lock.Lock()
 	defer mgr.lock.Unlock()
-	// id := bson.ObjectIdHex(session.sessionID)
-	c := mgr.sessionConfig.mongoCollection
+	// session.ID = bson.NewObjectId()
+	//c := mgr.sessionConfig.mongoCollection // TODO: figure out why this doesn't work
+	c := mgr.sessionConfig.mongoSession.DB("test").C("sessions")
 	err = c.Insert(session)
 	if err != nil {
 		return err
@@ -98,8 +99,10 @@ func SessionRead(mgr *Manager, session *Session) (err error) {
 		return err
 	}
 	// id := bson.ObjectIdHex(session.sessionID)
-	c := mgr.sessionConfig.mongoCollection
-	err = c.Find(bson.M{"sessionID": session.sessionID}).One(session)
+	//c := mgr.sessionConfig.mongoCollection
+	c := mgr.sessionConfig.mongoSession.DB("test").C("sessions")
+
+	err = c.Find(bson.M{"sessionid": session.SessionID}).One(session)
 	return err // err is nil if it found it
 }
 
@@ -109,8 +112,10 @@ func SessionDestroy(mgr *Manager, session *Session) (err error) {
 	if err != nil {
 		return err
 	}
-	c := mgr.sessionConfig.mongoCollection
-	err = c.Remove(bson.M{"sessionID": session.sessionID})
+	c := mgr.sessionConfig.mongoSession.DB("test").C("sessions")
+
+	//c := mgr.sessionConfig.mongoCollection
+	err = c.Remove(bson.M{"sessionID": session.SessionID})
 	return err // err is nil if it found it
 }
 
@@ -120,8 +125,10 @@ func SessionUpdate(mgr *Manager, session *Session) (err error) {
 	if err != nil {
 		return err
 	}
-	c := mgr.sessionConfig.mongoCollection
-	err = c.Update(bson.M{"sessionID": session.sessionID}, session)
+	c := mgr.sessionConfig.mongoSession.DB("test").C("sessions")
+
+	//c := mgr.sessionConfig.mongoCollection
+	err = c.Update(bson.M{"sessionID": session.SessionID}, session)
 	return err // err is nil if it found it
 }
 

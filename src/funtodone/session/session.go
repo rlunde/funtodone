@@ -37,33 +37,34 @@ func init() {
 
 //Session -- keep track of web session
 type Session struct {
-	sessionID  string
-	lastAccess int64                       // unix time of last access
-	m          map[interface{}]interface{} // holds a map of any key to any value
+	// ID         bson.ObjectId               `json:"_id" bson:"_id,omitempty"`
+	SessionID  string                 `json:"sessionid" bson:"sessionid"`
+	LastAccess int64                  `json:"lastaccess" bson:"lastaccess"` // unix time of last access
+	M          map[string]interface{} `json:"values" bson:"values"`         // holds a map of any key to any value
 }
 
 //Set -- store a value of any type in a session
-func (session *Session) Set(key, value interface{}) error {
-	session.m[key] = value
+func (session *Session) Set(key string, value interface{}) error {
+	session.M[key] = value
 	return nil
 }
 
 //Get -- get a value of any type from a session
-func (session *Session) Get(key interface{}) interface{} {
-	return session.m[key]
+func (session *Session) Get(key string) interface{} {
+	return session.M[key]
 }
 
 //Delete -- delete a key/value pair from a session
-func (session *Session) Delete(key, value interface{}) error {
-	delete(session.m, key) // do we need to return an error if it isn't there?
+func (session *Session) Delete(key string, value interface{}) error {
+	delete(session.M, key) // do we need to return an error if it isn't there?
 	return nil
 }
 
 //NewSession return a new session with the map and lastAccess initialized
 func NewSession(sid string) (session Session) {
-	session = Session{sessionID: sid,
-		m:          make(map[interface{}]interface{}),
-		lastAccess: time.Now().Unix()}
+	session = Session{SessionID: sid,
+		M:          make(map[string]interface{}),
+		LastAccess: time.Now().Unix()}
 	return
 }
 
@@ -124,7 +125,7 @@ func (manager *Manager) SessionEnd(mgr *Manager, w http.ResponseWriter, r *http.
 
 	} else {
 		sid, _ := url.QueryUnescape(cookie.Value)
-		session.sessionID = sid
+		session.SessionID = sid
 		_ = SessionDestroy(mgr, &session)
 	}
 	cookie = &http.Cookie{Name: manager.cookieName, Value: "deleted", Path: "/", HttpOnly: true, Expires: time.Unix(0, 0)}
