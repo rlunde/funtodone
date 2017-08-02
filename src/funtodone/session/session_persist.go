@@ -62,8 +62,8 @@ func GetDatabaseConnection(mgr *Manager) (err error) {
 }
 
 //SessionInit - create a new session record in MongoDB
-func SessionInit(mgr *Manager, session *Session) (err error) {
-	err = checkMgrAndSession(mgr, session, "SessionInit")
+func (mgr *Manager) SessionInit(session *Session) (err error) {
+	err = mgr.checkMgrAndSession(session, "SessionInit")
 	if err != nil {
 		return err
 	}
@@ -79,10 +79,7 @@ func SessionInit(mgr *Manager, session *Session) (err error) {
 	return nil
 }
 
-func checkMgrAndSession(mgr *Manager, session *Session, fn string) (err error) {
-	if mgr == nil {
-		err = errors.New(fn + " called with nil Manager")
-	}
+func (mgr *Manager) checkMgrAndSession(session *Session, fn string) (err error) {
 	if session == nil {
 		err = errors.New(fn + " called with nil Session")
 	}
@@ -93,8 +90,8 @@ func checkMgrAndSession(mgr *Manager, session *Session, fn string) (err error) {
 }
 
 //SessionRead -- get the session out of mongodb
-func SessionRead(mgr *Manager, session *Session) (err error) {
-	err = checkMgrAndSession(mgr, session, "SessionRead")
+func (mgr *Manager) SessionRead(session *Session) (err error) {
+	err = mgr.checkMgrAndSession(session, "SessionRead")
 	if err != nil {
 		return err
 	}
@@ -107,8 +104,8 @@ func SessionRead(mgr *Manager, session *Session) (err error) {
 }
 
 //SessionDestroy -- delete a session record from mongodb
-func SessionDestroy(mgr *Manager, session *Session) (err error) {
-	err = checkMgrAndSession(mgr, session, "SessionDestroy")
+func (mgr *Manager) SessionDestroy(session *Session) (err error) {
+	err = mgr.checkMgrAndSession(session, "SessionDestroy")
 	if err != nil {
 		return err
 	}
@@ -120,8 +117,8 @@ func SessionDestroy(mgr *Manager, session *Session) (err error) {
 }
 
 //SessionUpdate -- update a session in mongodb, and update the last access time
-func SessionUpdate(mgr *Manager, session *Session) (err error) {
-	err = checkMgrAndSession(mgr, session, "SessionUpdate")
+func (mgr *Manager) SessionUpdate(session *Session) (err error) {
+	err = mgr.checkMgrAndSession(session, "SessionUpdate")
 	if err != nil {
 		return err
 	}

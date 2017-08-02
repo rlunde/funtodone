@@ -102,7 +102,7 @@ func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (se
 	if err != nil || cookie.Value == "" {
 		sid := manager.sessionID()
 		session = NewSession(sid)
-		err = SessionInit(manager, &session)
+		err = manager.SessionInit(&session)
 		if err != nil {
 			return session, err
 		}
@@ -111,7 +111,7 @@ func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (se
 	} else {
 		sid, _ := url.QueryUnescape(cookie.Value)
 		session = NewSession(sid)
-		err = SessionRead(manager, &session)
+		err = manager.SessionRead(&session)
 	}
 	return
 }
@@ -121,12 +121,10 @@ func (manager *Manager) SessionEnd(mgr *Manager, w http.ResponseWriter, r *http.
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	cookie, err := r.Cookie(manager.cookieName)
-	if err != nil || cookie.Value == "" {
-
-	} else {
+	if err == nil && cookie.Value != "" {
 		sid, _ := url.QueryUnescape(cookie.Value)
 		session.SessionID = sid
-		_ = SessionDestroy(mgr, &session)
+		_ = mgr.SessionDestroy(&session)
 	}
 	cookie = &http.Cookie{Name: manager.cookieName, Value: "deleted", Path: "/", HttpOnly: true, Expires: time.Unix(0, 0)}
 	http.SetCookie(w, cookie)

@@ -1,10 +1,9 @@
-[ ] ran into a bug trying to debug a test -- need to use go I build myself, rather than one installed via homebrew
-  [ ] need to install delve to use that go
+[x] ran into a bug trying to debug a test -- needed to use a go I built myself, rather than one installed via homebrew
+  [x] need to install delve to use that go
 [ ] refactor session stuff and redo separation of concerns
   [x] sessions should have their own package
-  [ ] session should use an interface for persistence (but not a pluggable "provider")
+  [x] session should use an interface for persistence (but not a pluggable "provider")
   [ ] eliminate duplicated code
-  [ ] sessions should know about cookies, and be able to set/get key/value pairs from mongodb
   [ ] refactor api to isolate session interactions
   [ ] write some end-to-end integration tests (look at react testing?)
 [ ] test session insert

@@ -18,12 +18,12 @@ func TestSessionInitAndRead(t *testing.T) {
 	mgr := GetMgr()
 	err := GetDatabaseConnection(mgr)
 	session := SetupTestSession()
-	err = SessionInit(mgr, session)
+	err = mgr.SessionInit(session)
 	if err != nil {
 		t.Errorf("SessionInit failed: %s\n", err.Error())
 	}
 	returnedSession := Session{SessionID: session.SessionID}
-	err = SessionRead(mgr, &returnedSession)
+	err = mgr.SessionRead(&returnedSession)
 	if err != nil {
 		t.Errorf("SessionRead failed: %s\n", err.Error())
 	}

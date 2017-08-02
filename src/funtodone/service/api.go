@@ -106,10 +106,9 @@ func LoginWithAccount(c *gin.Context) {
 	if err != nil {
 		c.AbortWithError(400, err)
 	}
-	//TODO: return success or error message
-	sess.Set("email", email)
+	sess.Set("email", email) // puts it in the map (not yet in mongodb)
 	//update the session in mongodb
-	session.SessionUpdate(session.GetMgr(), &sess)
+	session.GetMgr().SessionUpdate(&sess)
 	http.Redirect(w, r, "/", 302)
 }
 
