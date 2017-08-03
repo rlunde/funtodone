@@ -112,7 +112,7 @@ func (mgr *Manager) SessionDestroy(session *Session) (err error) {
 	c := mgr.sessionConfig.mongoSession.DB("test").C("sessions")
 
 	//c := mgr.sessionConfig.mongoCollection
-	err = c.Remove(bson.M{"sessionID": session.SessionID})
+	err = c.Remove(bson.M{"sessionid": session.SessionID})
 	return err // err is nil if it found it
 }
 
@@ -125,7 +125,7 @@ func (mgr *Manager) SessionUpdate(session *Session) (err error) {
 	c := mgr.sessionConfig.mongoSession.DB("test").C("sessions")
 
 	//c := mgr.sessionConfig.mongoCollection
-	err = c.Update(bson.M{"sessionID": session.SessionID}, session)
+	err = c.Update(bson.M{"sessionid": session.SessionID}, session)
 	return err // err is nil if it found it
 }
 
