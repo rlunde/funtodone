@@ -11,16 +11,16 @@ var (
 func SetupTestSession() *Session {
 	mgr := GetMgr()
 	idstr := mgr.sessionID()
-	session := NewSession(idstr)
+	session := NewSession(mgr, idstr)
 	return &session
 }
-func TestSessionInitAndRead(t *testing.T) {
+func TestCreateAndRead(t *testing.T) {
 	mgr := GetMgr()
 	err := GetDatabaseConnection(mgr)
 	session := SetupTestSession()
-	err = mgr.SessionInit(session)
+	err = Create(session)
 	if err != nil {
-		t.Errorf("SessionInit failed: %s\n", err.Error())
+		t.Errorf("Create failed: %s\n", err.Error())
 	}
 	// add something to the map
 	session.Set("email", "al@pa.ca")
@@ -28,17 +28,14 @@ func TestSessionInitAndRead(t *testing.T) {
 	if email != "al@pa.ca" {
 		t.Errorf("session should have email: %s but has email: %s", "al@pa.ca", email)
 	}
-	err = mgr.SessionUpdate(session)
+
+	returnedSession := NewSession(session.Mgr, session.SessionID)
+	err = Read(&returnedSession)
 	if err != nil {
-		t.Errorf("SessionUpdate failed: %s\n", err.Error())
-	}
-	returnedSession := Session{SessionID: session.SessionID}
-	err = mgr.SessionRead(&returnedSession)
-	if err != nil {
-		t.Errorf("SessionRead failed: %s\n", err.Error())
+		t.Errorf("Read failed: %s\n", err.Error())
 	}
 	if session.SessionID != returnedSession.SessionID {
-		t.Errorf("SessionInit has SessionID: %s but returnedSession has SessionID: %s", session.SessionID, returnedSession.SessionID)
+		t.Errorf("Create has SessionID: %s but returnedSession has SessionID: %s", session.SessionID, returnedSession.SessionID)
 	}
 	returnedEmail := returnedSession.Get("email")
 	if returnedEmail != email {

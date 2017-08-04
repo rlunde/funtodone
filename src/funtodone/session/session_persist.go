@@ -24,8 +24,8 @@ type Config struct {
 }
 
 //DbConn -- return the database connection
-func (manager *Manager) DbConn() *mgo.Collection {
-	return manager.sessionConfig.mongoCollection
+func (mgr *Manager) DbConn() *mgo.Collection {
+	return mgr.sessionConfig.mongoCollection
 }
 
 //GetSessionConfig -- return the config data for the session
@@ -61,9 +61,9 @@ func GetDatabaseConnection(mgr *Manager) (err error) {
 	return
 }
 
-//SessionInit - create a new session record in MongoDB
-func (mgr *Manager) SessionInit(session *Session) (err error) {
-	err = mgr.checkMgrAndSession(session, "SessionInit")
+//Create - create a new session record in MongoDB
+func Create(session *Session) (err error) {
+	mgr, err := checkMgrAndSession(session, "Create")
 	if err != nil {
 		return err
 	}
@@ -79,9 +79,15 @@ func (mgr *Manager) SessionInit(session *Session) (err error) {
 	return nil
 }
 
-func (mgr *Manager) checkMgrAndSession(session *Session, fn string) (err error) {
+func checkMgrAndSession(session *Session, fn string) (mgr *Manager, err error) {
 	if session == nil {
 		err = errors.New(fn + " called with nil Session")
+		return nil, err
+	}
+	mgr = session.Mgr
+	if mgr == nil {
+		err = errors.New(fn + " called with nil session.Mgr")
+		return
 	}
 	if mgr.sessionConfig.mongoSession == nil {
 		err = errors.New(fn + " called with nil Manager mongoSession")
@@ -89,9 +95,9 @@ func (mgr *Manager) checkMgrAndSession(session *Session, fn string) (err error) 
 	return
 }
 
-//SessionRead -- get the session out of mongodb
-func (mgr *Manager) SessionRead(session *Session) (err error) {
-	err = mgr.checkMgrAndSession(session, "SessionRead")
+//Read -- get the session out of mongodb
+func Read(session *Session) (err error) {
+	mgr, err := checkMgrAndSession(session, "Read")
 	if err != nil {
 		return err
 	}
@@ -103,9 +109,9 @@ func (mgr *Manager) SessionRead(session *Session) (err error) {
 	return err // err is nil if it found it
 }
 
-//SessionDestroy -- delete a session record from mongodb
-func (mgr *Manager) SessionDestroy(session *Session) (err error) {
-	err = mgr.checkMgrAndSession(session, "SessionDestroy")
+//Destroy -- delete a session record from mongodb
+func Destroy(session *Session) (err error) {
+	mgr, err := checkMgrAndSession(session, "Destroy")
 	if err != nil {
 		return err
 	}
@@ -116,9 +122,9 @@ func (mgr *Manager) SessionDestroy(session *Session) (err error) {
 	return err // err is nil if it found it
 }
 
-//SessionUpdate -- update a session in mongodb, and update the last access time
-func (mgr *Manager) SessionUpdate(session *Session) (err error) {
-	err = mgr.checkMgrAndSession(session, "SessionUpdate")
+//Update -- update a session in mongodb, and update the last access time
+func Update(session *Session) (err error) {
+	mgr, err := checkMgrAndSession(session, "Update")
 	if err != nil {
 		return err
 	}
