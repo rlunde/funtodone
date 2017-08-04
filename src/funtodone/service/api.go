@@ -108,7 +108,7 @@ func LoginWithAccount(c *gin.Context) {
 	}
 	sess.Set("email", email) // puts it in the map (not yet in mongodb)
 	//update the session in mongodb
-	session.GetMgr().SessionUpdate(&sess)
+	session.GetMgr().Update(&sess)
 	http.Redirect(w, r, "/", 302)
 }
 

@@ -41,12 +41,14 @@ type Session struct {
 	SessionID  string                 `json:"sessionid" bson:"sessionid"`
 	LastAccess int64                  `json:"lastaccess" bson:"lastaccess"` // unix time of last access
 	M          map[string]interface{} `json:"values" bson:"values"`         // holds a map of any key to any value
+	Mgr        *Manager               `json:"-" bson:"-"`
 }
 
 //Set -- store a value of any type in a session
 func (session *Session) Set(key string, value interface{}) error {
 	session.M[key] = value
-	return nil
+	err := Update(session)
+	return err
 }
 
 //Get -- get a value of any type from a session
@@ -61,10 +63,11 @@ func (session *Session) Delete(key string, value interface{}) error {
 }
 
 //NewSession return a new session with the map and lastAccess initialized
-func NewSession(sid string) (session Session) {
+func NewSession(mgr *Manager, sid string) (session Session) {
 	session = Session{SessionID: sid,
 		M:          make(map[string]interface{}),
-		LastAccess: time.Now().Unix()}
+		LastAccess: time.Now().Unix(),
+		Mgr:        mgr}
 	return
 }
 
@@ -101,8 +104,8 @@ func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (se
 
 	if err != nil || cookie.Value == "" {
 		sid := manager.sessionID()
-		session = NewSession(sid)
-		err = manager.SessionInit(&session)
+		session = NewSession(manager, sid)
+		err = Create(&session)
 		if err != nil {
 			return session, err
 		}
@@ -110,8 +113,8 @@ func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (se
 		http.SetCookie(w, &cookie)
 	} else {
 		sid, _ := url.QueryUnescape(cookie.Value)
-		session = NewSession(sid)
-		err = manager.SessionRead(&session)
+		session = NewSession(manager, sid)
+		err = Read(&session)
 	}
 	return
 }
@@ -124,7 +127,7 @@ func (manager *Manager) SessionEnd(mgr *Manager, w http.ResponseWriter, r *http.
 	if err == nil && cookie.Value != "" {
 		sid, _ := url.QueryUnescape(cookie.Value)
 		session.SessionID = sid
-		_ = mgr.SessionDestroy(&session)
+		_ = Destroy(&session)
 	}
 	cookie = &http.Cookie{Name: manager.cookieName, Value: "deleted", Path: "/", HttpOnly: true, Expires: time.Unix(0, 0)}
 	http.SetCookie(w, cookie)
