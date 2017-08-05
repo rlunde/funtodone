@@ -14,7 +14,7 @@ func SetupTestSession() *Session {
 	session := NewSession(mgr, idstr)
 	return &session
 }
-func TestCreateAndRead(t *testing.T) {
+func TestCreateReadDestroy(t *testing.T) {
 	mgr := GetMgr()
 	err := GetDatabaseConnection(mgr)
 	session := SetupTestSession()
@@ -40,5 +40,14 @@ func TestCreateAndRead(t *testing.T) {
 	returnedEmail := returnedSession.Get("email")
 	if returnedEmail != email {
 		t.Errorf("loaded session has email: %s but should have email: %s", returnedEmail, email)
+	}
+	err = Destroy(session)
+	if err != nil {
+		t.Errorf("Destroy failed: %s\n", err.Error())
+	}
+	goneSession := NewSession(session.Mgr, session.SessionID)
+	err = Read(&goneSession)
+	if err == nil || err.Error() != "not found" {
+		t.Errorf("Read found a deleted session: %s\n", session.SessionID)
 	}
 }

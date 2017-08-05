@@ -6,6 +6,7 @@
   [ ] eliminate duplicated code
   [ ] refactor api to isolate session interactions
   [ ] write some end-to-end integration tests (look at react testing?)
+  [ ] remove the hard-coded "test" database
 [ ] test session insert
 [ ] test session update
 [ ] test session read

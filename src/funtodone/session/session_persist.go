@@ -101,8 +101,6 @@ func Read(session *Session) (err error) {
 	if err != nil {
 		return err
 	}
-	// id := bson.ObjectIdHex(session.sessionID)
-	//c := mgr.sessionConfig.mongoCollection
 	c := mgr.sessionConfig.mongoSession.DB("test").C("sessions")
 
 	err = c.Find(bson.M{"sessionid": session.SessionID}).One(session)
