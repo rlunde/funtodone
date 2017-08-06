@@ -57,9 +57,10 @@ func (session *Session) Get(key string) interface{} {
 }
 
 //Delete -- delete a key/value pair from a session
-func (session *Session) Delete(key string, value interface{}) error {
+func (session *Session) Delete(key string) error {
 	delete(session.M, key) // do we need to return an error if it isn't there?
-	return nil
+	err := Update(session)
+	return err
 }
 
 //NewSession return a new session with the map and lastAccess initialized

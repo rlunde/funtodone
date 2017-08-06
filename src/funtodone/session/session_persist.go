@@ -104,7 +104,8 @@ func Read(session *Session) (err error) {
 	c := mgr.sessionConfig.mongoSession.DB("test").C("sessions")
 
 	err = c.Find(bson.M{"sessionid": session.SessionID}).One(session)
-	return err // err is nil if it found it
+	session.Mgr = mgr // mongo wipes out the struct before creating a new one
+	return err        // err is nil if it found it
 }
 
 //Destroy -- delete a session record from mongodb
@@ -130,6 +131,8 @@ func Update(session *Session) (err error) {
 
 	//c := mgr.sessionConfig.mongoCollection
 	err = c.Update(bson.M{"sessionid": session.SessionID}, session)
+	session.Mgr = mgr // mongo may wipe out the struct before creating a new one
+
 	return err // err is nil if it found it
 }
 
