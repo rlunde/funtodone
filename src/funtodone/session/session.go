@@ -95,7 +95,7 @@ func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (se
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	// if this is the first session, open a database connection
-	if manager.sessionConfig.mongoSession == nil {
+	if manager.sessionConfig.MongoSession == nil {
 		err = GetDatabaseConnection(manager)
 		if err != nil {
 			return Session{}, err
