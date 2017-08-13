@@ -3,10 +3,8 @@ package service
 import (
 	"errors"
 	"fmt"
-	"net/http"
-
-	"funtodone/model"
 	"funtodone/session"
+	"net/http"
 
 	"github.com/badoux/checkmail"
 	"gopkg.in/gin-gonic/gin.v1"
@@ -17,11 +15,6 @@ import (
  *   1) REST service to handle task CRUD
  *   2) User auth and session management
  *   3) REST service to handle user task collections
- *
- * TODO: convert from Gin to either net/http or (maybe) to https://github.com/go-chi/chi
- *   I don't think Gin is providing anything I want. I have never seen a complete example
- *   using middleware, which is the recommended approach for authentication. If I'm going
- *   to have to figure it out from scratch, I may as well stick to the standard library.
  *
  * Assumptions:
  *   a) use nginx to handle requests for web resources on port 80 or 443, and proxy REST requests to this port
@@ -45,11 +38,7 @@ func RunService() {
 	r.POST("/logout", Logout)
 
 	/* all other operations require a valid session, and validation happens as a first step */
-	/* I need to compose index.html dynamically, so the pieces that relate to the user (and
-	   the logout link) are only shown if there is a valid session. Otherwise index.html is
-		 a regular landing page with basic information and login/register links */
-	/* TODO: figure out how to map all other GET urls to a standard handler that does
-	   the session validation, etc. */
+
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Main website",
@@ -62,11 +51,11 @@ func RunService() {
 
 //RegisterAccount -- create a new login
 func RegisterAccount(c *gin.Context) {
-	email, password, err := getRegistrationData(c)
+	username, email, password, err := getRegistrationData(c)
 	if err != nil {
 		c.AbortWithError(400, err)
 	} else {
-		fmt.Printf("RegisterAccount called with email %s, password %s\n", email, password)
+		fmt.Printf("RegisterAccount called with username %s, email %s, password %s\n", username, email, password)
 	}
 	//TODO: validate that account doesn't already exist
 	//TODO: try to create login and save it in database
@@ -78,45 +67,33 @@ func RegisterAccount(c *gin.Context) {
 
 //LoginWithAccount -- create a new session, or return an error
 func LoginWithAccount(c *gin.Context) {
-	//TODO: all errors returned to JavaScript should be vague (don't say what's invalid or missing)
-	email, password, err := getLoginData(c)
+	username, password, err := getLoginData(c)
 	if err != nil {
 		c.AbortWithError(400, err)
 	} else {
-		fmt.Printf("LoginWithAccount called with email %s, password %s\n", email, password)
+		fmt.Printf("LoginWithAccount called with username %s, password %s\n", username, password)
 	}
-	pwhash, err := model.Crypt([]byte(password))
-	if err != nil {
-		c.AbortWithError(400, err)
-	}
-	fmt.Printf("Password hash is %s\n", string(pwhash))
-	//Get the user from the database if it's there
-	mgr := session.GetMgr()
-	user, err := model.FindUserByEmail(mgr.DbConn(), email)
-	if err != nil {
-		c.AbortWithError(400, err)
-	}
-	//verify password is correct
-	if string(user.PasswordHash) != string(pwhash) {
-		c.AbortWithError(400, err)
-	}
+	//TODO: create a session cookie
 	w := c.Writer
 	r := c.Request
-	sess, err := session.GetMgr().SessionStart(w, r)
-	if err != nil {
-		c.AbortWithError(400, err)
-	}
-	sess.Set("email", email) // puts it in the map (not yet in mongodb)
-	//update the session in mongodb
-	session.GetMgr().Update(&sess)
+	mgr := session.GetMgr()
+	sess, err := mgr.SessionStart(w, r)
+	//TODO: return success or error message
+	//TODO: verify password is correct
+	sess.Set("username", username)
 	http.Redirect(w, r, "/", 302)
+	//TODO: on error, display error message and redirect back to login form
 }
 
 //Logout -- destroy a session
 func Logout(c *gin.Context) {
 	w := c.Writer
 	r := c.Request
-	session.GetMgr().SessionEnd(session.GetMgr(), w, r)
+	mgr := session.GetMgr()
+	err := mgr.SessionEnd(w, r)
+	if err != nil {
+		c.AbortWithError(400, err)
+	}
 	http.Redirect(w, r, "/", 302)
 	//TODO: return success or error message
 	//TODO: on error, display error message and redirect back to login form
@@ -124,18 +101,19 @@ func Logout(c *gin.Context) {
 
 /*Registration - need to use BindJSON to retrieve from gin, since now posting from React as JSON struct */
 type Registration struct {
+	Username     string `form:"username" json:"username" binding:"required"`
 	Password     string `form:"password" json:"password" binding:"required"`
 	ConfPassword string `form:"confpassword" json:"confpassword" binding:"required"`
 	Email        string `form:"email" json:"email" binding:"required"`
 	Remember     bool   `form:"remember" json:"remember" `
 }
 
-func getRegistrationData(c *gin.Context) (email, password string, err error) {
+func getRegistrationData(c *gin.Context) (username, email, password string, err error) {
 
 	var json Registration
 	err = c.BindJSON(&json)
 	if err == nil {
-		fmt.Printf("Got email: %s\n", json.Email)
+		fmt.Printf("Got username: %s\n", json.Username)
 	}
 	err = checkmail.ValidateFormat(json.Email)
 	if err != nil {
@@ -148,6 +126,7 @@ func getRegistrationData(c *gin.Context) (email, password string, err error) {
 	if json.Password != json.ConfPassword {
 		err = errors.New("Password and confirm-password do not match")
 	}
+	username = json.Username
 	email = json.Email
 	password = json.Password
 	return
