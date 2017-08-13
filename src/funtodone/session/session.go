@@ -121,12 +121,14 @@ func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (se
 }
 
 //SessionEnd -- delete the session from the server, then delete the cookie.
-func (manager *Manager) SessionEnd(mgr *Manager, w http.ResponseWriter, r *http.Request) (session Session) {
+func (manager *Manager) SessionEnd(w http.ResponseWriter, r *http.Request) (err error) {
 	manager.lock.Lock()
 	defer manager.lock.Unlock()
 	cookie, err := r.Cookie(manager.cookieName)
+
 	if err == nil && cookie.Value != "" {
 		sid, _ := url.QueryUnescape(cookie.Value)
+		session := NewSession(manager, sid)
 		session.SessionID = sid
 		_ = Destroy(&session)
 	}

@@ -1,20 +1,11 @@
-[x] ran into a bug trying to debug a test -- needed to use a go I built myself, rather than one installed via homebrew
-  [x] need to install delve to use that go
-[ ] refactor session stuff and redo separation of concerns
-  [x] sessions should have their own package
-  [x] session should use an interface for persistence (but not a pluggable "provider")
-  [ ] eliminate duplicated code
-  [ ] refactor api to isolate session interactions
-  [ ] write some end-to-end integration tests (look at react testing?)
-  [ ] remove the hard-coded "test" database
-[x] test session insert
-[x] test session update
-[x] test session read
-[x] test session deletion
+[ ] the "provider" is a useless abstraction here (remove it)
+[ ] convert the memory session implementation into mongodb
+[x] delete the session on logout
+[ ] test session deletion
 [ ] validate the password hash before creating a session
-[ ] fix linter errors
 
-I want to ultimately move auth and sessions into a separate microservice.
+I want to move all the session management and auth stuff to
+separate packages, and ultimately into a separate microservice.
 Auth and sessions have been an annoying impediment to getting
 projects done, in part because the code is too tightly coupled
 with app code. I'd like to have the only interaction between
