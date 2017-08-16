@@ -1,0 +1,8 @@
+
+ [ ] look at PHP, Ruby, Python (or something) convert to react
+   [ ] http://michaelsoriano.com/building-a-user-registration-system-part-1-new-user-form/
+   [ ] https://www.theodinproject.com/courses/ruby-on-rails/lessons/sessions-cookies-and-authentication
+   [ ] https://django-book.readthedocs.io/en/latest/chapter14.html
+ [ ] here are some react registration examples
+   [ ] https://www.viget.com/articles/building-a-multi-step-registration-form-with-react
+   [ ] https://vladimirponomarev.com/blog/authentication-in-react-apps-creating-components
