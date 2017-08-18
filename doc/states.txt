@@ -1,0 +1,15 @@
+logged_out: show public page (landing page or about page)
+  links: sign in, sign up, about, home
+logged_in: show private page (SPA page)
+  links: sign out, about, home
+do_create_account
+  links: submit, sign in, forgot password, home, about
+do_login
+  links: submit, forgot password, sign up, home, about
+unconfirmed_account
+  links: resend email, home, about
+forgot_password
+  links: submit, sign up, home, about
+logged_in:
+  links: sign out, home, about
+  
