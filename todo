@@ -27,6 +27,10 @@ Overall project todo:
 Client todo (src/client):
 =====================
 
+[ ] Next Steps
+  [ ] Split the login and signup off into separate pages, not just a modal
+  [ ] Make a state machine to handle errors, sign in, sign out, register, confirm email, forgot password, ...
+  [ ] Proxy the APIs behind auth, login, and signup-related stuff to a separate side service
 [ ] begin with UI/UX design, sticking to just the essential elements
   [ ] use react, but avoid package managers and dragging in the kitchen sink
   [ ] use TDD -- pick a lightweight framework, even if it doesn't mesh too well with react?
