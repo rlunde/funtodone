@@ -6,7 +6,6 @@ var TodoOutline = React.createClass({
           <ol>
               <li>design the basic layout of the FunToDone single page app</li>
               <ol type="A">
-                  <li>figure out my own authentication (gave up trying to use authboss)</li>
                   <li>generate a sample stack and sample list for each new user</li>
                   <li>show a list of compound lists (stacks, lists) belonging to user</li>
                   <li>create a new stack</li>
