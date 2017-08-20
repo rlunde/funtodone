@@ -1,17 +1,3 @@
 a) work on logging in (client page, server code)
    1) work on creating a login
       a) try to make a user in mongodb
-         1) write what is involved, where things are, what to look at
-         2) make a specific task under project with locations, urls, next steps
-         3) make pseudocode for server/client
-      b) try to call a REST API from the register modal
-         1) move the modal from index.html into a JSX class in funtodone.jsx
-         2) see how it's doing ReactDOM.render(< TasksList / >, document.getElementById('tasks'));
-         
-
-
-a.1.a.1) write what is involved, where things are, what to look at
-  1) start at authboss page: https://github.com/go-authboss/authboss
-  2) register a new account: https://github.com/go-authboss/authboss/tree/master/register
-  3) update ./src/funtodone/service/storer.go to use mongodb
-  4) maybe some hints here? https://godoc.org/github.com/mwmahlberg/mongostore

@@ -28,9 +28,11 @@ Client todo (src/client):
 =====================
 
 [ ] Next Steps
-  [ ] Split the login and signup off into separate pages, not just a modal
-  [ ] Make a state machine to handle errors, sign in, sign out, register, 
-      confirm email, forgot password, ...
+  [ ] Split the (1) login and (2) signup off into separate modals
+    [ ] use state machine (see next item) to control modal visibility
+    [ ] add modals for (3) unconfirmed_account, (4) forgot_password
+  [ ] Make a state machine to handle errors, sign in, sign out, register,
+      confirm email, forgot password, (see doc/states.txt)
   [ ] Proxy the APIs behind auth, login, and signup-related stuff to a separate side service
 [ ] begin with UI/UX design, sticking to just the essential elements
   [ ] use react, but avoid package managers and dragging in the kitchen sink
@@ -89,10 +91,10 @@ do a complete job of authentication).
 
 Testing:
   [ ] make some curl-based bash scripts to exercise the REST API
-  [ ] golang REST testing: 
+  [ ] golang REST testing:
     [ ] https://blog.gopheracademy.com/advent-2014/testing-microservices-in-go/
     [ ] https://medium.com/@PurdonKyle/building-a-unit-testable-api-in-golang-b42ff1fcbae7
-  [ ] React/Redux testing: 
+  [ ] React/Redux testing:
     [ ] https://facebook.github.io/jest/docs/tutorial-react.html
     [ ] http://redux.js.org/docs/recipes/WritingTests.html
     [ ] https://medium.com/@gethylgeorge/testing-a-react-redux-app-using-jest-and-enzyme-b349324803a9

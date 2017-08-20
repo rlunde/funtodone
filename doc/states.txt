@@ -10,6 +10,3 @@ unconfirmed_account
   links: resend email, home, about
 forgot_password
   links: submit, sign up, home, about
-logged_in:
-  links: sign out, home, about
-  
