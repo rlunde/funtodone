@@ -22,11 +22,11 @@ import (
  */
 func RunService() {
 	r := gin.Default()
-	r.Static("/js", "./client/js")
-	r.Static("/css", "./client/css")
-	r.Static("/img", "./client/img")
+	r.Static("/js", "../client/js")
+	r.Static("/css", "../client/css")
+	r.Static("/img", "../client/img")
 
-	r.LoadHTMLGlob("client/*.html")
+	r.LoadHTMLGlob("../client/*.html")
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
@@ -78,6 +78,9 @@ func LoginWithAccount(c *gin.Context) {
 	r := c.Request
 	mgr := session.GetMgr()
 	sess, err := mgr.SessionStart(w, r)
+	if err != nil {
+		c.AbortWithError(400, err)
+	}
 	//TODO: return success or error message
 	//TODO: verify password is correct
 	sess.Set("username", username)
@@ -119,10 +122,10 @@ func getRegistrationData(c *gin.Context) (username, email, password string, err 
 	if err != nil {
 		return
 	}
-	err = checkmail.ValidateHost(json.Email)
-	if err != nil {
-		return
-	}
+	// err = checkmail.ValidateHost(json.Email)
+	// if err != nil {
+	// 	return
+	// }
 	if json.Password != json.ConfPassword {
 		err = errors.New("Password and confirm-password do not match")
 	}
