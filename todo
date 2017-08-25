@@ -49,6 +49,7 @@ Client todo (src/client):
     [ ] implement enough of a schema to show a list of tasks
     [ ] display list of tasks
   [ ] the font needs to be more "fun" than bootstrap -- see how to do that
+  [ ] look into using redux-promise with axios
 
 Model next steps (src/funtodone/model):
 =======================================

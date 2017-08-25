@@ -4,4 +4,5 @@ echo "opening http://localhost:8080"
 echo "remember to entirely disable uBlock Origin due to their bug -- don't just use it's control"
 # (sleep 3;open http://localhost:8080 &)
 (sleep 5;open http://localhost/f2d/ &)
-./f2d/funtodone
+cd f2d
+./funtodone
