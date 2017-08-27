@@ -1,5 +1,6 @@
 a) work on logging in (client page, server code)
-   1) work on creating a login
+   1) update the page structure to use states in react as in states.txt
+   2) work on creating a login
       a) try to make a user in mongodb
         i) handle the form to create a new user
         ii) create the new user in the database
@@ -7,4 +8,3 @@ a) work on logging in (client page, server code)
         iv) handle the click on the email confirmation
         v) record that the email is verified and account is gosessionid
       b) do a normal login
-      
