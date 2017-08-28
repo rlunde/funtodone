@@ -1,12 +1,37 @@
-logged_out: show public page (landing page or about page)
-  links: sign in, sign up, about, home
-logged_in: show private page (SPA page)
-  links: sign out, about, home
-do_create_account
-  links: submit, sign in, forgot password, home, about
-do_login
-  links: submit, forgot password, sign up, home, about
-unconfirmed_account
-  links: resend email, home, about
-forgot_password
-  links: submit, sign up, home, about
+component state variables:
+  isLoggedIn: boolean
+  isPending: boolean (pending email verification)
+  showPage: (home|about|login|register|forgot-password)
+  warning: string
+
+links to show in page:
+
+home:
+  if (isPending) :
+    links: home, about, login, register, resend email
+    display: landing with warning
+  else if (isLoggedIn) :
+    links: about, logout, settings
+    display: app
+  else :
+    links: about, login, register
+    display: landing
+
+about:
+  links: home
+  display: about
+login:
+  links: forgot-password, register, cancel(X)
+  display: login
+register:
+  links: login, cancel(X)
+  display: register
+forgot-password:
+  links: send email, home, about
+  display: forgot-password
+settings: // change email or password
+  if (isLoggedIn) :
+    links: submit, home, about
+    display: settings
+  else
+    redirect to home
