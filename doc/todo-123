@@ -1,5 +1,6 @@
 a) work on logging in (client page, server code)
    1) update the page structure to use states in react as in states.txt
+      see: https://facebook.github.io/react/docs/conditional-rendering.html
    2) work on creating a login
       a) try to make a user in mongodb
         i) handle the form to create a new user
@@ -8,3 +9,7 @@ a) work on logging in (client page, server code)
         iv) handle the click on the email confirmation
         v) record that the email is verified and account is gosessionid
       b) do a normal login
+
+b) think about starting a new structure based on Stephen Grider's
+   https://github.com/StephenGrider/ReduxSimpleStarter
+   

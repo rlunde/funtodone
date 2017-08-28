@@ -1,13 +1,13 @@
 component state variables:
   isLoggedIn: boolean
-  pendingEmailVerification: boolean
+  isPending: boolean (pending email verification)
   showPage: (home|about|login|register|forgot-password)
   warning: string
 
 links to show in page:
 
 home:
-  if (pendingEmailVerification) :
+  if (isPending) :
     links: home, about, login, register, resend email
     display: landing with warning
   else if (isLoggedIn) :
