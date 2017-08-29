@@ -6,7 +6,7 @@ component state variables:
 
 links to show in page:
 
-home:
+home (index page):
   if (isPending) :
     links: home, about, login, register, resend email
     display: landing with warning
@@ -17,19 +17,19 @@ home:
     links: about, login, register
     display: landing
 
-about:
+about (page):
   links: home
   display: about
-login:
+login (modal):
   links: forgot-password, register, cancel(X)
   display: login
-register:
+register (modal):
   links: login, cancel(X)
   display: register
-forgot-password:
+forgot-password (modal):
   links: send email, home, about
   display: forgot-password
-settings: // change email or password
+settings (page): // change email or password
   if (isLoggedIn) :
     links: submit, home, about
     display: settings
