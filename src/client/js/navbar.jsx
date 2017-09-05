@@ -1,4 +1,4 @@
-var Navbar = React.createClass({
+export default class Navbar extends React.component({
     render: function() {
         return (
           <div id="navbar">

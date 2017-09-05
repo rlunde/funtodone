@@ -1,4 +1,4 @@
-var TodoOutline = React.createClass({
+export default TodoOutline extends React.component({
     render: function() {
         return (
           <div id="todo_outline">
