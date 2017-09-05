@@ -1,4 +1,4 @@
-var TasksList = React.createClass({
+export default class TasksList extends React.component({
     render: function() {
         return (
             <div className="tasksList">

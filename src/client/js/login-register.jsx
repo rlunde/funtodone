@@ -1,4 +1,4 @@
-class LoginOrRegister extends React.Component {
+export default class LoginOrRegister extends React.Component {
   // TODO: convert to handleInputChange from here:
   // https://facebook.github.io/react/docs/forms.html
   constructor(props) {
