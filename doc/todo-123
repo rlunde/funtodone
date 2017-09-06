@@ -12,4 +12,5 @@ a) work on logging in (client page, server code)
 
 b) think about starting a new structure based on Stephen Grider's
    https://github.com/StephenGrider/ReduxSimpleStarter
-   
+   see client2 -- need to do that if I'm going to use ES6 modules
+   rather than CommonJS, I think?

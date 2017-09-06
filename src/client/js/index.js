@@ -7,10 +7,12 @@ import TasksList from 'taskslist';
 export default class FunToDone extends React.Component {
   render() {
     return (
-      <Navbar />
-      <LoginOrRegister />
-      <TodoOutline />
-      <TasksList />
+      <div>
+        <Navbar />
+        <LoginOrRegister />
+        <TodoOutline />
+        <TasksList />
+      </div>
     );
   }
 }
