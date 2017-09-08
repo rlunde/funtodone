@@ -14,3 +14,6 @@ b) think about starting a new structure based on Stephen Grider's
    https://github.com/StephenGrider/ReduxSimpleStarter
    see client2 -- need to do that if I'm going to use ES6 modules
    rather than CommonJS, I think?
+c) rather than that, try the official create-react-app from Facebook?
+   may as well go all the way? see:
+   https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html
