@@ -212,3 +212,10 @@ We suggest that you begin by typing:
   cd client
   yarn start<F29>
 ------------------------------------------
+I tried using a tutorial on connecting redux to react after that, but it quickly
+got more complicated than I wanted to deal with. I'm going to focus on following
+Stephen Grider's tutorial and see if I can figure out how to modify the structure
+created by create-react-app into the one he's using.
+
+The redux thing I started and abandoned is:
+https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
