@@ -1,0 +1,7 @@
+I'm trying to refactor the client starting over from a react
+starter.
+
+I'd like to set it up with minimal dependencies. An example
+that may come in useful is: 
+
+https://github.com/babel/example-node-server
