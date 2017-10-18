@@ -5,3 +5,16 @@ I'd like to set it up with minimal dependencies. An example
 that may come in useful is: 
 
 https://github.com/babel/example-node-server
+
+There is a great page with a link to dozens of different starter
+examples here:
+
+http://andrewhfarmer.com/starter-project/
+
+I'm starting with create-react-app which is the "official" way to
+start from facebook.
+
+Next Steps:
+ [ ] make a super simple SPA page
+   [ ] draw it by hand, then 
+   [ ] react components to implement layout of SPA page, following tutorial
