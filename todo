@@ -28,6 +28,17 @@ Client todo (src/client):
 =====================
 
 [ ] Next Steps
+  [ ] start with a very basic beginner UI, maybe using require.js, react, redux, bootstrap
+    [ ] I'm starting with create-react-app which is the "official" way to start from facebook.
+    [ ] Use the outline described here: ~/Projects/funtodone/funtodone/doc/paper-prototype
+    [ ] Go through Stephen Grider's tutorial again, and implement the outline as I go
+    [ ] iterate on a layout
+    [ ] do a vertical spike with a single feature
+      [ ] do basic layout of top level features
+      [ ] implement enough of a schema to show a list of tasks
+      [ ] display list of tasks
+    [ ] the font needs to be more "fun" than bootstrap -- see how to do that
+    [ ] look into using redux-promise
   [ ] Split the (1) login and (2) signup off into separate modals
     [ ] use state machine (see next item) to control modal visibility
     [ ] add modals for (3) unconfirmed_account, (4) forgot_password
@@ -39,17 +50,6 @@ Client todo (src/client):
   [ ] use TDD -- pick a lightweight framework, even if it doesn't mesh too well with react?
     [ ] this looks like a reasonably good starting point?
         https://medium.freecodecamp.com/simple-react-testing-d9e25ec87e2#.wmizcb10p
-[ ] start with a very basic beginner UI, maybe using require.js, react, redux, bootstrap
-  [ ] I'm starting with create-react-app which is the "official" way to start from facebook.
-  [ ] Use the outline described here: ~/Projects/funtodone/funtodone/doc/paper-prototype
-  [ ] Go through Stephen Grider's tutorial again, and implement the outline as I go
-  [ ] iterate on a layout
-  [ ] do a vertical spike with a single feature
-    [ ] do basic layout of top level features
-    [ ] implement enough of a schema to show a list of tasks
-    [ ] display list of tasks
-  [ ] the font needs to be more "fun" than bootstrap -- see how to do that
-  [ ] look into using redux-promise
 
 
 Model next steps (src/funtodone/model):
