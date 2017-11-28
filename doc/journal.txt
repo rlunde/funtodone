@@ -1,0 +1,14 @@
+November 27, 2017
+----------------------------
+
+I thought I'd start by trying to fix some eslint warnings
+tonight, and realized that I didn't have any test runner
+installed yet. Since I'm trying mocha with another project,
+I thought I'd try out jest for this one (especially since
+jest fits better with react).
+
+I also found that right clicking in vscode and selecting
+command palette gives me the option to auto-fix eslint errors,
+which saves a lot of time. (I had to do it twice in some
+cases.)
+
