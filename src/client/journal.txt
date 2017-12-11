@@ -68,3 +68,16 @@ got it mostly working. I needed to add the rule "react/jsx-uses-vars":1
 
 Also, vscode screws up the JSX formatting in "format document" -- not sure what
 to do about that yet.
+
+
+====================================================
+December 10, 2017
+====================================================
+
+Today I just want to see if I can get a basic page layout
+working, starting with Stephen Grider's Udemy course as applied
+to this project.
+
+I added a few page elements from the HolyGrail sample,
+just to have something to replace with react components
+later on.

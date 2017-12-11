@@ -1,22 +1,14 @@
-a) work on logging in (client page, server code)
-   1) update the page structure to use states in react as in states.txt
-      see: https://facebook.github.io/react/docs/conditional-rendering.html
-   2) work on creating a login
-      a) try to make a user in mongodb
-        i) handle the form to create a new user
-        ii) create the new user in the database
-        iii) send email to confirm the new account
-        iv) handle the click on the email confirmation
-        v) record that the email is verified and account is gosessionid
-      b) do a normal login
-
-b) think about starting a new structure based on Stephen Grider's
-   https://github.com/StephenGrider/ReduxSimpleStarter
-   see client2 -- need to do that if I'm going to use ES6 modules
-   rather than CommonJS, I think?
-c) rather than that, try the official create-react-app from Facebook?
-   may as well go all the way? see:
+a)[x] I'm trying to start with the official create-react-app from Facebook:
    https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html
-d) I found an interesting article on adding redux to create-react-app without
+
+b)[x] after that, I'm modifying it based on Stephen Grider's Udemy course, that starts with:
+   https://github.com/StephenGrider/ReduxSimpleStarter
+
+c) I found an interesting article on adding redux to create-react-app without
    using eject: https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
    
+d) next steps
+   1) get a basic app layout in place
+   2) add a login/signup form
+   3) integrate with sideauth
+
