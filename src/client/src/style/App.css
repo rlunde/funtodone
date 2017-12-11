@@ -22,3 +22,28 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.root,
+.funtodone-body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.funtodone-nav {
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .funtodone-body {
+    flex-direction: row;
+    flex: 1;
+  }
+  .funtodone-content {
+    flex: 1;
+  }
+  .funtodone-nav, .funtodone-aside {
+    /* 12em is the width of the columns */
+    flex: 0 0 12em;
+  }
+}

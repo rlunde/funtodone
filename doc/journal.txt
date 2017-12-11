@@ -12,3 +12,24 @@ command palette gives me the option to auto-fix eslint errors,
 which saves a lot of time. (I had to do it twice in some
 cases.)
 
+====================================================
+December 10, 2017
+====================================================
+
+I'm choosing which project to work on each evening by
+picking one randomly, along with a kind of activity (e.g. code,
+simplify, document, test). I weighted it heavily towards
+goodwin or sideauth for now, but funtodone, thing-a-day, and
+writertoys are still in the mix (I don't want to forget
+everything about them before they become top priority, but
+I also don't want to try to do too many things at once.)
+
+Tonight's task is: code/funtodone
+
+Note that there are two different journal.txt files here:
+1) this one under funtodone/doc which is about overall project stuff
+2) the one under src/client, which is just about the client side
+
+I'm working on client stuff tonight, so that's where the rest of 
+my journal will go tonight.
+
