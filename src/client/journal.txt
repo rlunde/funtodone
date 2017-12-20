@@ -81,3 +81,22 @@ to this project.
 I added a few page elements from the HolyGrail sample,
 just to have something to replace with react components
 later on.
+
+
+====================================================
+December 19, 2017
+====================================================
+
+I had a sudden epiphany the other day, about all of my
+projects. Yes, I'd like to run funtodone as a service,
+in which case I'll need to add authorization, and I'd like
+to use the sideauth project to do that -- but I can do
+that last and still have it be useful for lots of people.
+
+How? I'll make a service that runs in a docker container,
+that people can either run locally on their laptop/desktop,
+or somewhere else where they can control access themselves.
+
+Start with the fun part, in other words, and do the authorization
+part later!
+
