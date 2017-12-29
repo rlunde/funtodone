@@ -33,3 +33,12 @@ Note that there are two different journal.txt files here:
 I'm working on client stuff tonight, so that's where the rest of 
 my journal will go tonight.
 
+====================================================
+December 28, 2017
+====================================================
+
+Today's random project: design/funtodone
+
+See the journal.txt under client/ for what I did tonight.
+I really should only have one of these.
+
