@@ -100,3 +100,14 @@ or somewhere else where they can control access themselves.
 Start with the fun part, in other words, and do the authorization
 part later!
 
+====================================================
+December 28, 2017
+====================================================
+
+Today's random project: design/funtodone
+
+I added react-bootstrap, and fiddled around a bit with
+the flex layout. Still need to do a lot to make it look 
+like anything.
+
+https://react-bootstrap.github.io/components.html#navbars
