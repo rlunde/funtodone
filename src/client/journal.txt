@@ -111,3 +111,9 @@ the flex layout. Still need to do a lot to make it look
 like anything.
 
 https://react-bootstrap.github.io/components.html#navbars
+
+====================================================
+December 30, 2017
+====================================================
+
+Today's random project: simplify/funtodone
