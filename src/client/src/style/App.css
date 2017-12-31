@@ -10,7 +10,7 @@
 .App-header {
   background-color: #222;
   height: 150px;
-  padding: 20px;
+  /* padding: 20px; */
   color: white;
 }
 
@@ -28,17 +28,34 @@
   display: flex;
   min-height: 80vh;
   flex-direction: column;
+  background-color: lightgray;
 }
-
+.funtodone-navbar {
+  margin-bottom:0px;
+  }
 .funtodone-nav {
   order: -1;
+}
+.funtodone-aside {
+  background-color: beige;
+}
+.tasks-and-collections {
+  display: flex;
+  flex-direction: column;
+}
+.collections {
+  background-color: yellow;
+
+}
+.tasks {
+  background-color: lightgoldenrodyellow;
+
 }
 
 @media (min-width: 768px) {
   .funtodone-body {
     flex-direction: row;
     flex: 1;
-    background-color: lightgray;
   }
   .funtodone-content {
     flex: 1;
@@ -47,7 +64,5 @@
     /* 12em is the width of the columns */
     flex: 0 0 12em;
   }
-  .funtodone-aside {
-    background-color: lightcyan;
-  }
+  
 }
