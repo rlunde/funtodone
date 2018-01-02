@@ -117,3 +117,16 @@ December 30, 2017
 ====================================================
 
 Today's random project: simplify/funtodone
+
+====================================================
+January 1, 2018
+====================================================
+
+Look for DO THESE NEXT in the todo file. Ignore everything
+else for now.
+
+First up:
+
+[ ] Create a collection
+  [ ] choose a name
+  [ ] choose a type (list or stack)
