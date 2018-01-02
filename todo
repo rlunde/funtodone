@@ -30,7 +30,7 @@ Client todo (src/client):
 [ ] Next Steps
   [ ] start with a very basic beginner UI, maybe using require.js, react, redux, bootstrap
     [ ] I'm starting with create-react-app which is the "official" way to start from facebook.
-    [ ] Use the outline described here: ~/Projects/funtodone/funtodone/doc/paper-prototype
+    [x] Use the outline described here: ~/Projects/funtodone/funtodone/doc/paper-prototype
     [ ] Go through Stephen Grider's tutorial again, and implement the outline as I go
     [ ] iterate on a layout
     [ ] do a vertical spike with a single feature
@@ -39,18 +39,19 @@ Client todo (src/client):
       [ ] display list of tasks
     [ ] the font needs to be more "fun" than bootstrap -- see how to do that
     [ ] look into using redux-promise
+  [ ] begin with UI/UX design, sticking to just the essential elements
+  [ ] use react, but avoid package managers and dragging in the kitchen sink
+  [ ] use TDD -- pick a lightweight framework, even if it doesn't mesh too well with react?
+    [ ] this looks like a reasonably good starting point?
+        https://medium.freecodecamp.com/simple-react-testing-d9e25ec87e2#.wmizcb10p
+
+[ ] Do all login/auth stuff *later* after everything else is working
   [ ] Split the (1) login and (2) signup off into separate modals
     [ ] use state machine (see next item) to control modal visibility
     [ ] add modals for (3) unconfirmed_account, (4) forgot_password
   [ ] Make a state machine to handle errors, sign in, sign out, register,
       confirm email, forgot password, (see doc/states.txt)
   [ ] Proxy the APIs behind auth, login, and signup-related stuff to a separate side service
-[ ] begin with UI/UX design, sticking to just the essential elements
-  [ ] use react, but avoid package managers and dragging in the kitchen sink
-  [ ] use TDD -- pick a lightweight framework, even if it doesn't mesh too well with react?
-    [ ] this looks like a reasonably good starting point?
-        https://medium.freecodecamp.com/simple-react-testing-d9e25ec87e2#.wmizcb10p
-
 
 Model next steps (src/funtodone/model):
 =======================================
@@ -69,7 +70,7 @@ Testing:
    [ ] run ./f2d/funtodone to start the go REST service
    [ ] try localhost:8080/ping to see it's working
 
-Authentication:
+Authentication (do this *later* after everything else is working):
  [ ] get user login with sessions working
    [ ] combine the react/bootstrap stuff from the client dir with golang authentication stuff
      [x] try to get gin to pull templates from the client dir
@@ -114,6 +115,9 @@ Features next steps (across service, client, and model):
   [ ] try a conversational interface / ask questions?
   [ ] optionally keep score - number of tasks completed (balanced by how small they are -- don't encourange nanotasks)
 
+================================================
+DO THESE NEXT (1/1/2018)
+================================================
 [ ] stack/list operations:
   [ ] look at the operations to support on tasks
     [ ] mark it done
