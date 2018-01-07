@@ -1,5 +1,2 @@
 #!/bin/bash
-cd ..
-export GOPATH=`pwd`
-cd src
 go build -o f2d/funtodone f2d/main.go

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"funtodone/service"
+	"../funtodone/service"
 	//"log"
 	//"net/http"
 	//"os"
