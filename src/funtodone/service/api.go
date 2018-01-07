@@ -1,9 +1,9 @@
 package service
 
 import (
+	"../../funtodone/session"
 	"errors"
 	"fmt"
-	"funtodone/session"
 	"net/http"
 
 	"github.com/badoux/checkmail"
