@@ -1,0 +1,17 @@
+This directory is: .../funtodone/src/client
+
+To restart nginx to pick up the new config from /usr/local/etc/nginx/nginx.conf:
+sudo nginx -s stop && sudo nginx
+
+The config has:
+
+        #proxy API calls to funtodone service on port 8080
+        location /funtodone/ {
+            proxy_pass http://localhost:8080/;
+        }
+        location /f2d/ {
+            alias   {funtodone location}/funtodone/src/client/;
+            index  index.html index.htm;
+        }
+
+Then to open this index page: http://localhost/f2d/
