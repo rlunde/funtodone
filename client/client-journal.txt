@@ -130,3 +130,17 @@ First up:
 [ ] Create a collection
   [ ] choose a name
   [ ] choose a type (list or stack)
+
+====================================================
+Saturday, January 13, 2018
+====================================================
+
+Need to get this building again after reorganizing.
+
+To initialize the client part of the project:
+
+$ yarn
+$ yarn start
+
+OK. Back up to journal.txt in the main project (one 
+directory above this) for next steps.

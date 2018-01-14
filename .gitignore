@@ -40,11 +40,7 @@ pkg/
 **/client2/build
 
 # misc
-**/client/.DS_Store
+**/.DS_Store
 **/client/npm-debug.log
-**/src/funtodone-cli
-**/src/github.com
-**/src/f2d/funtodone
-**/src/f2d/task.json
-**/src/f2d/debug
+**/server/task.json
 /funtodone

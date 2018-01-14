@@ -1,7 +1,7 @@
 package main
 
 import (
-	"funtodone/model"
+	"github.com/rlunde/funtodone/server/model"
 	"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
 	"strconv"

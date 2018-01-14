@@ -1,31 +1,17 @@
 
 How to build it:
 
-  1. cd src
-  1. source source_me
-  3. ./build
+  1. ./build
 
 To run the server:
-  1. Build it (as above)
-  2. ./f2d/funtodone (requires you to be in src directory)
+  1. ./funtodone
+
+To run the client:
+  1. cd client
+  2. yarn
+  3. yarn start
+  That will start the client in dev mode on port 3000
 
 To test it:
-  1. Run it (as above)
-  2. Open browser to "http://localhost:8080/" to see the authboss home page
-  3. Currently, that runs: .../funtodone/src/resources/views/gin-gonic/index.tmpl
-  4. Which includes: .../funtodone/src/resources/views/gin-gonic/header.tmpl
-  5. The links on that page are currently broken (/auth/register and /auth/login)
-  6. The ping URL works: http://localhost:8080/ping
-
-To run unit tests on the main package (including the library):
-  1. Build it as above
-  2. cd f2d
-  3. go test
-
-The run the client (react) side of things:
-  1. cd src
-  2. cd client
-  3. ./run
-  This runs index.html, which has a react page from the tutorial, and includes a very simple login/register jQuery form
-
-
+  1. cd server
+  2. go test
