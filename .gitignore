@@ -47,3 +47,4 @@ pkg/
 **/src/f2d/funtodone
 **/src/f2d/task.json
 **/src/f2d/debug
+/funtodone
