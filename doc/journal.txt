@@ -42,3 +42,11 @@ Today's random project: design/funtodone
 See the journal.txt under client/ for what I did tonight.
 I really should only have one of these.
 
+====================================================
+February 16, 2018
+====================================================
+
+I'm just getting back to this, so tonight I'm just reviewing
+everything. 
+
+Next step: define a minimal MVP with enough "fun" to justify the name.
