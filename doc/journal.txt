@@ -42,3 +42,27 @@ Today's random project: design/funtodone
 See the journal.txt under client/ for what I did tonight.
 I really should only have one of these.
 
+====================================================
+February 16, 2018
+====================================================
+
+I'm just getting back to this, so tonight I'm just reviewing
+everything. 
+
+Next step: define a minimal MVP with enough "fun" to justify the name.
+
+====================================================
+April 3, 2018
+====================================================
+I've been busy working (mostly) on thing-a-day and humorscope
+lately.
+
+Looks like I've got a basic layout going of the "holy grail"
+variety.
+
+What's unique and fun about this project in three sentences?
+
+1) use a stack rather than a list for todo items (have a list of stacks)
+2) divide and conquer: split the top item into 2-5 smaller items
+3) keep score
+
