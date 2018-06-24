@@ -200,6 +200,24 @@ The Japanese principal of Kaizen works a lot like that. You make small changes r
 trying for big heroic ones, and before you know it, really big things get done -- without
 all the wailing and teeth gnashing that a large change would entail.
 
+## Hey, Where's this Fun You Mentioned?
+
+Well, first of all, just getting things done is fun. Or at least, satisfying.
+
+We've thought about doing things like keeping score or making it social, but everyone's
+pretty jaded about those things by now (and with good reason).
+
+So instead, we're going to try something that comes straight out of research into habit formation,
+which is that if you want to get your brain to make a habit you need a trigger, a routine, and a
+reward. The reward doesn't have to be big, and shouldn't be something that interferes with the
+results you want: you don't want to make the reward for sticking to your diet for an afternoon be
+eating a whole bag of cookies. One thing that works pretty well is just to show you a picture of
+a baby animal. If you are somewhere where you can raise your arms over your head and say "Yes!!"
+at the same time, it'll work a lot better.
+
+That's another reason to keep each task absurdly small, by the way. You don't want to work on
+something for days on end -- or even hours and hours -- before you give yourself a boost.
+
 ## Hey! You Said There Would Be "Chores"...
 
 There are always chores. Initially, we had another category of task list, called "Cycles,"
