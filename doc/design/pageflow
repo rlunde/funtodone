@@ -1,7 +1,6 @@
 
 Landing Page
   * keep it as simple as possible
-  * show links to log in, create an account, about
   * main page should have a one-sentence description of why it's cool, and links to more:
     * getting started
     * creating tasks
@@ -12,21 +11,10 @@ Landing Page
   * try to get one or more quotes from people who like it (eventually)
   * privacy policy
 
-Login Page (a modal dialog)
 
-Create Account Page
-
-Check Your Email Page (validate account)
-
-Lost Account/Password Page
-
-Main Page (after login or clicking on email confirm link after creating account)
-  * link to a settings and preferences page
-  * link to a reports page
+Main Page 
   * link to a FAQ page
   * link to a support page
-  * links to same doc pages as on login page
-  * link to log out
   * other than that, a SPA from now on
 
   0. Choose a Stack or List
