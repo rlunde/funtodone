@@ -1,4 +1,0 @@
-4:define users and some kind of audit table
-5:define top level tasks with user and task (or task collection)
-6:define how random-ish task selection works (keeping priority, importance, urgency, and last worked on in mind)
-

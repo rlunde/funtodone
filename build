@@ -1,2 +1,0 @@
-#!/bin/bash
-go build -o funtodone server/main.go
